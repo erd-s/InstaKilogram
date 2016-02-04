@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
+    <entity name="Comment" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Picture" inverseName="comments" inverseEntity="Picture" syncable="YES"/>
+        <relationship name="writer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="comments" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Person" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="writer" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
+        <relationship name="following" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
+        <relationship name="liked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="likers" inverseEntity="Picture" syncable="YES"/>
+        <relationship name="picturesOwned" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="owner" inverseEntity="Picture" syncable="YES"/>
+    </entity>
+    <entity name="Picture" syncable="YES">
+        <attribute name="geoLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" syncable="YES"/>
+        <attribute name="pictureDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="picture" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="likers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="liked" inverseEntity="Person" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="picturesOwned" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="Picture" positionX="-54" positionY="-9" width="128" height="150"/>
+        <element name="Comment" positionX="-36" positionY="9" width="128" height="90"/>
+    </elements>
 </model>
