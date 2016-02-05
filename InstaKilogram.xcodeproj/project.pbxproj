@@ -12,7 +12,8 @@
 		1336D1DE1C63FE8B0009917D /* InstaKilogram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1336D1DC1C63FE8B0009917D /* InstaKilogram.xcdatamodeld */; };
 		1336D1E01C63FE8B0009917D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1DF1C63FE8B0009917D /* Assets.xcassets */; };
 		1336D1E31C63FE8B0009917D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */; };
-		DB8B95711C640BD900A39C53 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B95701C640BD900A39C53 /* FeedViewController.swift */; };
+		9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */; };
+		9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */; };
 		DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +25,8 @@
 		1336D1DF1C63FE8B0009917D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1336D1E21C63FE8B0009917D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1336D1E41C63FE8B0009917D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB8B95701C640BD900A39C53 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = ../FeedViewController.swift; sourceTree = "<group>"; };
+		9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedTableViewController.swift; sourceTree = "<group>"; };
+		9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
 		DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,9 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				1336D1D51C63FE8B0009917D /* AppDelegate.swift */,
-				DB8B95701C640BD900A39C53 /* FeedViewController.swift */,
 				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
 				1336D1D91C63FE8B0009917D /* Main.storyboard */,
+				9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */,
+				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
 				1336D1DF1C63FE8B0009917D /* Assets.xcassets */,
 				1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */,
 				1336D1E41C63FE8B0009917D /* Info.plist */,
@@ -142,9 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */,
 				DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */,
 				1336D1D61C63FE8B0009917D /* AppDelegate.swift in Sources */,
-				DB8B95711C640BD900A39C53 /* FeedViewController.swift in Sources */,
+				9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */,
 				1336D1DE1C63FE8B0009917D /* InstaKilogram.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

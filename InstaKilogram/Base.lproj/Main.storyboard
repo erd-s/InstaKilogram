@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OXa-1A-krV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OXa-1A-krV">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
     </dependencies>
     <scenes>
-        <!--Item-->
-        <scene sceneID="iO9-e8-ry8">
-            <objects>
-                <viewController id="7sW-J1-eQf" customClass="FeedViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1Q6-Ia-IeE"/>
-                        <viewControllerLayoutGuide type="bottom" id="QRm-ph-PS7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ob8-oo-X8P">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="XZg-CI-kpx"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uld-8b-BgY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="164" y="17"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="NGW-7F-ZJ5">
             <objects>
@@ -38,12 +19,158 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="HPK-UW-OQG" kind="show" id="VQA-fX-m6p"/>
+                        <segue destination="HPK-UW-OQG" kind="show" identifier="loginSegue" id="VQA-fX-m6p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0A-h3-m5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="468" y="-872"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Xb3-dF-Wym">
+            <objects>
+                <tableViewController id="XsX-JQ-7rq" customClass="PhotoFeedTableViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="466" sectionHeaderHeight="28" sectionFooterHeight="28" id="SMS-wq-vbR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pizza" rowHeight="466" id="j3B-vc-zrb" customClass="PhotoFeedCell" customModule="InstaKilogram" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="283"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j3B-vc-zrb" id="aoc-4n-E7E">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="282.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97P-pj-DWE">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="216.5"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="0.0" y="58" width="400" height="216.5"/>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uiq-WM-gX4">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="8" y="8" width="384" height="21"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1j8-rz-1Ez">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="8" y="29" width="384" height="21"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKf-A3-WXh">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="8" y="308" width="384" height="21"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdW-SI-Bl9">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="8" y="334" width="384" height="123.5"/>
+                                            </variation>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYq-Rs-MnF">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <state key="normal" title="❤️"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="16" y="277" width="30" height="30"/>
+                                            </variation>
+                                            <connections>
+                                                <action selector="onLikeButtonTap:" destination="XsX-JQ-7rq" eventType="touchUpInside" id="nJU-aC-NKp"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPq-73-uOs">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <state key="normal" title="💭"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="81" y="277" width="30" height="30"/>
+                                            </variation>
+                                            <connections>
+                                                <action selector="onCommentButtonTapped:" destination="XsX-JQ-7rq" eventType="touchUpInside" id="MW1-7w-1pg"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bq3-kU-A6f">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <state key="normal" title="☞"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="144" y="277" width="30" height="30"/>
+                                            </variation>
+                                            <connections>
+                                                <action selector="onForwardButtonTap:" destination="XsX-JQ-7rq" eventType="touchUpInside" id="Jx5-HI-hoC"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZm-38-Z4d">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                            <state key="normal" title="..."/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="348" y="273" width="38" height="38"/>
+                                            </variation>
+                                            <connections>
+                                                <action selector="onDotDotDotButtonTapped:" destination="XsX-JQ-7rq" eventType="touchUpInside" id="ml9-hi-N55"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="Uiq-WM-gX4"/>
+                                            <exclude reference="1j8-rz-1Ez"/>
+                                            <exclude reference="PKf-A3-WXh"/>
+                                            <exclude reference="CdW-SI-Bl9"/>
+                                            <exclude reference="SYq-Rs-MnF"/>
+                                            <exclude reference="NPq-73-uOs"/>
+                                            <exclude reference="bq3-kU-A6f"/>
+                                            <exclude reference="yZm-38-Z4d"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="Uiq-WM-gX4"/>
+                                            <include reference="1j8-rz-1Ez"/>
+                                            <include reference="PKf-A3-WXh"/>
+                                            <include reference="CdW-SI-Bl9"/>
+                                            <include reference="SYq-Rs-MnF"/>
+                                            <include reference="NPq-73-uOs"/>
+                                            <include reference="bq3-kU-A6f"/>
+                                            <include reference="yZm-38-Z4d"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="commentsLabel" destination="CdW-SI-Bl9" id="KRg-UC-ckq"/>
+                                    <outlet property="geoLocationLabel" destination="1j8-rz-1Ez" id="tuL-zf-Xd6"/>
+                                    <outlet property="likeCountLabel" destination="PKf-A3-WXh" id="M5s-mp-BEG"/>
+                                    <outlet property="nameLabel" destination="Uiq-WM-gX4" id="adR-BD-eys"/>
+                                    <outlet property="photoView" destination="97P-pj-DWE" id="PYP-hX-fpq"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XsX-JQ-7rq" id="D7g-FA-boh"/>
+                            <outlet property="delegate" destination="XsX-JQ-7rq" id="8C9-2F-nQT"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="mX2-rJ-wVt"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BpR-e3-JC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="271.5" y="26"/>
         </scene>
         <!--Item-->
         <scene sceneID="l7M-J4-7SV">
@@ -131,11 +258,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="7sW-J1-eQf" kind="relationship" relationship="viewControllers" id="p1J-EN-Yzb"/>
                         <segue destination="RkG-2e-hLj" kind="relationship" relationship="viewControllers" id="yNb-eW-cIT"/>
                         <segue destination="Vn0-YP-Nmr" kind="relationship" relationship="viewControllers" id="70u-0t-Ggf"/>
                         <segue destination="SY3-uc-9fG" kind="relationship" relationship="viewControllers" id="cc2-GB-gdK"/>
                         <segue destination="spN-o8-f9Q" kind="relationship" relationship="viewControllers" id="cRW-ED-uUk"/>
+                        <segue destination="XsX-JQ-7rq" kind="relationship" relationship="viewControllers" id="u4W-n6-Yih"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27h-4v-ZUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
