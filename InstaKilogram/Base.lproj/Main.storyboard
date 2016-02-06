@@ -257,7 +257,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Toq-uG-LYh">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="Toq-uG-LYh">
                                 <rect key="frame" x="-60" y="-14" width="121" height="29"/>
                                 <segments>
                                     <segment title="Following"/>
@@ -266,6 +266,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="62" width="400" height="29"/>
                                 </variation>
+                                <connections>
+                                    <action selector="onChangeSegmentedControlSelection:" destination="RkG-2e-hLj" eventType="valueChanged" id="Kym-fk-gcG"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-Ab-gw6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -323,7 +326,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="qNj-0C-Pto"/>
                     <connections>
-                        <outlet property="followingOrYouSegmentedControl" destination="Toq-uG-LYh" id="9vI-XB-7rO"/>
+                        <outlet property="segmentedControl" destination="Toq-uG-LYh" id="U2X-Ue-iLj"/>
+                        <outlet property="tableView" destination="WoM-Ab-gw6" id="7AO-ya-urJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KyZ-YP-RnF" userLabel="First Responder" sceneMemberID="firstResponder"/>

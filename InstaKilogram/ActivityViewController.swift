@@ -16,14 +16,19 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: Outlets
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
+    @IBOutlet weak var tableView: UITableView!
     
     //MARK: ViewLoading
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
+    @IBAction func onChangeSegmentedControlSelection(sender: AnyObject) {
+        tableView.reloadData()
+        
+    }
     
     
     //MARK: TableView
