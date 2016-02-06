@@ -31,8 +31,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //            
 //            searchResultsArray.append(data)
 //        }
-        
-        
     }
     
     
