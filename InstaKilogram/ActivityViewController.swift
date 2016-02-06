@@ -15,7 +15,7 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     var arrayWithFollowingActivity = [String]()
     
     //MARK: Outlets
-    @IBOutlet weak var followingOrYouSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     
     //MARK: ViewLoading
@@ -29,7 +29,7 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: TableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if followingOrYouSegmentedControl.selectedSegmentIndex == 0{
+        if segmentedControl.selectedSegmentIndex == 0{
             return arrayWithFollowingActivity.count
         } else {
             return arrayWithYourActivity.count
@@ -37,9 +37,9 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("pizza")
+        let cell = tableView.dequeueReusableCellWithIdentifier("pizza")!
       
-        if followingOrYouSegmentedControl.selectedSegmentIndex == 0 {
+        if segmentedControl.selectedSegmentIndex == 0 {
 //            let stuff = arrayWithFollowingActivity[indexPath.row]
         }
         else {
@@ -48,6 +48,6 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
 //        cell.contents = stuff.property
         
         
-        return cell!
+        return cell
     }
 }
