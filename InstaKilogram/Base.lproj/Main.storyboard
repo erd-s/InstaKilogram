@@ -359,9 +359,19 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XBT-b4-8ZT">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.20291313620000001" green="0.36243193029999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="b6y-FL-cg7"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="b6y-FL-cg7"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="b6y-FL-cg7"/>
+                                    </mask>
                                 </variation>
                                 <connections>
                                     <outlet property="delegate" destination="SY3-uc-9fG" id="uEW-xw-aQ4"/>
@@ -386,9 +396,6 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="44" width="400" height="507"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="SY3-uc-9fG" id="vxM-Kv-NjN"/>
                                     <outlet property="delegate" destination="SY3-uc-9fG" id="CNN-gB-cl8"/>
@@ -396,16 +403,43 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="XBT-b4-8ZT" secondAttribute="trailing" constant="-20" id="98W-0Y-31a"/>
+                            <constraint firstItem="ykN-KZ-tjK" firstAttribute="top" secondItem="Usv-CV-JOV" secondAttribute="bottom" id="ITW-ny-LtY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Usv-CV-JOV" secondAttribute="trailing" constant="-20" id="gC4-Jt-YsG"/>
+                            <constraint firstItem="Usv-CV-JOV" firstAttribute="leading" secondItem="Occ-dw-K9I" secondAttribute="leadingMargin" constant="-20" id="hoe-bN-HWN"/>
+                            <constraint firstItem="XBT-b4-8ZT" firstAttribute="leading" secondItem="Occ-dw-K9I" secondAttribute="leadingMargin" constant="-20" id="sBR-f9-4lr"/>
+                            <constraint firstItem="Usv-CV-JOV" firstAttribute="top" secondItem="XBT-b4-8ZT" secondAttribute="bottom" id="uKF-Sf-5Bk"/>
+                            <constraint firstItem="XBT-b4-8ZT" firstAttribute="top" secondItem="Occ-dw-K9I" secondAttribute="topMargin" id="w1j-37-cOY"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="XBT-b4-8ZT"/>
                                 <exclude reference="Usv-CV-JOV"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="98W-0Y-31a"/>
+                                <exclude reference="sBR-f9-4lr"/>
+                                <exclude reference="w1j-37-cOY"/>
+                                <exclude reference="gC4-Jt-YsG"/>
+                                <exclude reference="hoe-bN-HWN"/>
+                                <exclude reference="uKF-Sf-5Bk"/>
+                                <exclude reference="ITW-ny-LtY"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="XBT-b4-8ZT"/>
                                 <include reference="Usv-CV-JOV"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="98W-0Y-31a"/>
+                                <include reference="sBR-f9-4lr"/>
+                                <include reference="w1j-37-cOY"/>
+                                <include reference="gC4-Jt-YsG"/>
+                                <include reference="hoe-bN-HWN"/>
+                                <include reference="uKF-Sf-5Bk"/>
+                                <include reference="ITW-ny-LtY"/>
                             </mask>
                         </variation>
                     </view>
