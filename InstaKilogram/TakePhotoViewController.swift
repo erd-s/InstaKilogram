@@ -16,20 +16,25 @@ class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate
     
     override func viewWillAppear(animated: Bool)
     {
-        picker.delegate = self
-        picker.sourceType = UIImagePickerControllerSourceType.Camera
-        picker.allowsEditing = true
-        self.presentViewController(picker, animated: false, completion: nil)
+       
     }
-    
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        picker.delegate = self
+        picker.sourceType = UIImagePickerControllerSourceType.Camera
+        picker.allowsEditing = true
+        self.presentViewController(picker, animated: false, completion: nil)
         
        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        let chosenImage:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        self.imageView.image = chosenImage
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 
