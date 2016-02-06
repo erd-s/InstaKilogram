@@ -15,6 +15,7 @@
 		9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */; };
 		9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */; };
 		DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */; };
+		DB8B959C1C66A1FA00A39C53 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedTableViewController.swift; sourceTree = "<group>"; };
 		9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
 		DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +64,10 @@
 			children = (
 				1336D1D51C63FE8B0009917D /* AppDelegate.swift */,
 				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
-				1336D1D91C63FE8B0009917D /* Main.storyboard */,
+				DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */,
 				9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */,
 				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
+				1336D1D91C63FE8B0009917D /* Main.storyboard */,
 				1336D1DF1C63FE8B0009917D /* Assets.xcassets */,
 				1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */,
 				1336D1E41C63FE8B0009917D /* Info.plist */,
@@ -105,7 +108,7 @@
 				TargetAttributes = {
 					1336D1D11C63FE8B0009917D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = L88J8VK7QC;
+						DevelopmentTeam = 767ELXNDQ9;
 					};
 				};
 			};
@@ -149,6 +152,7 @@
 				DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */,
 				1336D1D61C63FE8B0009917D /* AppDelegate.swift in Sources */,
 				9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */,
+				DB8B959C1C66A1FA00A39C53 /* TakePhotoViewController.swift in Sources */,
 				1336D1DE1C63FE8B0009917D /* InstaKilogram.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,10 +264,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = InstaKilogram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Mobile-Makers.InstaKilogram";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -271,10 +278,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = InstaKilogram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Mobile-Makers.InstaKilogram";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

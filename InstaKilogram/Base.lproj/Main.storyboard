@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OXa-1A-krV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HPK-UW-OQG">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -39,11 +39,11 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="466"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j3B-vc-zrb" id="aoc-4n-E7E">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="465.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="465"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97P-pj-DWE">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="216.5"/>
+                                            <rect key="frame" x="0.0" y="-1" width="600" height="218"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="0.0" y="58" width="400" height="216.5"/>
                                             </variation>
@@ -213,7 +213,7 @@
         <!--Item-->
         <scene sceneID="QYK-04-qVa">
             <objects>
-                <viewController id="spN-o8-f9Q" sceneMemberID="viewController">
+                <viewController id="spN-o8-f9Q" customClass="TakePhotoViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RoQ-Oa-mVG"/>
                         <viewControllerLayoutGuide type="bottom" id="SeE-Eh-6An"/>
@@ -221,9 +221,23 @@
                     <view key="view" contentMode="scaleToFill" id="9Nu-8f-eDR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nev-J0-Kjk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nev-J0-Kjk" firstAttribute="top" secondItem="9Nu-8f-eDR" secondAttribute="top" id="0TU-az-Rva"/>
+                            <constraint firstItem="Nev-J0-Kjk" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leading" id="39J-bl-dHr"/>
+                            <constraint firstAttribute="trailing" secondItem="Nev-J0-Kjk" secondAttribute="trailing" id="SAT-LV-zsa"/>
+                            <constraint firstItem="SeE-Eh-6An" firstAttribute="top" secondItem="Nev-J0-Kjk" secondAttribute="bottom" id="rjZ-ZH-FzQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Es1-3c-McQ"/>
+                    <connections>
+                        <outlet property="imageView" destination="Nev-J0-Kjk" id="SNQ-R5-hDY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4q-uJ-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

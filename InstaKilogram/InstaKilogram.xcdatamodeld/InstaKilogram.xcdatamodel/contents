@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Automatic">
     <entity name="Comment" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Picture" inverseName="comments" inverseEntity="Picture" syncable="YES"/>
@@ -20,7 +20,7 @@
     </entity>
     <entity name="Picture" syncable="YES">
         <attribute name="geoLocation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="pictureDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="picture" inverseEntity="Comment" syncable="YES"/>
@@ -28,8 +28,8 @@
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="picturesOwned" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Comment" positionX="-36" positionY="9" width="128" height="90"/>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="Picture" positionX="-54" positionY="-9" width="128" height="150"/>
-        <element name="Comment" positionX="-36" positionY="9" width="128" height="90"/>
     </elements>
 </model>
