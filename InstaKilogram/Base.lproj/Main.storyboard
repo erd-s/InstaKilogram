@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="468" y="-872"/>
         </scene>
-        <!--Item-->
+        <!--Photo Feed-->
         <scene sceneID="Xb3-dF-Wym">
             <objects>
-                <tableViewController id="XsX-JQ-7rq" customClass="PhotoFeedTableViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="XsX-JQ-7rq" userLabel="Photo Feed" customClass="PhotoFeedTableViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="466" sectionHeaderHeight="28" sectionFooterHeight="28" id="SMS-wq-vbR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="271.5" y="26"/>
         </scene>
-        <!--Item-->
+        <!--Explore-->
         <scene sceneID="l7M-J4-7SV">
             <objects>
-                <viewController id="SY3-uc-9fG" customClass="ExploreViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SY3-uc-9fG" userLabel="Explore" customClass="ExploreViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aTp-nT-5Lf"/>
                         <viewControllerLayoutGuide type="bottom" id="ykN-KZ-tjK"/>
@@ -245,10 +245,10 @@
             </objects>
             <point key="canvasLocation" x="912" y="17"/>
         </scene>
-        <!--Item-->
+        <!--My Activity-->
         <scene sceneID="cqO-Be-xiZ">
             <objects>
-                <viewController id="RkG-2e-hLj" sceneMemberID="viewController">
+                <viewController id="RkG-2e-hLj" userLabel="My Activity" customClass="ActivityViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t0F-fR-iNQ"/>
                         <viewControllerLayoutGuide type="bottom" id="kV4-cc-X0S"/>
@@ -256,18 +256,84 @@
                     <view key="view" contentMode="scaleToFill" id="Szw-tQ-t7E">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Toq-uG-LYh">
+                                <rect key="frame" x="-60" y="-14" width="121" height="29"/>
+                                <segments>
+                                    <segment title="Following"/>
+                                    <segment title="You"/>
+                                </segments>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="62" width="400" height="29"/>
+                                </variation>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-Ab-gw6">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pizza" textLabel="sc9-aE-DCj" detailTextLabel="AQA-CU-Bog" style="IBUITableViewCellStyleValue1" id="k3D-TI-ySf">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k3D-TI-ySf" id="7XX-rp-vQN">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sc9-aE-DCj">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AQA-CU-Bog">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="98" width="400" height="453"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="RkG-2e-hLj" id="AoJ-Kq-Cx2"/>
+                                    <outlet property="delegate" destination="RkG-2e-hLj" id="Kuz-m5-LTA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Toq-uG-LYh"/>
+                                <exclude reference="WoM-Ab-gw6"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Toq-uG-LYh"/>
+                                <include reference="WoM-Ab-gw6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="qNj-0C-Pto"/>
+                    <connections>
+                        <outlet property="followingOrYouSegmentedControl" destination="Toq-uG-LYh" id="9vI-XB-7rO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KyZ-YP-RnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2382" y="17"/>
+            <point key="canvasLocation" x="2364" y="17"/>
         </scene>
-        <!--Item-->
+        <!--Take Photo-->
         <scene sceneID="QYK-04-qVa">
             <objects>
-                <viewController id="spN-o8-f9Q" sceneMemberID="viewController">
+                <viewController id="spN-o8-f9Q" userLabel="Take Photo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RoQ-Oa-mVG"/>
                         <viewControllerLayoutGuide type="bottom" id="SeE-Eh-6An"/>
@@ -283,10 +349,10 @@
             </objects>
             <point key="canvasLocation" x="1610" y="17"/>
         </scene>
-        <!--Item-->
+        <!--My Profile-->
         <scene sceneID="mGb-xb-tuh">
             <objects>
-                <viewController id="Vn0-YP-Nmr" sceneMemberID="viewController">
+                <viewController id="Vn0-YP-Nmr" userLabel="My Profile" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0AV-Yw-hfz"/>
                         <viewControllerLayoutGuide type="bottom" id="cp6-f6-9Of"/>

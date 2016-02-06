@@ -12,6 +12,7 @@
 		1336D1DE1C63FE8B0009917D /* InstaKilogram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1336D1DC1C63FE8B0009917D /* InstaKilogram.xcdatamodeld */; };
 		1336D1E01C63FE8B0009917D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1DF1C63FE8B0009917D /* Assets.xcassets */; };
 		1336D1E31C63FE8B0009917D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */; };
+		9B1235DF1C666E810046C1A3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1235DE1C666E810046C1A3 /* ActivityViewController.swift */; };
 		9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */; };
 		9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */; };
 		DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */; };
@@ -25,6 +26,7 @@
 		1336D1DF1C63FE8B0009917D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1336D1E21C63FE8B0009917D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1336D1E41C63FE8B0009917D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B1235DE1C666E810046C1A3 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedTableViewController.swift; sourceTree = "<group>"; };
 		9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
 		DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				1336D1D51C63FE8B0009917D /* AppDelegate.swift */,
 				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
+				9B1235DE1C666E810046C1A3 /* ActivityViewController.swift */,
 				1336D1D91C63FE8B0009917D /* Main.storyboard */,
 				9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */,
 				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */,
+				9B1235DF1C666E810046C1A3 /* ActivityViewController.swift in Sources */,
 				DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */,
 				1336D1D61C63FE8B0009917D /* AppDelegate.swift in Sources */,
 				9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */,
