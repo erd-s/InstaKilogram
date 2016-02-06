@@ -25,6 +25,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: ViewLoading
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.hidden = true
+        collectionView.hidden = false
     }
 
     //MARK: Custom Functions
