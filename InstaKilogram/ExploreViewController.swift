@@ -8,28 +8,56 @@
 
 import UIKit
 
-class ExploreViewController: UIViewController {
 
+class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+    //MARK: Properties
+    var photoCollectionArray = [UIImage]()  //this array type may need to change
+    var searchResultsArray = [UIImage]()    //and this one too
+    
+    //MARK: Outlets
+    @IBOutlet var searchBar: UISearchBar!
+    
+    
+    //MARK: ViewLoading
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
+    func getResults(searchQuery: String) {
+//        get data from searchQuery
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//        for data in searchData {
+//            
+//            searchResultsArray.append(data)
+//        }
+        
+        
     }
-    */
+    
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        getResults(searchBar.text!)
+    }
+    
+    
+    //MARK: CollectionView
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if searchBar.text == "" {
+        return photoCollectionArray.count
+        } else {
+            return searchResultsArray.count
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pizza", forIndexPath: indexPath)
+        
+        return cell
+    }
+    
+    
+    
 
 }
