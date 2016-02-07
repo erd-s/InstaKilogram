@@ -72,7 +72,6 @@
 		1336D1D41C63FE8B0009917D /* InstaKilogram */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				1336D1D91C63FE8B0009917D /* Main.storyboard */,
 				9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */,
 				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
@@ -99,7 +98,6 @@
 		9B1235E31C6673720046C1A3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-=======
 				1336D1D51C63FE8B0009917D /* AppDelegate.swift */,
 				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
 				DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */,
@@ -107,7 +105,6 @@
 				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
 				1336D1D91C63FE8B0009917D /* Main.storyboard */,
 				1336D1DF1C63FE8B0009917D /* Assets.xcassets */,
->>>>>>> Yemi
 				1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */,
 				1336D1DF1C63FE8B0009917D /* Assets.xcassets */,
 				1336D1E41C63FE8B0009917D /* Info.plist */,
