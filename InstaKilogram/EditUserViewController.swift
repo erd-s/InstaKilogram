@@ -37,6 +37,10 @@ class EditUserViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     @IBAction func doneButtonTapped(sender: UIButton) {
+        
+        
+        
+        performSegueWithIdentifier("unwindToProfile", sender: self)
     }
     
     

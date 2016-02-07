@@ -1693,7 +1693,7 @@
                                         </variation>
                                         <connections>
                                             <action selector="cancelButtonTapped:" destination="0A7-Kx-tYk" eventType="touchUpInside" id="KrW-0z-iXH"/>
-                                            <segue destination="NoI-kL-arT" kind="unwind" unwindAction="unwind:" id="5zD-yo-mc9"/>
+                                            <segue destination="NoI-kL-arT" kind="unwind" unwindAction="unwind:" id="JQX-m6-dXN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJc-gB-xsl">
@@ -1720,7 +1720,6 @@
                                         </variation>
                                         <connections>
                                             <action selector="doneButtonTapped:" destination="0A7-Kx-tYk" eventType="touchUpInside" id="bAf-fI-q50"/>
-                                            <segue destination="NoI-kL-arT" kind="unwind" unwindAction="unwind:" id="lHf-oB-ber"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1997,6 +1996,7 @@
                         <outlet property="userImageView" destination="AyU-8K-MsJ" id="bEq-NZ-mqo"/>
                         <outlet property="usernameTextField" destination="iC7-eA-rAp" id="SNO-lB-1xd"/>
                         <outlet property="websiteTextField" destination="cx0-ai-7o9" id="TDA-wI-0x6"/>
+                        <segue destination="NoI-kL-arT" kind="unwind" identifier="unwindToProfile" unwindAction="unwind:" id="BqI-h5-q44"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxv-Cc-3Iu" userLabel="First Responder" sceneMemberID="firstResponder"/>
