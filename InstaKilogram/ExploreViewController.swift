@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
@@ -31,8 +32,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //            
 //            searchResultsArray.append(data)
 //        }
-        
-        
     }
     
     
