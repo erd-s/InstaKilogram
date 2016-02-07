@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Firebase
 
-class EditUserViewController: UIViewController, UITextFieldDelegate {
+class EditUserViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     //MARK: Properties
     
     //MARK: Outlets
@@ -18,6 +19,8 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
     
     //MARK: View Loading
     override func viewDidLoad() {
@@ -26,19 +29,28 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
 
     
     //MARK: Actions
-    
     @IBAction func cancelButtonTapped(sender: UIButton) {
+        
+        
+        
+        
     }
     
     @IBAction func doneButtonTapped(sender: UIButton) {
     }
     
     
-    //MARK: TextField Delegate Methods
-    
+    //MARK: TextField Delegate Functions
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
     
-
+    
+    //MARK: TextView Delegate Functions
+    func textViewDidEndEditing(textView: UITextView) {
+        textView.resignFirstResponder()
+    }
+    
+    
+    
 }

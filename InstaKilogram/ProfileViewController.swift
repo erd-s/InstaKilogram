@@ -60,8 +60,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collectionItemsArray.count
     }
-    //MARK: Collection View
     
+    //MARK: Collection View
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pizza", forIndexPath: indexPath)
         
@@ -73,7 +73,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         return tableViewItemsArray.count
     }
     
-
+    //MARK: Segue stuff
+    @IBAction func unwind(segue: UIStoryboardSegue) {
+        
+        
+    }
 
 
 
