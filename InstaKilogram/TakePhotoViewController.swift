@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     var picker:UIImagePickerController = UIImagePickerController()
+    var chosenImage:UIImage?
     
+    @IBOutlet weak var sourcePicker: UISegmentedControl!
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewWillAppear(animated: Bool)
@@ -21,14 +24,33 @@ class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
         picker.delegate = self
-        picker.sourceType = UIImagePickerControllerSourceType.Camera
-        picker.allowsEditing = true
-        self.presentViewController(picker, animated: false, completion: nil)
+       
+        
         
        
     }
+    
+    @IBAction func indexChanged(sender: AnyObject)
+    {
+        if(self.sourcePicker.selectedSegmentIndex == 0)
+        {
+            
+        }
+        else if (self.sourcePicker.selectedSegmentIndex == 1)
+        {
+            picker.sourceType = UIImagePickerControllerSourceType.Camera
+            self.presentViewController(picker, animated: false, completion: nil)
+        }
+        else
+        {
+            picker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+           // picker.cameraDevice.takeVideo()
+        }
+        
+    }
+    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
@@ -36,6 +58,9 @@ class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate
         self.imageView.image = chosenImage
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+    
     
 
     /*

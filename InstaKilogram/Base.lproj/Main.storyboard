@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -225,23 +226,41 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nev-J0-Kjk">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Geh-DS-0cM">
+                                <rect key="frame" x="27" y="504" width="518" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="UQr-bh-KdM"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Library"/>
+                                    <segment title="Photo"/>
+                                    <segment title="Video"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="spN-o8-f9Q" eventType="valueChanged" id="4XV-SA-rjW"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Nev-J0-Kjk" firstAttribute="top" secondItem="9Nu-8f-eDR" secondAttribute="top" id="0TU-az-Rva"/>
                             <constraint firstItem="Nev-J0-Kjk" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leading" id="39J-bl-dHr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Geh-DS-0cM" secondAttribute="trailing" constant="35" id="3Sf-eS-8pZ"/>
+                            <constraint firstItem="SeE-Eh-6An" firstAttribute="top" secondItem="Geh-DS-0cM" secondAttribute="bottom" constant="19" id="P5F-KV-IYq"/>
                             <constraint firstAttribute="trailing" secondItem="Nev-J0-Kjk" secondAttribute="trailing" id="SAT-LV-zsa"/>
+                            <constraint firstItem="Geh-DS-0cM" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leadingMargin" constant="7" id="Wy0-EW-8h5"/>
                             <constraint firstItem="SeE-Eh-6An" firstAttribute="top" secondItem="Nev-J0-Kjk" secondAttribute="bottom" id="rjZ-ZH-FzQ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Es1-3c-McQ"/>
                     <connections>
                         <outlet property="imageView" destination="Nev-J0-Kjk" id="SNQ-R5-hDY"/>
+                        <outlet property="sourcePicker" destination="Geh-DS-0cM" id="pQd-fG-KRm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4q-uJ-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="17"/>
+            <point key="canvasLocation" x="1598" y="34"/>
         </scene>
         <!--Item-->
         <scene sceneID="mGb-xb-tuh">
