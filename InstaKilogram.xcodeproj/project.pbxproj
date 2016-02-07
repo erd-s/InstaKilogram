@@ -12,8 +12,13 @@
 		1336D1DE1C63FE8B0009917D /* InstaKilogram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1336D1DC1C63FE8B0009917D /* InstaKilogram.xcdatamodeld */; };
 		1336D1E01C63FE8B0009917D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1DF1C63FE8B0009917D /* Assets.xcassets */; };
 		1336D1E31C63FE8B0009917D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */; };
+		9B0D2ABA1C67DE9D0028067F /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D2AB91C67DE9D0028067F /* EditUserViewController.swift */; };
+		9B1235DF1C666E810046C1A3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1235DE1C666E810046C1A3 /* ActivityViewController.swift */; };
+		9B1235E11C6671F10046C1A3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1235E01C6671F10046C1A3 /* ProfileViewController.swift */; };
 		9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */; };
 		9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */; };
+		9BB18D901C67ABAC00886740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB18D8F1C67ABAC00886740 /* LoginViewController.swift */; };
+		9BB18D921C67AD3800886740 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB18D911C67AD3800886740 /* User.swift */; };
 		DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */; };
 		DB8B959C1C66A1FA00A39C53 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,8 +31,13 @@
 		1336D1DF1C63FE8B0009917D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1336D1E21C63FE8B0009917D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1336D1E41C63FE8B0009917D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B0D2AB91C67DE9D0028067F /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
+		9B1235DE1C666E810046C1A3 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		9B1235E01C6671F10046C1A3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedTableViewController.swift; sourceTree = "<group>"; };
 		9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
+		9BB18D8F1C67ABAC00886740 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9BB18D911C67AD3800886740 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +72,32 @@
 		1336D1D41C63FE8B0009917D /* InstaKilogram */ = {
 			isa = PBXGroup;
 			children = (
+				1336D1D91C63FE8B0009917D /* Main.storyboard */,
+				9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */,
+				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
+				9B1235DE1C666E810046C1A3 /* ActivityViewController.swift */,
+				9BB18D8F1C67ABAC00886740 /* LoginViewController.swift */,
+				9BB18D911C67AD3800886740 /* User.swift */,
+				9B1235E01C6671F10046C1A3 /* ProfileViewController.swift */,
+				9B0D2AB91C67DE9D0028067F /* EditUserViewController.swift */,
+				9B1235E41C66739B0046C1A3 /* Custom Classes */,
+				9B1235E21C66734F0046C1A3 /* Other .swift Files */,
+				9B1235E31C6673720046C1A3 /* Supporting Files */,
+			);
+			path = InstaKilogram;
+			sourceTree = "<group>";
+		};
+		9B1235E21C66734F0046C1A3 /* Other .swift Files */ = {
+			isa = PBXGroup;
+			children = (
+				1336D1D51C63FE8B0009917D /* AppDelegate.swift */,
+			);
+			name = "Other .swift Files";
+			sourceTree = "<group>";
+		};
+		9B1235E31C6673720046C1A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				1336D1D51C63FE8B0009917D /* AppDelegate.swift */,
 				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
 				DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */,
@@ -70,10 +106,19 @@
 				1336D1D91C63FE8B0009917D /* Main.storyboard */,
 				1336D1DF1C63FE8B0009917D /* Assets.xcassets */,
 				1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */,
+				1336D1DF1C63FE8B0009917D /* Assets.xcassets */,
 				1336D1E41C63FE8B0009917D /* Info.plist */,
 				1336D1DC1C63FE8B0009917D /* InstaKilogram.xcdatamodeld */,
 			);
-			path = InstaKilogram;
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B1235E41C66739B0046C1A3 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
+			);
+			name = "Custom Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +194,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */,
+				9B1235DF1C666E810046C1A3 /* ActivityViewController.swift in Sources */,
 				DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */,
+				9B0D2ABA1C67DE9D0028067F /* EditUserViewController.swift in Sources */,
 				1336D1D61C63FE8B0009917D /* AppDelegate.swift in Sources */,
+				9BB18D901C67ABAC00886740 /* LoginViewController.swift in Sources */,
+				9BB18D921C67AD3800886740 /* User.swift in Sources */,
+				9B1235E11C6671F10046C1A3 /* ProfileViewController.swift in Sources */,
 				9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */,
 				DB8B959C1C66A1FA00A39C53 /* TakePhotoViewController.swift in Sources */,
 				1336D1DE1C63FE8B0009917D /* InstaKilogram.xcdatamodeld in Sources */,

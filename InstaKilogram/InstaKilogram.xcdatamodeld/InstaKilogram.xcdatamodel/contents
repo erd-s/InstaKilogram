@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<<<<<<< HEAD
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10137.1" systemVersion="15D21" minimumToolsVersion="Automatic">
+=======
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Automatic">
+>>>>>>> Yemi
     <entity name="Comment" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Picture" inverseName="comments" inverseEntity="Picture" syncable="YES"/>
@@ -13,8 +17,8 @@
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="writer" inverseEntity="Comment" syncable="YES"/>
-        <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
-        <relationship name="following" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
+        <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="followers" inverseEntity="Person" syncable="YES"/>
+        <relationship name="following" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="following" inverseEntity="Person" syncable="YES"/>
         <relationship name="liked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="likers" inverseEntity="Picture" syncable="YES"/>
         <relationship name="picturesOwned" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="owner" inverseEntity="Picture" syncable="YES"/>
     </entity>
