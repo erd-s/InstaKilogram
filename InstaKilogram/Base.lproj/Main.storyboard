@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vn0-YP-Nmr">
     <dependencies>
         <deployment identifier="iOS"/>
@@ -877,11 +877,8 @@
         <!--Take Photo-->
         <scene sceneID="QYK-04-qVa">
             <objects>
-<<<<<<< HEAD
                 <viewController id="spN-o8-f9Q" userLabel="Take Photo" sceneMemberID="viewController">
-=======
                 <viewController id="spN-o8-f9Q" customClass="TakePhotoViewController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
->>>>>>> Yemi
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RoQ-Oa-mVG"/>
                         <viewControllerLayoutGuide type="bottom" id="SeE-Eh-6An"/>
