@@ -16,6 +16,8 @@
 		9B1235E11C6671F10046C1A3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1235E01C6671F10046C1A3 /* ProfileViewController.swift */; };
 		9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */; };
 		9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */; };
+		9BC6A3F01C66E2C5000DF11E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6A3EF1C66E2C5000DF11E /* Post.swift */; };
+		9BC6A3F21C66E2EB000DF11E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6A3F11C66E2EB000DF11E /* Comment.swift */; };
 		DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		9B1235E01C6671F10046C1A3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedTableViewController.swift; sourceTree = "<group>"; };
 		9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
+		9BC6A3EF1C66E2C5000DF11E /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		9BC6A3F11C66E2EB000DF11E /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
+				9BC6A3EF1C66E2C5000DF11E /* Post.swift */,
+				9BC6A3F11C66E2EB000DF11E /* Comment.swift */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -178,9 +184,11 @@
 				9B544D191C655C7A009A8834 /* PhotoFeedCell.swift in Sources */,
 				9B1235DF1C666E810046C1A3 /* ActivityViewController.swift in Sources */,
 				DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */,
+				9BC6A3F01C66E2C5000DF11E /* Post.swift in Sources */,
 				1336D1D61C63FE8B0009917D /* AppDelegate.swift in Sources */,
 				9B1235E11C6671F10046C1A3 /* ProfileViewController.swift in Sources */,
 				9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */,
+				9BC6A3F21C66E2EB000DF11E /* Comment.swift in Sources */,
 				1336D1DE1C63FE8B0009917D /* InstaKilogram.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
