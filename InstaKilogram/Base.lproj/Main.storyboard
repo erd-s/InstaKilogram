@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
+
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vn0-YP-Nmr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-=======
+
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HPK-UW-OQG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
->>>>>>> Yemi
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -254,7 +253,6 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="528"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j3B-vc-zrb" id="aoc-4n-E7E">
-<<<<<<< HEAD
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="527"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -272,7 +270,6 @@
                                                 <mask key="constraints">
                                                     <include reference="zCx-T0-GfI"/>
                                                 </mask>
-=======
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="465"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -280,7 +277,6 @@
                                             <rect key="frame" x="0.0" y="-1" width="600" height="218"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="0.0" y="58" width="400" height="216.5"/>
->>>>>>> Yemi
                                             </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uiq-WM-gX4">
@@ -923,15 +919,12 @@
                             <constraint firstItem="SeE-Eh-6An" firstAttribute="top" secondItem="Nev-J0-Kjk" secondAttribute="bottom" id="rjZ-ZH-FzQ"/>
                         </constraints>
                     </view>
-<<<<<<< HEAD
                     <tabBarItem key="tabBarItem" title="Take Photo" id="Es1-3c-McQ"/>
-=======
                     <tabBarItem key="tabBarItem" title="Item" id="Es1-3c-McQ"/>
                     <connections>
                         <outlet property="imageView" destination="Nev-J0-Kjk" id="SNQ-R5-hDY"/>
                         <outlet property="sourcePicker" destination="Geh-DS-0cM" id="pQd-fG-KRm"/>
                     </connections>
->>>>>>> Yemi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4q-uJ-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
