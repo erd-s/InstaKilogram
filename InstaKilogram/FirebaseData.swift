@@ -37,7 +37,13 @@ class FirebaseData {
     func createNewAccount(uid: String, user: Dictionary<String, String>) {
         
         USER_REF.childByAppendingPath(uid).setValue(user)
-        
+    }
     
+    func createNewPost(post: Dictionary<String,AnyObject>) {
+        
+        let firebaseNewPost = PHOTOS_REF.childByAutoId()
+        firebaseNewPost.setValue(post)
+        
+        
     }
 }
