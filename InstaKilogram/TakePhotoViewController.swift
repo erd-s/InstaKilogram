@@ -24,9 +24,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        picker.delegate = self
-        self.startCameraFromViewController(self, withDelegate: self)
        
     }
     
@@ -48,6 +45,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         
     }
     
+    @IBAction func onOKButtonTapped(sender: AnyObject)
+    {
+        
+        
+        
+        
+    }
     
     func startCameraFromViewController(viewController:UIViewController, withDelegate delegate:protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool
     {
@@ -73,7 +77,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         var title = "Success"
         var message = "Video was saved"
         
-        if let saveError = error
+        if let _ = error
         {
             title = "Error"
             message = "Video failed to save"
@@ -82,6 +86,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)
+    {
+        self.chosenImage = image
+        self.imageView.image = self.chosenImage
+        
     }
     
     

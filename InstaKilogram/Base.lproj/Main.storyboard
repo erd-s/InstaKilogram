@@ -903,36 +903,76 @@
                                     <action selector="indexChanged:" destination="spN-o8-f9Q" eventType="valueChanged" id="01L-lH-kU0"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcr-4j-CX5">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="286" id="Wmd-OU-21M"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Wmd-OU-21M"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Wmd-OU-21M"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7Y-tr-DFw">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="OK"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="185" y="406" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onOKButtonTapped:" destination="spN-o8-f9Q" eventType="touchUpInside" id="lPW-Uy-qKu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wcr-4j-CX5" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leadingMargin" id="470-F0-SZ8"/>
                             <constraint firstItem="COZ-yl-0YM" firstAttribute="trailing" secondItem="9Nu-8f-eDR" secondAttribute="trailingMargin" id="DvD-ij-q3d"/>
                             <constraint firstItem="COZ-yl-0YM" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leadingMargin" id="H1K-2J-jmq"/>
+                            <constraint firstItem="wcr-4j-CX5" firstAttribute="top" secondItem="COZ-yl-0YM" secondAttribute="bottom" constant="8" id="K0q-Ua-y4n"/>
+                            <constraint firstItem="wcr-4j-CX5" firstAttribute="trailing" secondItem="9Nu-8f-eDR" secondAttribute="trailingMargin" id="nHn-Yq-sed"/>
                             <constraint firstItem="COZ-yl-0YM" firstAttribute="top" secondItem="RoQ-Oa-mVG" secondAttribute="bottom" constant="56" id="z6E-jM-5vj"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="COZ-yl-0YM"/>
+                                <exclude reference="wcr-4j-CX5"/>
+                                <exclude reference="O7Y-tr-DFw"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="DvD-ij-q3d"/>
                                 <exclude reference="H1K-2J-jmq"/>
                                 <exclude reference="z6E-jM-5vj"/>
+                                <exclude reference="470-F0-SZ8"/>
+                                <exclude reference="K0q-Ua-y4n"/>
+                                <exclude reference="nHn-Yq-sed"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="COZ-yl-0YM"/>
+                                <include reference="wcr-4j-CX5"/>
+                                <include reference="O7Y-tr-DFw"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="DvD-ij-q3d"/>
                                 <include reference="H1K-2J-jmq"/>
                                 <include reference="z6E-jM-5vj"/>
+                                <include reference="470-F0-SZ8"/>
+                                <include reference="K0q-Ua-y4n"/>
+                                <include reference="nHn-Yq-sed"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Take Photo" id="Es1-3c-McQ"/>
                     <connections>
+                        <outlet property="imageView" destination="wcr-4j-CX5" id="QCx-Mw-ErI"/>
                         <outlet property="sourcePicker" destination="COZ-yl-0YM" id="DSE-Ij-xZa"/>
                     </connections>
                 </viewController>
