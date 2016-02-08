@@ -55,6 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
     func loginErrorAlert(tittle: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
