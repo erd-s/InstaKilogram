@@ -12,6 +12,7 @@
 		1336D1DE1C63FE8B0009917D /* InstaKilogram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1336D1DC1C63FE8B0009917D /* InstaKilogram.xcdatamodeld */; };
 		1336D1E01C63FE8B0009917D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1DF1C63FE8B0009917D /* Assets.xcassets */; };
 		1336D1E31C63FE8B0009917D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */; };
+		1354CE1F1C690EBA008ECEFA /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1354CE1E1C690EBA008ECEFA /* Photo.swift */; };
 		13721D3F1C69008700E273C2 /* AccountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13721D3C1C69008700E273C2 /* AccountCreateViewController.swift */; };
 		13721D401C69008700E273C2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13721D3D1C69008700E273C2 /* Constants.swift */; };
 		13721D411C69008700E273C2 /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13721D3E1C69008700E273C2 /* FirebaseData.swift */; };
@@ -35,6 +36,7 @@
 		1336D1DF1C63FE8B0009917D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1336D1E21C63FE8B0009917D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1336D1E41C63FE8B0009917D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1354CE1E1C690EBA008ECEFA /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		13721D3C1C69008700E273C2 /* AccountCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreateViewController.swift; sourceTree = "<group>"; };
 		13721D3D1C69008700E273C2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		13721D3E1C69008700E273C2 /* FirebaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
+				1354CE1E1C690EBA008ECEFA /* Photo.swift */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				1336D1D61C63FE8B0009917D /* AppDelegate.swift in Sources */,
 				9BB18D901C67ABAC00886740 /* LoginViewController.swift in Sources */,
 				13721D401C69008700E273C2 /* Constants.swift in Sources */,
+				1354CE1F1C690EBA008ECEFA /* Photo.swift in Sources */,
 				9BB18D921C67AD3800886740 /* User.swift in Sources */,
 				9B1235E11C6671F10046C1A3 /* ProfileViewController.swift in Sources */,
 				9B544D171C655C32009A8834 /* PhotoFeedTableViewController.swift in Sources */,

@@ -46,6 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                 } else {
                     self.userDefaults.setValue(authData.uid, forKey: "uid")
+                    print(FirebaseData.firebaseData.CURRENT_USER_REF)
                     self.performSegueWithIdentifier("loginSegue", sender: self)
                 }
             })
