@@ -26,6 +26,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         super.viewDidLoad()
         
         picker.delegate = self
+        self.startCameraFromViewController(self, withDelegate: self)
        
     }
     
