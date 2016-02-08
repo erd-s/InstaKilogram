@@ -10,15 +10,30 @@ import Foundation
 import UIKit
 import Firebase
 
-class Photo: NSDictionary{
+class Photo: UIImageView{
     private var _photoRef: Firebase!
     
+    private var _photoKey: String!
+    private var _username: String!
+    private var _photoLikes: Int!
+    private var _photoImage: UIImage?
     
-    var name: String?
-    var likes: Int?
-    var owner: String?
-    var photo: UIImage?
+
+    var photoKey: String {
+        return _photoKey
+    }
     
+    var photoImage: UIImage? {
+        return _photoImage
+    }
+        
+    var photoLikes: Int {
+        return _photoLikes
+    }
+    
+    var username: String {
+        return _username
+    }
     // The photo string is the NSData Photo object pulled from Firebase, so it should be the UIImage in string form.
 
     
