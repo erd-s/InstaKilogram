@@ -21,11 +21,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        if userDefaults.valueForKey("uid")  != nil {
-            performSegueWithIdentifier("loginSegue", sender: self)
-            
-        }
     }
     
     override func viewDidAppear(animated: Bool) {

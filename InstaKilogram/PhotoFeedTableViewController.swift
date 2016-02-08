@@ -19,7 +19,6 @@ class PhotoFeedTableViewController: UITableViewController {
     //MARK: View Loading
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
 
