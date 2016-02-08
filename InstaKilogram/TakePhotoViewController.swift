@@ -9,7 +9,7 @@
 import UIKit
 import MobileCoreServices
 
-class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
 {
     var picker:UIImagePickerController = UIImagePickerController()
     var chosenImage:UIImage?
@@ -26,9 +26,7 @@ class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate
         super.viewDidLoad()
         
         picker.delegate = self
-       
-        
-        
+        self.startCameraFromViewController(self, withDelegate: self)
        
     }
     
@@ -45,32 +43,69 @@ class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate
         }
         else
         {
-            picker.cameraDevice = UIImagePickerControllerCameraDevice.Front
-           // picker.cameraDevice.takeVideo()
+           startCameraFromViewController(self, withDelegate: self)
         }
         
     }
     
     
+    func startCameraFromViewController(viewController:UIViewController, withDelegate delegate:protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool
+    {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) == false
+        {
+            return false
+        }
+        
+        let cameraController:UIImagePickerController = UIImagePickerController()
+        cameraController.sourceType = .Camera
+        cameraController.mediaTypes = [kUTTypeMovie as String]
+        cameraController.allowsEditing = false
+        cameraController.delegate = delegate
+        
+        presentViewController(cameraController, animated: true, completion: nil)
+        
+        return true
+        
+    }
+    
+    func video(videoPath: NSString, didFinishSavingWithError error:NSError?, contextInfo info:AnyObject)
+    {
+        var title = "Success"
+        var message = "Video was saved"
+        
+        if let saveError = error
+        {
+            title = "Error"
+            message = "Video failed to save"
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+}
+    
+
+extension TakePhotoViewController : UIImagePickerControllerDelegate
+{
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
-        let chosenImage:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        self.imageView.image = chosenImage
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let mediaType = info[UIImagePickerControllerMediaType] as! NSString
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        if mediaType == kUTTypeMovie
+        {
+            let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path
+            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path!)
+            {
+                UISaveVideoAtPathToSavedPhotosAlbum(path!, self, "video:didFinishSavingWithError:contextInfo:", nil)
+            }
+        }
     }
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+
