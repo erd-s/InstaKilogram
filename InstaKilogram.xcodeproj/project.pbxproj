@@ -83,12 +83,12 @@
 				9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */,
 				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
 				9B1235DE1C666E810046C1A3 /* ActivityViewController.swift */,
+				DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */,
 				9BB18D8F1C67ABAC00886740 /* LoginViewController.swift */,
 				9BB18D911C67AD3800886740 /* User.swift */,
 				9B1235E01C6671F10046C1A3 /* ProfileViewController.swift */,
 				9B0D2AB91C67DE9D0028067F /* EditUserViewController.swift */,
 				9B1235E41C66739B0046C1A3 /* Custom Classes */,
-				9B1235E21C66734F0046C1A3 /* Other .swift Files */,
 				9B1235E31C6673720046C1A3 /* Supporting Files */,
 			);
 			path = InstaKilogram;
@@ -103,19 +103,10 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9B1235E21C66734F0046C1A3 /* Other .swift Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Other .swift Files";
-			sourceTree = "<group>";
-		};
 		9B1235E31C6673720046C1A3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				1336D1D51C63FE8B0009917D /* AppDelegate.swift */,
-				DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */,
-				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
 				1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */,
 				1336D1DF1C63FE8B0009917D /* Assets.xcassets */,
 				1336D1E41C63FE8B0009917D /* Info.plist */,
@@ -127,6 +118,7 @@
 		9B1235E41C66739B0046C1A3 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
