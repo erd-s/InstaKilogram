@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class Photo: UIImageView{
+class Photo {
     private var _photoRef: Firebase!
     
     private var _photoKey: String!
@@ -34,6 +34,13 @@ class Photo: UIImageView{
     var username: String {
         return _username
     }
+    
+    init(key: String, dictionary: Dictionary<String,AnyObject>, image: UIImage) {
+        
+        
+    }
+    
+    
     // The photo string is the NSData Photo object pulled from Firebase, so it should be the UIImage in string form.
 
     
