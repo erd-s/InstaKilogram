@@ -45,7 +45,7 @@ class AccountCreateViewController: UIViewController, UITextFieldDelegate{
                         
                         FirebaseData.firebaseData.createNewAccount(authData.uid, user: user)
                         
-                        self.performSegueWithIdentifier("unwindSegue", sender: self)
+                        self.performSegueWithIdentifier("unwindCreate", sender: self)
                         
                     })
                 }
@@ -59,6 +59,10 @@ class AccountCreateViewController: UIViewController, UITextFieldDelegate{
         
         
         
+    }
+    
+    @IBAction func backButtonTapped(sender: UIButton) {
+        performSegueWithIdentifier("unwindCreate", sender: self)
     }
     
     
