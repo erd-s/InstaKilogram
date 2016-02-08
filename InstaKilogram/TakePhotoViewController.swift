@@ -73,7 +73,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         var title = "Success"
         var message = "Video was saved"
         
-        if let saveError = error
+        if let _ = error
         {
             title = "Error"
             message = "Video failed to save"
