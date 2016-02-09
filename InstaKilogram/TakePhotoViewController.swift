@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import MobileCoreServices
+import MapKit
 
 
 class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
