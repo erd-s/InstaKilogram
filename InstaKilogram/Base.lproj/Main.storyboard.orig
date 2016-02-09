@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+>>>>>>> f54291015e9485eaec296df295a02adf8a776fe8
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -922,20 +929,17 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7Y-tr-DFw">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="V00-6k-WR7"/>
-                                    <constraint firstAttribute="height" constant="30" id="qgm-Ge-M3Z"/>
+                                    <constraint firstAttribute="height" constant="30" id="ytd-ce-nmA"/>
                                 </constraints>
                                 <state key="normal" title="OK"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="V00-6k-WR7"/>
-                                        <exclude reference="qgm-Ge-M3Z"/>
+                                        <exclude reference="ytd-ce-nmA"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="V00-6k-WR7"/>
-                                        <include reference="qgm-Ge-M3Z"/>
+                                        <include reference="ytd-ce-nmA"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -948,10 +952,11 @@
                             <constraint firstItem="wcr-4j-CX5" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leadingMargin" id="470-F0-SZ8"/>
                             <constraint firstItem="COZ-yl-0YM" firstAttribute="trailing" secondItem="9Nu-8f-eDR" secondAttribute="trailingMargin" id="DvD-ij-q3d"/>
                             <constraint firstItem="COZ-yl-0YM" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leadingMargin" id="H1K-2J-jmq"/>
-                            <constraint firstItem="O7Y-tr-DFw" firstAttribute="centerX" secondItem="9Nu-8f-eDR" secondAttribute="centerX" id="Jn9-1V-YQw"/>
                             <constraint firstItem="wcr-4j-CX5" firstAttribute="top" secondItem="COZ-yl-0YM" secondAttribute="bottom" constant="8" id="K0q-Ua-y4n"/>
-                            <constraint firstItem="O7Y-tr-DFw" firstAttribute="top" secondItem="wcr-4j-CX5" secondAttribute="bottom" constant="37" id="lte-ex-lXX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O7Y-tr-DFw" secondAttribute="trailing" constant="165" id="QRF-c2-tbd"/>
+                            <constraint firstItem="O7Y-tr-DFw" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leadingMargin" constant="165" id="h1I-Gs-1Qr"/>
                             <constraint firstItem="wcr-4j-CX5" firstAttribute="trailing" secondItem="9Nu-8f-eDR" secondAttribute="trailingMargin" id="nHn-Yq-sed"/>
+                            <constraint firstItem="O7Y-tr-DFw" firstAttribute="top" secondItem="wcr-4j-CX5" secondAttribute="bottom" constant="37" id="okK-1H-vmT"/>
                             <constraint firstItem="COZ-yl-0YM" firstAttribute="top" secondItem="RoQ-Oa-mVG" secondAttribute="bottom" constant="56" id="z6E-jM-5vj"/>
                         </constraints>
                         <variation key="default">
@@ -961,14 +966,15 @@
                                 <exclude reference="O7Y-tr-DFw"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Jn9-1V-YQw"/>
-                                <exclude reference="lte-ex-lXX"/>
                                 <exclude reference="DvD-ij-q3d"/>
                                 <exclude reference="H1K-2J-jmq"/>
                                 <exclude reference="z6E-jM-5vj"/>
                                 <exclude reference="470-F0-SZ8"/>
                                 <exclude reference="K0q-Ua-y4n"/>
                                 <exclude reference="nHn-Yq-sed"/>
+                                <exclude reference="QRF-c2-tbd"/>
+                                <exclude reference="h1I-Gs-1Qr"/>
+                                <exclude reference="okK-1H-vmT"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -978,21 +984,21 @@
                                 <include reference="O7Y-tr-DFw"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Jn9-1V-YQw"/>
-                                <include reference="lte-ex-lXX"/>
                                 <include reference="DvD-ij-q3d"/>
                                 <include reference="H1K-2J-jmq"/>
                                 <include reference="z6E-jM-5vj"/>
                                 <include reference="470-F0-SZ8"/>
                                 <include reference="K0q-Ua-y4n"/>
                                 <include reference="nHn-Yq-sed"/>
+                                <include reference="QRF-c2-tbd"/>
+                                <include reference="h1I-Gs-1Qr"/>
+                                <include reference="okK-1H-vmT"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Take Photo" id="Es1-3c-McQ"/>
                     <connections>
                         <outlet property="imageView" destination="wcr-4j-CX5" id="QCx-Mw-ErI"/>
-                        <outlet property="okButton" destination="O7Y-tr-DFw" id="jyL-LK-V3p"/>
                         <outlet property="sourcePicker" destination="COZ-yl-0YM" id="DSE-Ij-xZa"/>
                     </connections>
                 </viewController>
@@ -1509,7 +1515,6 @@
                         <outlet property="segmentedControl" destination="IcZ-mV-FBY" id="grU-QP-Nrd"/>
                         <outlet property="tableView" destination="QPR-fo-Z61" id="9GA-sj-t3v"/>
                         <outlet property="userDescriptionLabel" destination="5F5-52-xYS" id="16m-FP-5T6"/>
-                        <outlet property="usernameTitleLabel" destination="SnO-as-RYu" id="G7Z-Ax-3MR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7O9-94-ESa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2365,10 +2370,10 @@
             </objects>
             <point key="canvasLocation" x="1609.5" y="-1528"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Insta Tab Bar Controller-->
         <scene sceneID="Gxu-je-CrW">
             <objects>
-                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" id="HPK-UW-OQG" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" id="HPK-UW-OQG" customClass="InstaTabBarController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="qmy-m2-YOL">
                         <autoresizingMask key="autoresizingMask"/>

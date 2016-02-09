@@ -10,10 +10,10 @@ import UIKit
 import Firebase
 import Foundation
 
-
 class InstaTabBarController: UITabBarController {
-    
-    override func viewDidLoad() {
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
     }
 
