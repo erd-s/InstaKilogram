@@ -994,6 +994,7 @@
                         <outlet property="imageView" destination="wcr-4j-CX5" id="QCx-Mw-ErI"/>
                         <outlet property="okButton" destination="O7Y-tr-DFw" id="jyL-LK-V3p"/>
                         <outlet property="sourcePicker" destination="COZ-yl-0YM" id="DSE-Ij-xZa"/>
+                        <segue destination="HPK-UW-OQG" kind="show" identifier="toTabViewController" id="AKq-GB-XNB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4q-uJ-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2388,4 +2389,7 @@
             <point key="canvasLocation" x="1610" y="-872"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="AKq-GB-XNB"/>
+    </inferredMetricsTieBreakers>
 </document>
