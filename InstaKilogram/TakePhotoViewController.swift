@@ -28,8 +28,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.okButton.enabled = false
         
+        let libraryController = UIImagePickerController()
+        libraryController.sourceType = .PhotoLibrary
+        libraryController.delegate = self
         
+        presentViewController(libraryController, animated: true, completion: nil)
        
     }
     
@@ -37,6 +42,12 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     {
         if(self.sourcePicker.selectedSegmentIndex == 0)
         {
+            let libraryController = UIImagePickerController()
+            libraryController.sourceType = .PhotoLibrary
+            libraryController.delegate = self
+            
+            presentViewController(libraryController, animated: true, completion: nil)
+            self.okButton.enabled = true
             
         }
         else if (self.sourcePicker.selectedSegmentIndex == 1)
@@ -106,11 +117,8 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate
     {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         
-        
-        
         dismissViewControllerAnimated(true, completion: nil)
 
-        
         if CFStringCompare(mediaType, kUTTypeImage, .CompareCaseInsensitive) == CFComparisonResult.CompareEqualTo
         {
             //editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
