@@ -1489,6 +1489,7 @@
                         <outlet property="postNumberLabel" destination="W2v-p0-caT" id="dwT-Sg-CI7"/>
                         <outlet property="segmentedControl" destination="IcZ-mV-FBY" id="grU-QP-Nrd"/>
                         <outlet property="tableView" destination="QPR-fo-Z61" id="9GA-sj-t3v"/>
+                        <outlet property="userImage" destination="yJS-VC-zcN" id="1th-NN-kwt"/>
                         <outlet property="usernameTitleLabel" destination="SnO-as-RYu" id="G7Z-Ax-3MR"/>
                     </connections>
                 </viewController>
