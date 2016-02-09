@@ -34,6 +34,7 @@ class PhotoFeedTableViewController: UITableViewController {
                 for snap in snapshots {
                     if let postDictionary = snap.value as? Dictionary <String, AnyObject> {
                         let post = Photo(dictionary: postDictionary)
+                        self.posts.insert(post, atIndex: 0)
                         
                     }
                 }
@@ -64,7 +65,6 @@ class PhotoFeedTableViewController: UITableViewController {
     
     //MARK: TableView Stuff
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 0
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> PhotoFeedCell {

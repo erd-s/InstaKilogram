@@ -15,11 +15,12 @@ class Photo {
     var photoLikes: Int?
     var username: String?
     var userID: String?
+    var photo: UIImage?
     
     
     init(image: UIImage) {
-        
-        let imageData: NSData! = UIImageJPEGRepresentation(image, 0.7)
+        photo = image
+        let imageData: NSData! = UIImageJPEGRepresentation(photo!, 0.7)
         let base64String = imageData.base64EncodedStringWithOptions([])
         
         photoLikes = 0
@@ -43,11 +44,19 @@ class Photo {
     }
     
     init(dictionary: Dictionary<String, AnyObject>) {
-        photoString = dictionary["photoString"] as? String
-        photoLikes = dictionary["photoLikes"] as? Int
-        username = dictionary["user"] as? String
-        userID  = dictionary["userID"] as? String
+        photoString =   dictionary["photoString"]   as? String
+        photoLikes =    dictionary["photoLikes"]    as? Int
+        username =      dictionary["user"]          as? String
+        userID  =       dictionary["userID"]        as? String
         
+        let decodedData = NSData(base64EncodedString: photoString!, options: NSDataBase64DecodingOptions())
+        
+        photo = UIImage(data: decodedData!)!
+            
+            
+    
+        
+
     
     }
     
