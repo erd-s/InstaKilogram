@@ -13,34 +13,19 @@ import Firebase
 class Photo {
     private var _photoRef: Firebase!
 
-    private let _photoKey: String!
-    private let _username: String!
-    private let _photoLikes: Int!
     private let _photoString: String!
     private let _photoDictionary: [String: AnyObject]!
-    
-
-    var photoKey: String {
-        return _photoKey
-    }
     
     var photoString: String {
         return _photoString
     }
-        
-    var photoLikes: Int {
-        return _photoLikes
-    }
     
-    var username: String {
-        return _username
-    }
     
     var photoDictionary: [String: AnyObject] {
         return _photoDictionary
     }
     
-    init(user: String, image: UIImage) {
+    init(image: UIImage) {
         
         let imageData: NSData! = UIImagePNGRepresentation(image)
         let base64String = imageData.base64EncodedStringWithOptions([])
@@ -52,28 +37,10 @@ class Photo {
         
         self._photoDictionary = ["photoString"  : self._photoString,
                                  "likes"        : 0,
-                                 "user"         : currentUser,
+                                 "user"         : currentUser!,
                                  "userID"       : userID]
         
-        
-        FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(FEventType.Value, withBlock: { snapshot in
-            let currentUser = snapshot.value.objectForKey("username")
-            
-            
-            }, withCancelBlock: { error in
-                print(error.description)
-        })
-        
-     //   let photoRef = FirebaseData.firebaseData.CURRENT_USER_REF.childByAppendingPath("photos").childByAutoId()
-        
-        //let photoRef = FirebaseData.firebaseData.CURRENT_USER_REF.childByAppendingPath("photos").childByAppendingPath(self._photoKey)
-        
-     //   photoRef.setValue(photoDic)
-        
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
-     //   let photoDic = ["Photo Storage URL": refPhotoURL]
-
-       // let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath(self._photoKey)
         
         photosRef.setValue(self._photoDictionary)
         
