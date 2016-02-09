@@ -22,7 +22,7 @@ class Photo {
     
     init(image: UIImage, captionText:String) {
         
-        let imageData: NSData! = UIImageJPEGRepresentation(image, 0.7)
+        let imageData: NSData! = UIImageJPEGRepresentation(image, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions([])
         
         photoLikes = 0
@@ -54,10 +54,11 @@ class Photo {
         username = dictionary["user"] as? String
         userID  = dictionary["userID"] as? String
         caption = dictionary["caption"] as? String
+        photo = UIImage()
         
-        let decodedData = NSData(base64EncodedString: photoString!, options: NSDataBase64DecodingOptions())
-        photo = UIImage(data: decodedData!)!
-            
+//        let decodedData = NSData(base64EncodedString: photoString!, options: NSDataBase64DecodingOptions())
+//        photo = UIImage(data: decodedData!)!
+        
             
     
         

@@ -44,6 +44,7 @@
 		04FA9F85069177F8D6F0BB7D1DC3649C /* Pods-InstaKilogram-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-InstaKilogram-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0C5FBDAC9D99E0C5F93113D3B2439BAD /* Pods-InstaKilogram-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-InstaKilogram-dummy.m"; sourceTree = "<group>"; };
 		104481390B1098325AD2AFB70FC78878 /* Firebase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-prefix.pch"; sourceTree = "<group>"; };
+		1354CE221C6A9146008ECEFA /* loadingIMG.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loadingIMG.gif; sourceTree = "<group>"; };
 		1C474A3E7D65416FE73026063EF2CB89 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		224368C5EEC49D4D956B5B95BB215BFB /* libFirebaseStatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libFirebaseStatic.a; sourceTree = "<group>"; };
 		342DC1EFDAA10AF2421960D04E00E0A7 /* Pods-InstaKilogram-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-InstaKilogram-frameworks.sh"; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
+				1354CE221C6A9146008ECEFA /* loadingIMG.gif */,
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
 				F56CE447D2542B744EB0DA47C71E6EDD /* Pods */,
