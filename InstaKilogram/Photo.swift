@@ -11,45 +11,44 @@ import UIKit
 import Firebase
 
 class Photo {
-    private let _photoString: String!
-    private let _photoDictionary: [String: AnyObject]!
-    
-    var photoString: String {
-        return _photoString
-    }
-    
-    var photoDictionary: [String: AnyObject] {
-        return _photoDictionary
-    }
-    
+    var photoString: String?
     var photoLikes: Int?
     var username: String?
+    var userID: String?
     
     
     init(image: UIImage) {
         
-        let imageData: NSData! = UIImagePNGRepresentation(image)
+        let imageData: NSData! = UIImageJPEGRepresentation(image, 0.7)
         let base64String = imageData.base64EncodedStringWithOptions([])
         
         photoLikes = 0
         username = currentUser
-    
-        self._photoString = base64String
+        photoString = base64String
         
         
         
-        let userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
         
-        self._photoDictionary = ["photoString"  : self._photoString,
+        let photoDictionary = ["photoString"    : photoString! as String,
                                  "likes"        : photoLikes!,
                                  "user"         : username!,
-                                 "userID"       : userID]
+                                 "userID"       : userID!]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
 
         
-        photosRef.setValue(self._photoDictionary)
+        photosRef.setValue(photoDictionary)
         
+    }
+    
+    init(dictionary: Dictionary<String, AnyObject>) {
+        photoString = dictionary["photoString"] as? String
+        photoLikes = dictionary["photoLikes"] as? Int
+        username = dictionary["user"] as? String
+        userID  = dictionary["userID"] as? String
+        
+    
     }
     
     
