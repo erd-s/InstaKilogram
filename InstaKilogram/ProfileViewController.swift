@@ -13,6 +13,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: Properties
     var collectionItemsArray = [String]()
     var tableViewItemsArray = [String]()
+    var currentUserData = [FDataSnapshot]()
+    
     //MARK: Outlets
     @IBOutlet weak var postNumberLabel: UILabel!
     @IBOutlet weak var followersNumberLabel: UILabel!
@@ -29,7 +31,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.hidden = true
         collectionView.hidden = false
+        
+        FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(.Value, withBlock: { snapshot in
+            print(snapshot.value)
+            let currentUser = snapshot.value as! Dictionary<String, AnyObject>
+            self.nameLabel!.text = currentUser["username"] as? String
+        })
+        
     }
+    
 
     //MARK: Custom Functions
     func switchForSegment(segmentedControl: UISegmentedControl) {
