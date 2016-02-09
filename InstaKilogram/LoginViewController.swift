@@ -42,7 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.loginErrorAlert("Error", message: "Check your username and password combination")
                     
                 } else {
-                    
+                    self.userDefaults.setValue(authData.uid, forKey: "uid")
                     FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(FEventType.Value, withBlock: { snapshot in
                         currentUser = snapshot.value.objectForKey("username") as? String
                         self.userDefaults.setValue(currentUser, forKey: "currentUser")
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             print(error.description)
                     })
 
-                    self.userDefaults.setValue(authData.uid, forKey: "uid")
+                    
                     print(FirebaseData.firebaseData.CURRENT_USER_REF)
                     
                 }
