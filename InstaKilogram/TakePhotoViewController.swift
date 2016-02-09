@@ -137,7 +137,16 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate
         }
         else
         {
-            imageToSave = originalImage
+            let size = CGSizeApplyAffineTransform(originalImage.size, CGAffineTransformMakeScale(0.5, 0.5))
+            let hasAlpha = false
+            let scale: CGFloat = 0.0
+            UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+            originalImage.drawInRect(CGRect(origin: CGPointZero, size: size))
+            
+            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            imageToSave = scaledImage
         }
         
         UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
