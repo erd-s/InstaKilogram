@@ -16,8 +16,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var currentUserData = [FDataSnapshot]()
     var currentUser = Dictionary<String, AnyObject>()
     var userPhotosArray = [UIImage]()
-    var userDefaults = NSUserDefaults()
-    var currentUserByNSUserDefaultsString: String?
     
     //MARK: Outlets
     @IBOutlet weak var postNumberLabel: UILabel!
@@ -29,6 +27,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var usernameTitleLabel: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
     
     //MARK: ViewLoading
     override func viewDidLoad() {
@@ -36,19 +35,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.hidden = true
         collectionView.hidden = false
-        userDefaults = NSUserDefaults.standardUserDefaults()
-        currentUserByNSUserDefaultsString = userDefaults.stringForKey("currentUser")
     }
     
     override func viewWillAppear(animated: Bool) {
-        FirebaseData.firebaseData.USER_REF.observeEventType(.Value, withBlock: { snapshots in
-            print(snapshots.value)
+        FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(.Value, withBlock: { snapshot in
+            print(snapshot.value.description)
             
-            for snapshot in snapshots.value as! [FDataSnapshot] {
-                if self.currentUserByNSUserDefaultsString == snapshot.value["username"] as? String {
-                    self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
-                }
-            }
+            self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
+
             
             self.usernameTitleLabel.text? = self.currentUser["username"]!.uppercaseString
             if (self.currentUser["name"] != nil) {
@@ -62,17 +56,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.descriptionLabel.textColor = UIColor.lightGrayColor()
             }
         })
-//        
-//        if (self.currentUser["photos"]!.count != 0) {
-//            for photos in self.currentUser["photos"]!["photo"] {
-//           
-//            let decodedData = NSData(base64EncodedString: photo["photoString"], options: NSDataBase64DecodingOptions())
-//            let decodedImage = UIImage(data: decodedData!)!
-//                self.userPhotosArray.append(decodedImage)
-//            }
-//        }
+        
+        if self.currentUser["userPhoto"] == nil {
+            self.userImage.image = UIImage(named: "defaultPhoto")
+        } else {
+            let decodedData = NSData(base64EncodedString: (self.currentUser["photoString"] as? String)!, options: NSDataBase64DecodingOptions())
+            let decodedImage = UIImage(data: decodedData!)
+            self.userImage.image = decodedImage
+        }
     }
-    
 
     //MARK: Custom Functions
     func switchForSegment(segmentedControl: UISegmentedControl) {
