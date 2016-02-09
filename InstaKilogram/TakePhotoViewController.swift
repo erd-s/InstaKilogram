@@ -11,7 +11,7 @@ import MobileCoreServices
 
 class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
 {
-    var picker:UIImagePickerController = UIImagePickerController()
+    //var picker:UIImagePickerController = UIImagePickerController()
     var chosenImage:UIImage?
     
     @IBOutlet weak var sourcePicker: UISegmentedControl!
@@ -35,8 +35,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         }
         else if (self.sourcePicker.selectedSegmentIndex == 1)
         {
-            picker.sourceType = UIImagePickerControllerSourceType.Camera
-            self.presentViewController(picker, animated: false, completion: nil)
+            startCameraFromViewController(self, withDelegate: self)
         }
         else
         {
@@ -62,7 +61,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         
         let cameraController:UIImagePickerController = UIImagePickerController()
         cameraController.sourceType = .Camera
-        cameraController.mediaTypes = [kUTTypeMovie as String]
+        cameraController.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera)!
         cameraController.allowsEditing = false
         cameraController.delegate = delegate
         
@@ -88,13 +87,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)
-    {
-        self.chosenImage = image
-        self.imageView.image = self.chosenImage
-        
-    }
-    
     
     
 }
@@ -105,16 +97,47 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
-        dismissViewControllerAnimated(true, completion: nil)
+        var originalImage:UIImage!
+        var editedImage:UIImage!
+        var imageToSave:UIImage!
         
-        if mediaType == kUTTypeMovie
+        
+        dismissViewControllerAnimated(true, completion: nil)
+
+        
+        if CFStringCompare(mediaType, kUTTypeImage, .CompareCaseInsensitive) == CFComparisonResult.CompareEqualTo
         {
-            let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path
-            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path!)
-            {
-                UISaveVideoAtPathToSavedPhotosAlbum(path!, self, "video:didFinishSavingWithError:contextInfo:", nil)
-            }
+            //editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+            originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            
         }
+        
+        
+        if (editedImage != nil)
+        {
+            imageToSave = editedImage
+        }
+        else
+        {
+            imageToSave = originalImage
+        }
+        
+        UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+        
+        self.imageView.image = imageToSave
+        
+//        if mediaType == kUTTypeMovie
+//        {
+//            let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path
+//            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path!)
+//            {
+//                UISaveVideoAtPathToSavedPhotosAlbum(path!, self, "video:didFinishSavingWithError:contextInfo:", nil)
+//            }
+//        }
+//        else
+//        {
+//            self.chosenImage =
+//        }
     }
 
 }
