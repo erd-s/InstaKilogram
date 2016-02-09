@@ -15,6 +15,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var tableViewItemsArray = [String]()
     var currentUserData = [FDataSnapshot]()
     var currentUser = Dictionary<String, AnyObject>()
+    var userPhotosArray = [UIImage]()
+    var userDefaults = NSUserDefaults()
+    var currentUserByNSUserDefaultsString: String?
     
     //MARK: Outlets
     @IBOutlet weak var postNumberLabel: UILabel!
@@ -23,7 +26,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var userDescriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var usernameTitleLabel: UILabel!
     
@@ -33,13 +36,41 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.hidden = true
         collectionView.hidden = false
-        
-        FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(.Value, withBlock: { snapshot in
-            print(snapshot.value)
-            self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
+        userDefaults = NSUserDefaults.standardUserDefaults()
+        currentUserByNSUserDefaultsString = userDefaults.stringForKey("currentUser")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        FirebaseData.firebaseData.USER_REF.observeEventType(.Value, withBlock: { snapshots in
+            print(snapshots.value)
+            
+            for snapshot in snapshots.value as! [FDataSnapshot] {
+                if self.currentUserByNSUserDefaultsString == snapshot.value["username"] as? String {
+                    self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
+                }
+            }
+            
             self.usernameTitleLabel.text? = self.currentUser["username"]!.uppercaseString
+            if (self.currentUser["name"] != nil) {
+                self.nameLabel.text = self.currentUser["name"] as? String
+            }
+            if (self.currentUser["description"] != nil) {
+            self.descriptionLabel.text = self.currentUser["description"] as? String
+        }
+            else {
+                self.descriptionLabel.text = "Please click 'Edit Profile' to add a description."
+                self.descriptionLabel.textColor = UIColor.lightGrayColor()
+            }
         })
-        
+//        
+//        if (self.currentUser["photos"]!.count != 0) {
+//            for photos in self.currentUser["photos"]!["photo"] {
+//           
+//            let decodedData = NSData(base64EncodedString: photo["photoString"], options: NSDataBase64DecodingOptions())
+//            let decodedImage = UIImage(data: decodedData!)!
+//                self.userPhotosArray.append(decodedImage)
+//            }
+//        }
     }
     
 
@@ -53,7 +84,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             collectionView.hidden = true
         }
     }
-    
     
     //MARK: IBActions
     @IBAction func onEditProfileButtonTapped(sender: UIButton) {

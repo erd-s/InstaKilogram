@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1195,7 +1195,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="HB7-at-Urd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -1482,13 +1482,13 @@
                     <tabBarItem key="tabBarItem" title="Profile" id="xDN-Kv-U5P"/>
                     <connections>
                         <outlet property="collectionView" destination="V3D-ng-dxl" id="nJC-YU-Aw6"/>
+                        <outlet property="descriptionLabel" destination="5F5-52-xYS" id="Lke-X6-oag"/>
                         <outlet property="followersNumberLabel" destination="tql-Ux-ZNr" id="gYg-Kn-GxA"/>
                         <outlet property="followingNumberLabel" destination="wWu-Cx-hu3" id="EFE-xV-Qh2"/>
                         <outlet property="nameLabel" destination="zn5-qk-es6" id="jbA-Gp-3WZ"/>
                         <outlet property="postNumberLabel" destination="W2v-p0-caT" id="dwT-Sg-CI7"/>
                         <outlet property="segmentedControl" destination="IcZ-mV-FBY" id="grU-QP-Nrd"/>
                         <outlet property="tableView" destination="QPR-fo-Z61" id="9GA-sj-t3v"/>
-                        <outlet property="userDescriptionLabel" destination="5F5-52-xYS" id="16m-FP-5T6"/>
                         <outlet property="usernameTitleLabel" destination="SnO-as-RYu" id="G7Z-Ax-3MR"/>
                     </connections>
                 </viewController>
