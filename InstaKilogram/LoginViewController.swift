@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 
-var currentUser: String?
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
@@ -44,7 +43,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     self.userDefaults.setValue(authData.uid, forKey: "uid")
                     FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(FEventType.Value, withBlock: { snapshot in
-                        currentUser = snapshot.value.objectForKey("username") as? String
+                        let currentUser = snapshot.value.objectForKey("username") as? String
+                        print(currentUser)
                         self.userDefaults.setValue(currentUser, forKey: "currentUser")
                         self.performSegueWithIdentifier("loginSegue", sender: self)
                         

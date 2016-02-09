@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+var currentUser: String?
+
 class PhotoFeedTableViewController: UITableViewController {
     //MARK: Properties
     var posts = [Photo]()
@@ -20,6 +22,11 @@ class PhotoFeedTableViewController: UITableViewController {
     //MARK: View Loading
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        currentUser = userDefaults.valueForKey("currentUser") as? String
+
+        
         FirebaseData.firebaseData.PHOTOS_REF.observeEventType(.Value, withBlock: { snapshot in
             self.posts = []
             
