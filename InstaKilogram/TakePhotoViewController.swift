@@ -28,9 +28,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        
-       
     }
     
     @IBAction func indexChanged(sender: AnyObject)
