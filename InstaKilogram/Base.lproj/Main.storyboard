@@ -266,7 +266,8 @@
                                                     <exclude reference="zCx-T0-GfI"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="widthClass=compact">
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="0.0" y="41" width="600" height="393"/>
                                                 <mask key="constraints">
                                                     <include reference="zCx-T0-GfI"/>
                                                 </mask>
