@@ -37,6 +37,7 @@ class PhotoFeedTableViewController: UITableViewController {
                         let post = Photo(dictionary: postDictionary)
                         self.posts.insert(post, atIndex: 0)
                         self.feedTableView.reloadData()
+
                     }
                 }
             }
