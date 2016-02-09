@@ -1122,6 +1122,7 @@
                     <connections>
                         <outlet property="captionTextView" destination="wVt-dh-Q9d" id="E9H-IO-kvP"/>
                         <outlet property="imageView" destination="wcr-4j-CX5" id="QCx-Mw-ErI"/>
+                        <outlet property="locationButton" destination="B0o-x5-q9w" id="7eT-oo-WE0"/>
                         <outlet property="okButton" destination="O7Y-tr-DFw" id="jyL-LK-V3p"/>
                         <outlet property="sourcePicker" destination="COZ-yl-0YM" id="DSE-Ij-xZa"/>
                         <segue destination="HPK-UW-OQG" kind="show" identifier="toTabViewController" id="AKq-GB-XNB"/>

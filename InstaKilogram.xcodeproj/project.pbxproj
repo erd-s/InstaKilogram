@@ -181,7 +181,7 @@
 				TargetAttributes = {
 					1336D1D11C63FE8B0009917D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = XV4TQ596Q7;
+						DevelopmentTeam = 767ELXNDQ9;
 					};
 				};
 			};
@@ -402,7 +402,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = InstaKilogram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mm.InstaKilogram;
+				PRODUCT_BUNDLE_IDENTIFIER = YemiAjibola.InstaKilogram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -417,7 +417,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = InstaKilogram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mm.InstaKilogram;
+				PRODUCT_BUNDLE_IDENTIFIER = YemiAjibola.InstaKilogram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
