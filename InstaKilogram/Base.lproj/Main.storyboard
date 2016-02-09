@@ -1395,6 +1395,7 @@
                         <outlet property="segmentedControl" destination="IcZ-mV-FBY" id="grU-QP-Nrd"/>
                         <outlet property="tableView" destination="QPR-fo-Z61" id="9GA-sj-t3v"/>
                         <outlet property="userDescriptionLabel" destination="5F5-52-xYS" id="16m-FP-5T6"/>
+                        <outlet property="usernameTitleLabel" destination="SnO-as-RYu" id="G7Z-Ax-3MR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7O9-94-ESa" userLabel="First Responder" sceneMemberID="firstResponder"/>
