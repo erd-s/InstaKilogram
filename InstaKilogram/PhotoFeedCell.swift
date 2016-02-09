@@ -17,6 +17,7 @@ class PhotoFeedCell: UITableViewCell {
     
     @IBOutlet var commentsLabel: UILabel!
     @IBOutlet var likeCountLabel: UILabel!
+    @IBOutlet weak var captionTextView: UITextView!
     
     
     

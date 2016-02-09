@@ -16,16 +16,19 @@ class Photo {
     var username: String?
     var userID: String?
     var photo: UIImage?
+    var caption:String?
+
     
     
-    init(image: UIImage) {
-        photo = image
-        let imageData: NSData! = UIImageJPEGRepresentation(photo!, 0.7)
+    init(image: UIImage, captionText:String) {
+        
+        let imageData: NSData! = UIImageJPEGRepresentation(image, 0.7)
         let base64String = imageData.base64EncodedStringWithOptions([])
         
         photoLikes = 0
         username = currentUser
         photoString = base64String
+        caption = captionText
         
         
         
@@ -34,7 +37,8 @@ class Photo {
         let photoDictionary = ["photoString"    : photoString! as String,
                                  "likes"        : photoLikes!,
                                  "user"         : username!,
-                                 "userID"       : userID!]
+                                 "userID"       : userID!,
+                                "caption"       : caption!]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
 
@@ -44,13 +48,14 @@ class Photo {
     }
     
     init(dictionary: Dictionary<String, AnyObject>) {
-        photoString =   dictionary["photoString"]   as? String
-        photoLikes =    dictionary["photoLikes"]    as? Int
-        username =      dictionary["user"]          as? String
-        userID  =       dictionary["userID"]        as? String
+        
+        photoString = dictionary["photoString"] as? String
+        photoLikes = dictionary["photoLikes"] as? Int
+        username = dictionary["user"] as? String
+        userID  = dictionary["userID"] as? String
+        caption = dictionary["caption"] as? String
         
         let decodedData = NSData(base64EncodedString: photoString!, options: NSDataBase64DecodingOptions())
-        
         photo = UIImage(data: decodedData!)!
             
             

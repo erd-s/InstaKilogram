@@ -19,6 +19,8 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var sourcePicker: UISegmentedControl!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var captionTextView: UITextView!
+    
     var originalImage:UIImage!
     var editedImage:UIImage!
     var imageToSave:UIImage!
@@ -29,12 +31,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     {
         super.viewDidLoad()
         self.okButton.enabled = false
-        
-        let libraryController = UIImagePickerController()
-        libraryController.sourceType = .PhotoLibrary
-        libraryController.delegate = self
-        
-        presentViewController(libraryController, animated: true, completion: nil)
+        self.captionTextView.userInteractionEnabled = false
        
     }
     
@@ -65,9 +62,12 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     @IBAction func onOKButtonTapped(sender: AnyObject)
     {
         //print("OK Button tapped")
-        Photo(image: self.imageToSave)
+        Photo(image: self.imageToSave, captionText: self.captionTextView.text)
         
-        
+        if self.captionTextView.text != nil
+        {
+            
+        }
         //print("I have finished creating a photo")
         
         performSegueWithIdentifier("toTabViewController", sender: self)
@@ -90,6 +90,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         presentViewController(cameraController, animated: true, completion: nil)
         
         self.okButton.enabled = true
+        self.captionTextView.userInteractionEnabled = true
         
         return true
         
