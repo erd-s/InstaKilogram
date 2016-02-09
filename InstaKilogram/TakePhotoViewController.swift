@@ -7,7 +7,11 @@
 //
 
 import UIKit
+import Firebase
 import MobileCoreServices
+
+
+var currentUser:String!
 
 class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
 {
@@ -16,14 +20,30 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     
     @IBOutlet weak var sourcePicker: UISegmentedControl!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var okButton: UIButton!
+    var originalImage:UIImage!
+    var editedImage:UIImage!
+    var imageToSave:UIImage!
     
-    override func viewWillAppear(animated: Bool)
-    {
-       
-    }
+
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(FEventType.Value, withBlock: { snapshot in
+            currentUser = snapshot.value.objectForKey("username") as? String
+            
+            
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+
+        
+        
+        okButton.enabled = false
+        
+        
        
     }
     
@@ -39,16 +59,16 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         }
         else
         {
-           startCameraFromViewController(self, withDelegate: self)
+
+            startCameraFromViewController(self, withDelegate: self)
         }
         
     }
     
     @IBAction func onOKButtonTapped(sender: AnyObject)
     {
-        
-        
-        
+        //print("OK Button tapped")
+        Photo(image: self.imageToSave)
         
     }
     
@@ -67,25 +87,27 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         
         presentViewController(cameraController, animated: true, completion: nil)
         
+        self.okButton.enabled = true
+        
         return true
         
     }
     
-    func video(videoPath: NSString, didFinishSavingWithError error:NSError?, contextInfo info:AnyObject)
-    {
-        var title = "Success"
-        var message = "Video was saved"
-        
-        if let _ = error
-        {
-            title = "Error"
-            message = "Video failed to save"
-        }
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
+//    func video(videoPath: NSString, didFinishSavingWithError error:NSError?, contextInfo info:AnyObject)
+//    {
+//        var title = "Success"
+//        var message = "Video was saved"
+//        
+//        if let _ = error
+//        {
+//            title = "Error"
+//            message = "Video failed to save"
+//        }
+//        
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+//        self.presentViewController(alert, animated: true, completion: nil)
+//    }
     
     
     
@@ -97,9 +119,7 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
-        var originalImage:UIImage!
-        var editedImage:UIImage!
-        var imageToSave:UIImage!
+        
         
         
         dismissViewControllerAnimated(true, completion: nil)
