@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+var currentUser: String?
+
 class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -40,9 +42,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.loginErrorAlert("Error", message: "Check your username and password combination")
                     
                 } else {
+                    
+                    FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(FEventType.Value, withBlock: { snapshot in
+                        currentUser = snapshot.value.objectForKey("username") as? String
+                        self.userDefaults.setValue(currentUser, forKey: "currentUser")
+                        self.performSegueWithIdentifier("loginSegue", sender: self)
+                        
+                        }, withCancelBlock: { error in
+                            print(error.description)
+                    })
+
                     self.userDefaults.setValue(authData.uid, forKey: "uid")
                     print(FirebaseData.firebaseData.CURRENT_USER_REF)
-                    self.performSegueWithIdentifier("loginSegue", sender: self)
+                    
                 }
             })
             
