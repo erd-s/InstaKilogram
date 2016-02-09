@@ -12,6 +12,7 @@ import Firebase
 var currentUser: String?
 
 class PhotoFeedTableViewController: UITableViewController {
+    @IBOutlet var feedTableView: UITableView!
     //MARK: Properties
     var posts = [Photo]()
     
@@ -35,13 +36,11 @@ class PhotoFeedTableViewController: UITableViewController {
                     if let postDictionary = snap.value as? Dictionary <String, AnyObject> {
                         let post = Photo(dictionary: postDictionary)
                         self.posts.insert(post, atIndex: 0)
-                        
+                        self.feedTableView.reloadData()
                     }
                 }
             }
-            
         })
-        
     }
 
 
