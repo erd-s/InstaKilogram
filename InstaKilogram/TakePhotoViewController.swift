@@ -97,6 +97,15 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         
     }
     
+    
+    @IBAction func onLocationButtonTapped(sender: AnyObject)
+    {
+        
+        
+    }
+ 
+
+    
 //    func video(videoPath: NSString, didFinishSavingWithError error:NSError?, contextInfo info:AnyObject)
 //    {
 //        var title = "Success"
