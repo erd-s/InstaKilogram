@@ -11,8 +11,6 @@ import Firebase
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     //MARK: Properties
-    var collectionItemsArray = [String]()
-    var tableViewItemsArray = [String]()
     var currentUserData = [FDataSnapshot]()
     var currentUser = Dictionary<String, AnyObject>()
     var userPhotosArray = [UIImage]()
@@ -42,15 +40,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             print(snapshot.value.description)
             
             self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
-
-            
             self.usernameTitleLabel.text? = self.currentUser["username"]!.uppercaseString
             if (self.currentUser["name"] != nil) {
                 self.nameLabel.text = self.currentUser["name"] as? String
             }
             if (self.currentUser["description"] != nil) {
-            self.descriptionLabel.text = self.currentUser["description"] as? String
-        }
+                self.descriptionLabel.text = self.currentUser["description"] as? String
+            }
             else {
                 self.descriptionLabel.text = "Please click 'Edit Profile' to add a description."
                 self.descriptionLabel.textColor = UIColor.lightGrayColor()
@@ -64,8 +60,24 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             let decodedImage = UIImage(data: decodedData!)
             self.userImage.image = decodedImage
         }
+        if (self.currentUser["photos"] != nil) {
+            self.postNumberLabel.text = String(self.currentUser["photos"]!.count)
+            
+            for photoDict in self.currentUser["photos"] as! [Dictionary<String, AnyObject>] {
+                let photoString = photoDict["photoString"]
+                let decodedData = NSData(base64EncodedString: (photoString as? String)!, options: NSDataBase64DecodingOptions())
+                let decodedImage = UIImage(data: decodedData!)
+                self.userPhotosArray.insert(decodedImage!, atIndex: 0)
+            }
+        }
+        if self.currentUser["followers"] != nil {
+            self.followersNumberLabel.text = String(self.currentUser["followers"]!.count)
+        }
+        if self.currentUser["following"] != nil {
+            self.followersNumberLabel.text = String(self.currentUser["following"]!.count)
+        }
     }
-
+    
     //MARK: Custom Functions
     func switchForSegment(segmentedControl: UISegmentedControl) {
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -85,37 +97,30 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         switchForSegment(segmentedControl)
     }
     
-    
     //MARK: Table View
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("pizza")!
+        let postImage = userPhotosArray[indexPath.row]
+        
+        cell.imageView?.image = postImage
+        
         return cell
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collectionItemsArray.count
+        return userPhotosArray.count
     }
     
     //MARK: Collection View
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pizza", forIndexPath: indexPath)
-        
-        
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tableViewItemsArray.count
+        return userPhotosArray.count
     }
     
     //MARK: Segue stuff
     @IBAction func unwind(segue: UIStoryboardSegue) {
-        
-        
     }
-
-
-
-
-
-
 }
