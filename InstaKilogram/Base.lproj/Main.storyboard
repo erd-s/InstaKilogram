@@ -969,6 +969,8 @@
                                 <exclude reference="470-F0-SZ8"/>
                                 <exclude reference="K0q-Ua-y4n"/>
                                 <exclude reference="nHn-Yq-sed"/>
+                                <exclude reference="Jn9-1V-YQw"/>
+                                <exclude reference="lte-ex-lXX"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -986,6 +988,8 @@
                                 <include reference="470-F0-SZ8"/>
                                 <include reference="K0q-Ua-y4n"/>
                                 <include reference="nHn-Yq-sed"/>
+                                <include reference="Jn9-1V-YQw"/>
+                                <include reference="lte-ex-lXX"/>
                             </mask>
                         </variation>
                     </view>
@@ -2364,10 +2368,10 @@
             </objects>
             <point key="canvasLocation" x="1609.5" y="-1528"/>
         </scene>
-        <!--Insta Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="Gxu-je-CrW">
             <objects>
-                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" id="HPK-UW-OQG" customClass="InstaTabBarController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" id="HPK-UW-OQG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="qmy-m2-YOL">
                         <autoresizingMask key="autoresizingMask"/>

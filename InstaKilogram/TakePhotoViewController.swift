@@ -29,8 +29,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     {
         super.viewDidLoad()
         
-        okButton.enabled = false
-        
         
        
     }
@@ -119,8 +117,6 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate
             originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             
         }
-        
-        
         if (editedImage != nil)
         {
             imageToSave = editedImage
