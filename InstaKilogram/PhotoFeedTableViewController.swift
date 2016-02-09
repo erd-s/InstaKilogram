@@ -18,7 +18,6 @@ class PhotoFeedTableViewController: UITableViewController {
     
     //MARK: Outlets
     
-    
     //MARK: View Loading
     override func viewDidLoad() {
         super.viewDidLoad()
