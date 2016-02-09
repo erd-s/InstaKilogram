@@ -39,12 +39,10 @@ class Photo {
     var photoDictionary: [String: AnyObject] {
         return _photoDictionary
     }
-    
     init(user: String, image: UIImage) {
         
         let imageData: NSData! = UIImagePNGRepresentation(image)
         let base64String = imageData.base64EncodedStringWithOptions([])
-        
     
         self._photoString = base64String
         
