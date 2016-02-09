@@ -40,10 +40,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Custom Functions
     func startListeningAndSetCurrentUser () {
+
         FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(.Value, withBlock: { snapshot in
-            print(snapshot.value)
-            self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
+            print(snapshot.value.description)
             
+            self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
             self.usernameTitleLabel.text? = self.currentUser["username"]!.uppercaseString
             if (self.currentUser["name"] != nil) {
                 self.nameLabel.text = self.currentUser["name"] as? String
@@ -55,8 +56,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.descriptionLabel.text = "Please click 'Edit Profile' to add a description."
                 self.descriptionLabel.textColor = UIColor.lightGrayColor()
             }
-            
-            
             if self.currentUser["userPhoto"] == nil {
                 self.userImage.image = UIImage(named: "defaultPhoto")
             } else {
@@ -78,17 +77,25 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.followersNumberLabel.text = String(self.currentUser["followers"]!.count)
             } else {
                 self.followersNumberLabel.text = "0"
-
             }
             if self.currentUser["following"] != nil {
                 self.followingNumberLabel.text = String(self.currentUser["following"]!.count)
-            }else {
+            } else {
                 self.followingNumberLabel.text = "0"
             }
             self.nameLabel.text = self.currentUser["name"] as? String
+            
+            if self.currentUser["userPhoto"] == nil {
+                self.userImage.image = UIImage(named: "defaultPhoto")
+            } else {
+                let decodedData = NSData(base64EncodedString: (self.currentUser["photoString"] as? String)!, options: NSDataBase64DecodingOptions())
+                let decodedImage = UIImage(data: decodedData!)
+                self.userImage.image = decodedImage
+            }
         })
     }
-    
+
+    //MARK: Custom Functions
     func switchForSegment(segmentedControl: UISegmentedControl) {
         if segmentedControl.selectedSegmentIndex == 0 {
             tableView.hidden = true
