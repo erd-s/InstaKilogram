@@ -29,12 +29,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     {
         super.viewDidLoad()
         self.okButton.enabled = false
-        
-        let libraryController = UIImagePickerController()
-        libraryController.sourceType = .PhotoLibrary
-        libraryController.delegate = self
-        
-        presentViewController(libraryController, animated: true, completion: nil)
        
     }
     
