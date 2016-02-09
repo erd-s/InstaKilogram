@@ -65,14 +65,16 @@ class PhotoFeedTableViewController: UITableViewController {
     
     //MARK: TableView Stuff
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return posts.count
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> PhotoFeedCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("pizza", forIndexPath: indexPath) as! PhotoFeedCell
         
-//        cell.photoView.image = 
-//        cell.commentsLabel.text = 
-//        cell.likeCountLabel.text = 
+        let photo = posts[indexPath.row] 
+        
+        cell.photoView.image =          photo.photo
+    //    cell.commentsLabel.text =       photo.username
+        cell.likeCountLabel.text =      "\(photo.photoLikes)"
         
         return cell
     }
