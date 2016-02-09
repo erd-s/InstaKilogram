@@ -67,6 +67,11 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         //print("OK Button tapped")
         Photo(image: self.imageToSave)
         
+        
+        //print("I have finished creating a photo")
+        
+        performSegueWithIdentifier("toTabViewController", sender: self)
+        
     }
     
     func startCameraFromViewController(viewController:UIViewController, withDelegate delegate:protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool
