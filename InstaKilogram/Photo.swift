@@ -11,34 +11,38 @@ import UIKit
 import Firebase
 
 class Photo {
-    private var _photoRef: Firebase!
-
     private let _photoString: String!
     private let _photoDictionary: [String: AnyObject]!
     
     var photoString: String {
         return _photoString
-
     }
-    
     
     var photoDictionary: [String: AnyObject] {
         return _photoDictionary
     }
+    
+    var photoLikes: Int?
+    var username: String?
+    
     
     init(image: UIImage) {
         
         let imageData: NSData! = UIImagePNGRepresentation(image)
         let base64String = imageData.base64EncodedStringWithOptions([])
         
+        photoLikes = 0
+        username = currentUser
     
         self._photoString = base64String
+        
+        
         
         let userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
         
         self._photoDictionary = ["photoString"  : self._photoString,
-                                 "likes"        : 0,
-                                 "user"         : currentUser!,
+                                 "likes"        : photoLikes!,
+                                 "user"         : username!,
                                  "userID"       : userID]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
@@ -47,6 +51,11 @@ class Photo {
         photosRef.setValue(self._photoDictionary)
         
     }
+    
+    
+    
+
+    
         
         
         
