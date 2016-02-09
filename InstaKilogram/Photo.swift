@@ -18,6 +18,7 @@ class Photo {
     
     var photoString: String {
         return _photoString
+
     }
     
     
@@ -41,16 +42,11 @@ class Photo {
                                  "userID"       : userID]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
+
         
         photosRef.setValue(self._photoDictionary)
         
     }
-        
-        
-        
-        
-        
-        
         
         
         
