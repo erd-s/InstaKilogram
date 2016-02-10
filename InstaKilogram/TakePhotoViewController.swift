@@ -97,14 +97,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         
         let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action: UIAlertAction) -> Void in
             self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
+            self.performSegueWithIdentifier("toTabViewController", sender: self)
         }
         
         locationAlert.addAction(confirmAction)
         locationAlert.addAction(cancelAction)
         
         self.presentViewController(locationAlert, animated: true, completion: nil)
-        
-        performSegueWithIdentifier("toTabViewController", sender: self)
         
     }
     
@@ -129,15 +128,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         
         return true
         
-    }
-    
-    
-    @IBAction func onLocationButtonTapped(sender: AnyObject)
-    {
-        // Get user's location
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    
     }
     
     
@@ -166,9 +156,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             //let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
                 self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
+                self.performSegueWithIdentifier("toTabViewController", sender: self)
+
             })
             let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) -> Void in
                 self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString: address)
+                self.performSegueWithIdentifier("toTabViewController", sender: self)
+
             })
             locationAlert.addAction(cancelAction)
             locationAlert.addAction(confirmAction)
