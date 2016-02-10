@@ -12,6 +12,7 @@ import Firebase
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     //MARK: Properties
     var currentUserData = [FDataSnapshot]()
+    var currentPhotoData = [FDataSnapshot]()
     var currentUser = Dictionary<String, AnyObject>()
     var userPhotosArray = [UIImage]()
     var userDefaults = NSUserDefaults.standardUserDefaults()
@@ -80,17 +81,21 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 let decodedImage = UIImage(data: decodedData!)
                 self.userImage.image = decodedImage
             }
+            self.tableView.reloadData()
+            self.collectionView.reloadData()
         })
     }
     
     func getPhotos () {
-        FirebaseData.firebaseData.PHOTOS_REF.observeSingleEventOfType(.Value, withBlock: { snapshots in
+        FirebaseData.firebaseData.PHOTOS_REF.observeEventType(.Value, withBlock: { snapshots in
+            self.userPhotosArray.removeAll()
+            self.currentPhotoData.removeAll()
             for snapshot in snapshots.children.allObjects as! [FDataSnapshot] {
-                if snapshot.value!["user"]! as! String == self.userDefaults.stringForKey("currentUser")! {
+                if snapshot.value!["userID"]! as! String == self.userDefaults.stringForKey("uid")! {
                     let decodedData = NSData(base64EncodedString: (snapshot.value["photoString"] as? String)!, options: NSDataBase64DecodingOptions())
                     let decodedImage = UIImage(data: decodedData!)
                     self.userPhotosArray.insert(decodedImage!, atIndex: 0)
-                    print(self.userPhotosArray[0])
+                    self.currentPhotoData.insert(snapshot, atIndex: 0)
                     self.tableView.reloadData()
                     self.collectionView.reloadData()
                 }
@@ -119,10 +124,25 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Table View
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("pizza")!
+        let cell = tableView.dequeueReusableCellWithIdentifier("pizza")! as! PhotoFeedCell
         let postImage = userPhotosArray[indexPath.row]
+        let postData = currentPhotoData[indexPath.row]
+
+        cell.photoView?.image = postImage
+        cell.nameLabel?.text = currentUser["username"] as? String
+        let likesString = String(postData.value["likes"] as! Int)
+        cell.likeCountLabel?.text = "Likes: \(likesString)"
+        cell.captionTextView?.text = postData.value["caption"] as? String
         
-        cell.imageView?.image = postImage
+
+        
+        if postData.value["geolocation"] != nil {
+        cell.geoLocationLabel.text = postData.value["geolocation"] as? String
+        }
+        
+        if postData.value["comments"]! != nil {
+        cell.commentsLabel?.text = postData.value["comments"] as? String
+        }
         
         return cell
     }
