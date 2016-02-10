@@ -14,6 +14,11 @@ class CommentsViewController: UIViewController {
     
     
     
-    
+    override func viewDidAppear(animated: Bool) {
+        
+        
+        
+        
+    }
 
 }
