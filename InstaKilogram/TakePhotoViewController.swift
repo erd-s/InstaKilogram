@@ -38,6 +38,8 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         self.captionTextView.userInteractionEnabled = false
         self.locationButton.enabled = false
         
+        
+        self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
        
     }
@@ -121,8 +123,29 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         
         if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000
         {
-            //reverseGeocode(location!)
+            reverseGeocode(location!)
             locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    
+    func reverseGeocode(location:CLLocation)
+    {
+        let geocoder:CLGeocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks:[CLPlacemark]?, error:NSError?) -> Void in
+            let placemark = placemarks?.first
+            let address = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!)"
+            
+            let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location :\(address)", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            
+            locationAlert.addAction(cancelAction)
+            locationAlert.addAction(confirmAction)
+            
+            self.presentViewController(locationAlert, animated: true, completion: nil)
+            
         }
     }
 
