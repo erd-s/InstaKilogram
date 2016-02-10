@@ -34,7 +34,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         super.viewDidLoad()
         self.okButton.enabled = false
         self.captionTextView.userInteractionEnabled = false
-        self.locationButton.userInteractionEnabled = false
+        self.locationButton.enabled = false
        
     }
     
@@ -103,7 +103,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     
     @IBAction func onLocationButtonTapped(sender: AnyObject)
     {
-        
+        // TODO: Get user's location
         
     }
  
