@@ -12,7 +12,12 @@ import Firebase
 var currentUser: String?
 
 class PhotoFeedTableViewController: UITableViewController {
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet var feedTableView: UITableView!
+    
+    
+    
+    
     //MARK: Properties
     var posts = [Photo]()
     
@@ -86,12 +91,12 @@ class PhotoFeedTableViewController: UITableViewController {
         
         let photo = posts[indexPath.row]
         
-//        let decodedData = NSData(base64EncodedString: photoString!, options: NSDataBase64DecodingOptions())
-        
+        cell.nameLabel.text =           photo.username
         cell.photoView.image =          photo.photo
-    //    cell.commentsLabel.text =       photo.username
-        cell.likeCountLabel.text =      "\(photo.photoLikes)"
-        
+        cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes)"
+        cell.captionTextView.text =     photo.caption
+//      cell.commentsLabel.text =     photo.username
+
         return cell
     }
     
