@@ -152,7 +152,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Collection View
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pizza", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pizza", forIndexPath: indexPath) as! PhotoCollectionViewCell
+        let currentPhoto = userPhotosArray[indexPath.row]
+        cell.photoView.image = currentPhoto
+        
+        
         return cell
     }
     
