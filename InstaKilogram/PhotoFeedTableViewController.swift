@@ -99,6 +99,7 @@ class PhotoFeedTableViewController: UITableViewController {
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes)"
         cell.captionTextView.text =     photo.caption
 //      cell.commentsLabel.text =     photo.username
+        print("For Cell: \(photo.location)")
         if(photo.location != "")
         {
             cell.geoLocationLabel.text = photo.location

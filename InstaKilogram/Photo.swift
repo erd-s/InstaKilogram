@@ -59,6 +59,7 @@ class Photo {
         username = dictionary["user"] as? String
         userID  = dictionary["userID"] as? String
         caption = dictionary["caption"] as? String
+        location = dictionary["location"] as? String
         photo = UIImage()
         key  = String()
         
