@@ -38,7 +38,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         self.captionTextView.userInteractionEnabled = false
         self.locationButton.enabled = false
         
-        
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
        
@@ -148,7 +147,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             
         }
     }
-
     
 //    func video(videoPath: NSString, didFinishSavingWithError error:NSError?, contextInfo info:AnyObject)
 //    {
