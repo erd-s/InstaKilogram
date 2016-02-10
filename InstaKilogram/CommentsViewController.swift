@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import Firebase
 
-class CommentsViewController: UIViewController {
-    
+class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var postID: String?
     
     
 
@@ -21,5 +21,17 @@ class CommentsViewController: UIViewController {
         
         
     }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("CellID")
+        
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    
 
 }

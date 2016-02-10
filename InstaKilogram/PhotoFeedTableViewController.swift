@@ -116,5 +116,9 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+    }
+    
     
 }

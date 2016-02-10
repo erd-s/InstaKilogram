@@ -20,9 +20,6 @@ class PhotoFeedCell: UITableViewCell {
     
     let delegate: CommentButtonTappedDelegate?
     
-    
-    
-    
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var photoView: UIImageView!
     @IBOutlet var geoLocationLabel: UILabel!
@@ -41,7 +38,7 @@ class PhotoFeedCell: UITableViewCell {
 
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     
