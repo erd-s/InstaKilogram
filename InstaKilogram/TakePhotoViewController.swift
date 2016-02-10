@@ -88,13 +88,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     @IBAction func onOKButtonTapped(sender: AnyObject)
     {
       
+<<<<<<< HEAD
         let locationAlert = UIAlertController(title: "Add a Location", message: "Would you like to add a location?", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "Yes", style: .Default) { (action: UIAlertAction) -> Void in
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.startUpdatingLocation()
         }
-        
         
         let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action: UIAlertAction) -> Void in
             self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
@@ -104,7 +104,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         locationAlert.addAction(cancelAction)
         
         self.presentViewController(locationAlert, animated: true, completion: nil)
-        
         
         performSegueWithIdentifier("toTabViewController", sender: self)
         

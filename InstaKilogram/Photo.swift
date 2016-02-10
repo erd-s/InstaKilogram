@@ -18,7 +18,10 @@ class Photo {
     var photo: UIImage?
     var caption:String?
     var location:String?
+<<<<<<< HEAD
     var key: String?
+=======
+>>>>>>> 4e872574a64a7b87ee04e2754b04701824aa78a8
 
     
     
