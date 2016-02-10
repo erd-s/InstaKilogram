@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Custom Functions
     func startListeningAndSetCurrentUser () {
-        FirebaseData.firebaseData.CURRENT_USER_REF.observeEventType(.Value, withBlock: { snapshot in
+        FirebaseData.firebaseData.CURRENT_USER_REF.observeSingleEventOfType(.Value, withBlock: { snapshot in
 //            print(snapshot.value.description)
             self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
             self.usernameTitleLabel.text? = self.currentUser["username"]!.uppercaseString
@@ -79,7 +79,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func getPhotos () {
-        FirebaseData.firebaseData.PHOTOS_REF.observeEventType(.Value, withBlock: { snapshots in
+        FirebaseData.firebaseData.PHOTOS_REF.observeSingleEventOfType(.Value, withBlock: { snapshots in
             for snapshot in snapshots.children.allObjects as! [FDataSnapshot] {
                 if snapshot.value!["user"]! as! String == self.userDefaults.stringForKey("currentUser")! {
                     let decodedData = NSData(base64EncodedString: (snapshot.value["photoString"] as? String)!, options: NSDataBase64DecodingOptions())
