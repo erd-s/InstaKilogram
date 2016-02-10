@@ -14,11 +14,15 @@ class CommentsViewController: UIViewController {
     
     
     
+<<<<<<< HEAD
     override func viewDidAppear(animated: Bool) {
         
         
         
         
     }
+=======
+    
+>>>>>>> Added comment view controller and getting ready to begin comments
 
 }
