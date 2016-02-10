@@ -12,7 +12,7 @@ import MobileCoreServices
 import MapKit
 
 
-class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
+class TakePhotoViewController: UIViewController, UINavigationControllerDelegate, CLLocationManagerDelegate
 {
     //var picker:UIImagePickerController = UIImagePickerController()
     var chosenImage:UIImage?
@@ -23,9 +23,11 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var locationButton: UIButton!
     
+    
     var originalImage:UIImage!
     var editedImage:UIImage!
     var imageToSave:UIImage!
+    var locationManager:CLLocationManager!
     
 
     
@@ -35,6 +37,8 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         self.okButton.enabled = false
         self.captionTextView.userInteractionEnabled = false
         self.locationButton.enabled = false
+        
+        self.locationManager.delegate = self
        
     }
     
@@ -56,7 +60,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         }
         else
         {
-
             startCameraFromViewController(self, withDelegate: self)
         }
         
@@ -72,7 +75,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
             
         }
         //print("I have finished creating a photo")
-        
         performSegueWithIdentifier("toTabViewController", sender: self)
         
     }
@@ -103,10 +105,26 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     
     @IBAction func onLocationButtonTapped(sender: AnyObject)
     {
-        // TODO: Get user's location
+        // Get user's location
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        
         
     }
- 
+    
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.first
+        
+        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000
+        {
+            //reverseGeocode(location!)
+            locationManager.stopUpdatingLocation()
+        }
+    }
 
     
 //    func video(videoPath: NSString, didFinishSavingWithError error:NSError?, contextInfo info:AnyObject)
