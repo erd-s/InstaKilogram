@@ -27,11 +27,16 @@ class EditUserViewController: UIViewController, UITextFieldDelegate, UITextViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.descriptionTextView.layer.cornerRadius = 5
+        self.descriptionTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.descriptionTextView.layer.borderWidth = 0.5
+        
         
         FirebaseData.firebaseData.CURRENT_USER_REF.observeSingleEventOfType(.Value, withBlock: { snapshot in
             self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
             
             self.descriptionTextView.text = self.currentUser["description"] as? String
+            self.descriptionTextView?.textColor = UIColor.blackColor()
             self.nameTextField.text = self.currentUser["name"] as? String
             self.usernameTextField.text = self.currentUser["username"] as? String
             self.websiteTextField.text = self.currentUser["website"] as? String
