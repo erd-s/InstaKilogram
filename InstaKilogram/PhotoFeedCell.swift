@@ -13,6 +13,8 @@ class PhotoFeedCell: UITableViewCell {
     
 
     
+
+    
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var photoView: UIImageView!
     @IBOutlet var geoLocationLabel: UILabel!
