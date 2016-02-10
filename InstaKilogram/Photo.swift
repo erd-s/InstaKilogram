@@ -22,7 +22,7 @@ class Photo {
 
     
     
-    init(image: UIImage, captionText:String) {
+    init(image: UIImage, captionText: String, locationString:String) {
         
         let imageData: NSData! = UIImageJPEGRepresentation(image, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions([])
@@ -31,6 +31,7 @@ class Photo {
         username = currentUser
         photoString = base64String
         caption = captionText
+        location = locationString
         
         
         
@@ -40,7 +41,8 @@ class Photo {
                                  "likes"        : photoLikes!,
                                  "user"         : username!,
                                  "userID"       : userID!,
-                                "caption"       : caption!]
+                                "caption"       : caption!,
+                                "location"      : location!]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
 

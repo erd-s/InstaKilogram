@@ -97,7 +97,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         
         
         let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action: UIAlertAction) -> Void in
-            self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text)
+            self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
         }
         
         locationAlert.addAction(confirmAction)
@@ -167,10 +167,10 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             
             //let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
-                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text)
+                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
             })
             let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) -> Void in
-               self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text)
+                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString: address)
             })
             locationAlert.addAction(cancelAction)
             locationAlert.addAction(confirmAction)
