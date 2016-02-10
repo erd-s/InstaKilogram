@@ -268,7 +268,8 @@
                                                     <exclude reference="zCx-T0-GfI"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="widthClass=compact">
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="9" y="39" width="583" height="304"/>
                                                 <mask key="constraints">
                                                     <include reference="zCx-T0-GfI"/>
                                                 </mask>
@@ -1076,20 +1077,20 @@
                                 <exclude reference="B0o-x5-q9w"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="DvD-ij-q3d"/>
-                                <exclude reference="H1K-2J-jmq"/>
-                                <exclude reference="z6E-jM-5vj"/>
-                                <exclude reference="470-F0-SZ8"/>
-                                <exclude reference="K0q-Ua-y4n"/>
-                                <exclude reference="nHn-Yq-sed"/>
-                                <exclude reference="QAG-ji-mgh"/>
-                                <exclude reference="RjF-v2-EIX"/>
-                                <exclude reference="Y3h-31-JIO"/>
                                 <exclude reference="Upe-xD-RNs"/>
                                 <exclude reference="dDd-ZZ-6bm"/>
                                 <exclude reference="dec-f8-5dB"/>
                                 <exclude reference="Jn9-1V-YQw"/>
                                 <exclude reference="lte-ex-lXX"/>
+                                <exclude reference="DvD-ij-q3d"/>
+                                <exclude reference="H1K-2J-jmq"/>
+                                <exclude reference="z6E-jM-5vj"/>
+                                <exclude reference="QAG-ji-mgh"/>
+                                <exclude reference="RjF-v2-EIX"/>
+                                <exclude reference="Y3h-31-JIO"/>
+                                <exclude reference="470-F0-SZ8"/>
+                                <exclude reference="K0q-Ua-y4n"/>
+                                <exclude reference="nHn-Yq-sed"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1101,20 +1102,20 @@
                                 <include reference="B0o-x5-q9w"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="DvD-ij-q3d"/>
-                                <include reference="H1K-2J-jmq"/>
-                                <include reference="z6E-jM-5vj"/>
-                                <include reference="470-F0-SZ8"/>
-                                <include reference="K0q-Ua-y4n"/>
-                                <include reference="nHn-Yq-sed"/>
-                                <include reference="QAG-ji-mgh"/>
-                                <include reference="RjF-v2-EIX"/>
-                                <include reference="Y3h-31-JIO"/>
                                 <include reference="Upe-xD-RNs"/>
                                 <include reference="dDd-ZZ-6bm"/>
                                 <include reference="dec-f8-5dB"/>
                                 <include reference="Jn9-1V-YQw"/>
                                 <include reference="lte-ex-lXX"/>
+                                <include reference="DvD-ij-q3d"/>
+                                <include reference="H1K-2J-jmq"/>
+                                <include reference="z6E-jM-5vj"/>
+                                <include reference="QAG-ji-mgh"/>
+                                <include reference="RjF-v2-EIX"/>
+                                <include reference="Y3h-31-JIO"/>
+                                <include reference="470-F0-SZ8"/>
+                                <include reference="K0q-Ua-y4n"/>
+                                <include reference="nHn-Yq-sed"/>
                             </mask>
                         </variation>
                     </view>
