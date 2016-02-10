@@ -17,6 +17,7 @@ class Photo {
     var userID: String?
     var photo: UIImage?
     var caption:String?
+    var location:String?
 
     
     

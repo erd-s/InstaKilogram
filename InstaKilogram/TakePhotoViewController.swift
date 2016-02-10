@@ -28,6 +28,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     var editedImage:UIImage!
     var imageToSave:UIImage!
     var locationManager:CLLocationManager!
+    var photo:Photo!
     
 
     
@@ -86,8 +87,15 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func onOKButtonTapped(sender: AnyObject)
     {
-        //print("OK Button tapped")
-        Photo(image: self.imageToSave, captionText: self.captionTextView.text)
+      
+        let locationAlert = UIAlertController(title: "Add a Location", message: "Would you like to add a location", preferredStyle: .Alert)
+        
+        let confirmAction = UIAlertAction(title: "Yes", style: .Default) { (action:UIAlertAction) -> Void in
+            self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.startUpdatingLocation()
+        }
+        
+        self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text)
         
         //print("I have finished creating a photo")
         performSegueWithIdentifier("toTabViewController", sender: self)
@@ -150,8 +158,10 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location: \(address)", preferredStyle: UIAlertControllerStyle.Alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            
+            //let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action:UIAlertAction) -> Void in
+               self.photo
+            })
             locationAlert.addAction(cancelAction)
             locationAlert.addAction(confirmAction)
             
