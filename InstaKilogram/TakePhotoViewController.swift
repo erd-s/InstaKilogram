@@ -88,16 +88,24 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     @IBAction func onOKButtonTapped(sender: AnyObject)
     {
       
-        let locationAlert = UIAlertController(title: "Add a Location", message: "Would you like to add a location", preferredStyle: .Alert)
+        let locationAlert = UIAlertController(title: "Add a Location", message: "Would you like to add a location?", preferredStyle: .Alert)
         
-        let confirmAction = UIAlertAction(title: "Yes", style: .Default) { (action:UIAlertAction) -> Void in
+        let confirmAction = UIAlertAction(title: "Yes", style: .Default) { (action: UIAlertAction) -> Void in
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.startUpdatingLocation()
         }
         
-        self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text)
         
-        //print("I have finished creating a photo")
+        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action: UIAlertAction) -> Void in
+            self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text)
+        }
+        
+        locationAlert.addAction(confirmAction)
+        locationAlert.addAction(cancelAction)
+        
+        self.presentViewController(locationAlert, animated: true, completion: nil)
+        
+        
         performSegueWithIdentifier("toTabViewController", sender: self)
         
     }
@@ -157,10 +165,12 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             
             let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location: \(address)", preferredStyle: UIAlertControllerStyle.Alert)
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            //let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action:UIAlertAction) -> Void in
-               self.photo
+            //let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
+                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text)
+            })
+            let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) -> Void in
+               self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text)
             })
             locationAlert.addAction(cancelAction)
             locationAlert.addAction(confirmAction)
