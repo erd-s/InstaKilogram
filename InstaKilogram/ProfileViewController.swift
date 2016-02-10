@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var usernameTitleLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     //MARK: ViewLoading
     override func viewDidLoad() {
@@ -39,6 +40,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(animated: Bool) {
         startListeningAndSetCurrentUser()
         getPhotos()
+        
+        collectionViewFlowLayout.itemSize = CGSize.init(width: view.frame.width/3, height: view.frame.width/3)
     }
     
     //MARK: Custom Functions
@@ -133,8 +136,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let likesString = String(postData.value["likes"] as! Int)
         cell.likeCountLabel?.text = "Likes: \(likesString)"
         cell.captionTextView?.text = postData.value["caption"] as? String
-        
-
         
         if postData.value["geolocation"] != nil {
         cell.geoLocationLabel.text = postData.value["geolocation"] as? String
