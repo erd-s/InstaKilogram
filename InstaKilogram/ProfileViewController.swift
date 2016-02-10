@@ -81,11 +81,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 let decodedImage = UIImage(data: decodedData!)
                 self.userImage.image = decodedImage
             }
+            self.tableView.reloadData()
+            self.collectionView.reloadData()
         })
     }
     
     func getPhotos () {
         FirebaseData.firebaseData.PHOTOS_REF.observeEventType(.Value, withBlock: { snapshots in
+            self.userPhotosArray.removeAll()
+            self.currentPhotoData.removeAll()
             for snapshot in snapshots.children.allObjects as! [FDataSnapshot] {
                 if snapshot.value!["userID"]! as! String == self.userDefaults.stringForKey("uid")! {
                     let decodedData = NSData(base64EncodedString: (snapshot.value["photoString"] as? String)!, options: NSDataBase64DecodingOptions())
@@ -125,9 +129,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let postData = currentPhotoData[indexPath.row]
 
         cell.photoView?.image = postImage
-        
-        if postData.value["caption"]! != nil {
+        cell.nameLabel?.text = currentUser["username"] as? String
+        let likesString = String(postData.value["likes"] as! Int)
+        cell.likeCountLabel?.text = "Likes: \(likesString)"
         cell.captionTextView?.text = postData.value["caption"] as? String
+        
+
+        
+        if postData.value["geolocation"] != nil {
+        cell.geoLocationLabel.text = postData.value["geolocation"] as? String
         }
         
         if postData.value["comments"]! != nil {

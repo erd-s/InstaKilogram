@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if userDefaults.valueForKey("uid")  != nil {
+        if userDefaults.valueForKey("uid") != nil {
             let tabBarController = storyboard.instantiateViewControllerWithIdentifier("tab")
             window!.rootViewController = tabBarController
             window?.makeKeyAndVisible()
