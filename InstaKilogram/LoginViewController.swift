@@ -10,9 +10,9 @@ import UIKit
 import Firebase
 
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate
+{
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
     
     let userDefaults = NSUserDefaults.standardUserDefaults()
