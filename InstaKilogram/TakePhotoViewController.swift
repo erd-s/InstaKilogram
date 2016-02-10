@@ -88,7 +88,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     @IBAction func onOKButtonTapped(sender: AnyObject)
     {
       
-<<<<<<< HEAD
         let locationAlert = UIAlertController(title: "Add a Location", message: "Would you like to add a location?", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "Yes", style: .Default) { (action: UIAlertAction) -> Void in
