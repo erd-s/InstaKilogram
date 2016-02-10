@@ -10,6 +10,11 @@ import UIKit
 
 class PhotoFeedCell: UITableViewCell {
 
+//    protocol commentButtonSelect {
+//        
+//    }
+    
+
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var photoView: UIImageView!

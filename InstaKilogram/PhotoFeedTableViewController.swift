@@ -40,9 +40,9 @@ class PhotoFeedTableViewController: UITableViewController {
                     if let postDictionary = snap.value as? Dictionary <String, AnyObject> {
                         let post = Photo(dictionary: postDictionary)
                         post.photo = UIImage(named: "loadingImage")
+                        post.key = snap.key
                         self.posts.insert(post, atIndex: 0)
                         self.feedTableView.reloadData()
-                        
                     }
                 }
                 

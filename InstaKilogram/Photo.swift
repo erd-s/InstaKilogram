@@ -18,6 +18,7 @@ class Photo {
     var photo: UIImage?
     var caption:String?
     var location:String?
+    var key: String?
 
     
     
@@ -56,6 +57,7 @@ class Photo {
         userID  = dictionary["userID"] as? String
         caption = dictionary["caption"] as? String
         photo = UIImage()
+        key  = String()
         
 //        let decodedData = NSData(base64EncodedString: photoString!, options: NSDataBase64DecodingOptions())
 //        photo = UIImage(data: decodedData!)!
