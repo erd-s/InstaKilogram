@@ -8,12 +8,20 @@
 
 import UIKit
 
+protocol CommentButtonTappedDelegate {
+    
+    
+    func commentButtonTapped (cell: PhotoFeedCell)
+    
+}
+
 class PhotoFeedCell: UITableViewCell {
-
     
-
     
-
+    let delegate: CommentButtonTappedDelegate?
+    
+    
+    
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var photoView: UIImageView!
@@ -22,7 +30,20 @@ class PhotoFeedCell: UITableViewCell {
     @IBOutlet var commentsLabel: UILabel!
     @IBOutlet var likeCountLabel: UILabel!
     @IBOutlet weak var captionTextView: UITextView!
+
     
+    @IBAction func commentButtonPressed(sender: UIButton) {
+         if let delegate = self.delegate {
+            delegate.commentButtonTapped(self)
+        }
+    }
+    
+
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     
     override func awakeFromNib() {
@@ -30,6 +51,8 @@ class PhotoFeedCell: UITableViewCell {
     }
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    
 
     }
+
 }

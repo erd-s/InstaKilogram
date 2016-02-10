@@ -11,11 +11,11 @@ import Firebase
 
 var currentUser: String?
 
-class PhotoFeedTableViewController: UITableViewController {
+class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet var feedTableView: UITableView!
     
-    
+    var indexPath: NSIndexPath?
     
     
     //MARK: Properties
@@ -70,11 +70,16 @@ class PhotoFeedTableViewController: UITableViewController {
     @IBAction func onLikeButtonTap(sender: UIButton) {
     }
     
-    
-    @IBAction func onCommentButtonTapped(sender: UIButton) {
+    func commentButtonTapped(cell: PhotoFeedCell) {
+        indexPath = feedTableView.indexPathForCell(cell)
         performSegueWithIdentifier("commentSegue", sender: self)
-        
     }
+    
+    
+//    @IBAction func onCommentButtonTapped(sender: UIButton) {
+//        performSegueWithIdentifier("commentSegue", sender: self)
+//        
+//    }
     
     
     @IBAction func onForwardButtonTap(sender: AnyObject) {
