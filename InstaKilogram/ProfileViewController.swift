@@ -66,6 +66,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             } else {
                 self.followingNumberLabel.text = "0"
             }
+            if self.currentUser["photos"]?.count != nil {
+                self.postNumberLabel.text = String(self.currentUser["photos"]!.count)
+            } else {
+                self.postNumberLabel.text = "0"
+            }
             self.nameLabel.text = self.currentUser["name"] as? String
             
             if self.currentUser["userPhoto"] == nil {
