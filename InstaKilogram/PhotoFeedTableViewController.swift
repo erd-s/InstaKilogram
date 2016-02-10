@@ -72,6 +72,8 @@ class PhotoFeedTableViewController: UITableViewController {
     
    
     @IBAction func onCommentButtonTapped(sender: UIButton) {
+        performSegueWithIdentifier("commentSegue", sender: self)
+        
     }
     
     
