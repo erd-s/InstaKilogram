@@ -12,7 +12,7 @@ import MobileCoreServices
 import MapKit
 
 
-class TakePhotoViewController: UIViewController, UINavigationControllerDelegate, CLLocationManagerDelegate
+class TakePhotoViewController: UIViewController, UINavigationControllerDelegate, CLLocationManagerDelegate, UITextViewDelegate
 {
     //var picker:UIImagePickerController = UIImagePickerController()
     var chosenImage:UIImage?
@@ -40,7 +40,25 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+
        
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y -= keyboardSize.height
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y += keyboardSize.height
+        }
     }
     
     @IBAction func indexChanged(sender: AnyObject)
@@ -71,10 +89,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         //print("OK Button tapped")
         Photo(image: self.imageToSave, captionText: self.captionTextView.text)
         
-        if self.captionTextView.text != nil
-        {
-            
-        }
         //print("I have finished creating a photo")
         performSegueWithIdentifier("toTabViewController", sender: self)
         
@@ -109,9 +123,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         // Get user's location
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
-        
-        
+    
     }
     
     
@@ -135,7 +147,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             let placemark = placemarks?.first
             let address = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!)"
             
-            let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location :\(address)", preferredStyle: UIAlertControllerStyle.Alert)
+            let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location: \(address)", preferredStyle: UIAlertControllerStyle.Alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -145,6 +157,26 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             
             self.presentViewController(locationAlert, animated: true, completion: nil)
             
+        }
+    }
+    
+    
+    func textViewDidBeginEditing(textView: UITextView)
+    {
+        if textView.textColor == UIColor.lightGrayColor()
+        {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView)
+    {
+        if textView.text.isEmpty
+        {
+            textView.text = "Placeholder"
+            textView.textColor = UIColor.lightGrayColor()
+            self.resignFirstResponder()
         }
     }
     
