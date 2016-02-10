@@ -46,7 +46,7 @@ class PhotoFeedTableViewController: UITableViewController {
                     }
                 }
                 
-
+                
             }
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async(dispatch_get_global_queue(priority, 0)) {
@@ -60,17 +60,17 @@ class PhotoFeedTableViewController: UITableViewController {
                 }
             }
         })
-       
+        
     }
-
-
-
- 
+    
+    
+    
+    
     //MARK: Button Taps
     @IBAction func onLikeButtonTap(sender: UIButton) {
     }
     
-   
+    
     @IBAction func onCommentButtonTapped(sender: UIButton) {
         performSegueWithIdentifier("commentSegue", sender: self)
         
@@ -98,14 +98,14 @@ class PhotoFeedTableViewController: UITableViewController {
         cell.photoView.image =          photo.photo
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes)"
         cell.captionTextView.text =     photo.caption
-//      cell.commentsLabel.text =     photo.username
+        //      cell.commentsLabel.text =     photo.username
         if(photo.location != nil)
         {
             cell.geoLocationLabel.text = photo.location
         }
-
+        
         return cell
     }
     
-
-  }
+    
+}

@@ -10,9 +10,6 @@ import UIKit
 
 class PhotoFeedCell: UITableViewCell {
 
-//    protocol commentButtonSelect {
-//        
-//    }
     
 
     
