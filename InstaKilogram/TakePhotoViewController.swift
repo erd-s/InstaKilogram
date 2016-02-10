@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 import MobileCoreServices
+import MapKit
 
 
-class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
+class TakePhotoViewController: UIViewController, UINavigationControllerDelegate, CLLocationManagerDelegate
 {
     //var picker:UIImagePickerController = UIImagePickerController()
     var chosenImage:UIImage?
@@ -20,10 +21,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var captionTextView: UITextView!
+    @IBOutlet weak var locationButton: UIButton!
+    
     
     var originalImage:UIImage!
     var editedImage:UIImage!
     var imageToSave:UIImage!
+    var locationManager:CLLocationManager!
     
 
     
@@ -32,6 +36,10 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         super.viewDidLoad()
         self.okButton.enabled = false
         self.captionTextView.userInteractionEnabled = false
+        self.locationButton.enabled = false
+        
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
        
     }
     
@@ -53,7 +61,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         }
         else
         {
-
             startCameraFromViewController(self, withDelegate: self)
         }
         
@@ -69,7 +76,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
             
         }
         //print("I have finished creating a photo")
-        
         performSegueWithIdentifier("toTabViewController", sender: self)
         
     }
@@ -90,10 +96,56 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate
         presentViewController(cameraController, animated: true, completion: nil)
         
         self.okButton.enabled = true
+        self.locationButton.enabled = true
         self.captionTextView.userInteractionEnabled = true
         
         return true
         
+    }
+    
+    
+    @IBAction func onLocationButtonTapped(sender: AnyObject)
+    {
+        // Get user's location
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        
+        
+    }
+    
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.first
+        
+        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000
+        {
+            reverseGeocode(location!)
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    
+    func reverseGeocode(location:CLLocation)
+    {
+        let geocoder:CLGeocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks:[CLPlacemark]?, error:NSError?) -> Void in
+            let placemark = placemarks?.first
+            let address = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!)"
+            
+            let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location :\(address)", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            
+            locationAlert.addAction(cancelAction)
+            locationAlert.addAction(confirmAction)
+            
+            self.presentViewController(locationAlert, animated: true, completion: nil)
+            
+        }
     }
     
 //    func video(videoPath: NSString, didFinishSavingWithError error:NSError?, contextInfo info:AnyObject)
