@@ -137,11 +137,13 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate
         }
         else
         {
-            let size = CGSizeApplyAffineTransform(originalImage.size, CGAffineTransformMakeScale(0.5, 0.5))
+            let size2 = CGSizeMake(512, 512)
+            
+           // let size = CGSizeApplyAffineTransform(originalImage.size, CGAffineTransformMakeScale(0.5, 0.5))
             let hasAlpha = false
             let scale: CGFloat = 0.0
-            UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
-            originalImage.drawInRect(CGRect(origin: CGPointZero, size: size))
+            UIGraphicsBeginImageContextWithOptions(size2, !hasAlpha, scale)
+            originalImage.drawInRect(CGRect(origin: CGPointZero, size: size2))
             
             let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
