@@ -33,6 +33,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
 //         yOffset = feedTableView.contentOffset.y
         let userDefaults = NSUserDefaults.standardUserDefaults()
         currentUsername = userDefaults.valueForKey("currentUser") as? String
+        navigationItem.title = "\(currentUsername!)'s InstaKilogram"
         
         
         FirebaseData.firebaseData.PHOTOS_REF.observeEventType(.Value, withBlock: { snapshot in
