@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         startListeningAndSetCurrentUser()
         getPhotos()
         
-        collectionViewFlowLayout.itemSize = CGSize.init(width: view.frame.width/3, height: view.frame.width/3)
+        collectionViewFlowLayout.itemSize = CGSize.init(width: collectionView.frame.width/3, height: collectionView.frame.width/3)
     }
     
     //MARK: Custom Functions
