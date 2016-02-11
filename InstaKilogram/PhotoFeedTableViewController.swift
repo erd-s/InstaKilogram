@@ -104,7 +104,16 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         cell.nameLabel.text =           photo.username
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes)"
         cell.captionTextView.text =     photo.caption
-//      cell.commentsLabel.text =     photo.username
+        
+        
+        
+        if photo.dateID == String(NSDate()) {
+        cell.timestampLabel.text = photo.hhmmss
+        } else {
+            cell.timestampLabel.text = photo.currentDate
+        }
+        
+        
         print("For Cell: \(photo.location)")
         if(photo.location != "")
         {

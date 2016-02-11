@@ -24,6 +24,7 @@ class PhotoFeedCell: UITableViewCell {
     @IBOutlet var photoView: UIImageView!
     @IBOutlet var geoLocationLabel: UILabel!
     
+    @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet var commentsLabel: UILabel!
     @IBOutlet var likeCountLabel: UILabel!
     @IBOutlet weak var captionTextView: UITextView!

@@ -21,6 +21,7 @@ class Photo {
     var key: String?
     var hhmmss: String?
     var currentDate: String?
+    var dateID: String?
 
 
     
@@ -46,6 +47,7 @@ class Photo {
         let seconds = calendar.components(.Second, fromDate: date)
         self.hhmmss = "\(hours):\(minutes):\(seconds)"
         self.currentDate = "\(month) \(day), \(year)"
+        self.dateID = String(NSDate())
         
         
         
@@ -58,7 +60,8 @@ class Photo {
                                 "caption"       : caption!,
                                 "location"      : location!,
                                 "hh:mm:ss"     : hhmmss!,
-                                "date"          : currentDate!]
+                                "date"          : currentDate!,
+                                "dateID"        : dateID!]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
 
