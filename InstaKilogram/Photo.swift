@@ -19,6 +19,7 @@ class Photo {
     var caption:String?
     var location:String?
     var key: String?
+    var timestamp: String?
 
 
     
@@ -43,7 +44,8 @@ class Photo {
                                  "user"         : username!,
                                  "userID"       : userID!,
                                 "caption"       : caption!,
-                                "location"      : location!]
+                                "location"      : location!,
+                                "timestamp"     : timestamp!]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
 
