@@ -68,6 +68,9 @@ class EditUserViewController: UIViewController, UITextFieldDelegate, UITextViewD
              "phoneNumber": self.phoneNumberTextField.text]
         
         FirebaseData.firebaseData.CURRENT_USER_REF.setValue(currentUserDict)
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setValue(currentUserDict["username"], forKey: "currentUser")
+        currentUsername = userDefaults.valueForKey("currentUser") as? String
         performSegueWithIdentifier("unwindToProfile", sender: self)
     }
     

@@ -33,7 +33,7 @@ class Photo {
         let base64String = imageData.base64EncodedStringWithOptions([])
         
         photoLikes = 0
-        username = currentUser
+        username = currentUsername
         photoString = base64String
         caption = captionText
         location = locationString
