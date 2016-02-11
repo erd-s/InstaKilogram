@@ -264,6 +264,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="captionTextView" destination="D3T-RS-dnm" id="MKi-UN-1W9"/>
+                                    <outlet property="commentButton" destination="NPq-73-uOs" id="ZdX-Kn-zkj"/>
                                     <outlet property="commentsLabel" destination="CdW-SI-Bl9" id="KRg-UC-ckq"/>
                                     <outlet property="geoLocationLabel" destination="1j8-rz-1Ez" id="tuL-zf-Xd6"/>
                                     <outlet property="likeCountLabel" destination="PKf-A3-WXh" id="M5s-mp-BEG"/>

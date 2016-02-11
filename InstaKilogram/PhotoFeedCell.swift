@@ -18,7 +18,7 @@ protocol CommentButtonTappedDelegate {
 class PhotoFeedCell: UITableViewCell {
     
     
-    let delegate: CommentButtonTappedDelegate?
+    var delegate: CommentButtonTappedDelegate?
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var photoView: UIImageView!
@@ -27,20 +27,22 @@ class PhotoFeedCell: UITableViewCell {
     @IBOutlet var commentsLabel: UILabel!
     @IBOutlet var likeCountLabel: UILabel!
     @IBOutlet weak var captionTextView: UITextView!
-
+    
+    @IBOutlet weak var commentButton: UIButton!
     
     @IBAction func commentButtonPressed(sender: UIButton) {
-         if let delegate = self.delegate {
+        if let delegate = self.delegate {
             delegate.commentButtonTapped(self)
+            
         }
     }
     
-
-
+    
+    
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+            super.init(coder: aDecoder)
     }
-
+    
     
     
     override func awakeFromNib() {
@@ -48,8 +50,8 @@ class PhotoFeedCell: UITableViewCell {
     }
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    
-
+        
+        
     }
-
+    
 }
