@@ -17,6 +17,8 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
     
     var indexPath: NSIndexPath?
     var postKey: String?
+    var comment1: String?
+    var comment2: String?
     
     //MARK: Properties
     var posts = [Photo]()
@@ -30,7 +32,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//         yOffset = feedTableView.contentOffset.y
+        //         yOffset = feedTableView.contentOffset.y
         let userDefaults = NSUserDefaults.standardUserDefaults()
         currentUsername = userDefaults.valueForKey("currentUser") as? String
         navigationItem.title = "\(currentUsername!)'s InstaKilogram"
@@ -45,10 +47,32 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
                         let post = Photo(dictionary: postDictionary)
                         post.photo = UIImage(named: "loadingImage")
                         post.key = snap.key
+                        //print(postDictionary["comments"])
+                       // let commentDic = postDictionary.value["comments"] as! Dictionary
+                        
+                        
+                        //         post.comments = postDictionary["comments"] as! Array
+                        // print(post.comments)
+                        
+                        let commentDictionary = postDictionary["comments"] as! [Dictionary <String, String>]
+                        self.comment1 = "\(commentDictionary[0]["username"]): \(commentDictionary[0]["commentText"])"
+                        self.comment2 = "\(commentDictionary[1]["username"]): \(commentDictionary[0]["commentText"])"
+                        
+                        post.comments?.append(self.comment1!)
+                        post.comments?.append(self.comment2!)
+                        
                         self.posts.insert(post, atIndex: 0)
+                        
+                        
                         self.feedTableView.reloadData()
                     }
+                    let commentDic = snap
+                    let commentDictionary = commentDic.value["comments"] as! [Dictionary <String, String>]
+                   
+
                     
+               //     self.posts.insert(post, atIndex: 0)
+
                 }
                 
                 
@@ -81,7 +105,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         performSegueWithIdentifier("commentSegue", sender: self)
     }
     
-
+    
     func likeButtonTapped(cell: PhotoFeedCell) {
         yOffset = feedTableView.contentOffset.y
         indexPath = feedTableView.indexPathForCell(cell)
@@ -108,21 +132,25 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> PhotoFeedCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("pizza", forIndexPath: indexPath) as! PhotoFeedCell
+        let photo = posts[indexPath.row]
+        let decodedData = NSData(base64EncodedString: photo.photoString!, options: NSDataBase64DecodingOptions())
+
+        
+        cell.commentsLabel.numberOfLines = 0
         
         cell.delegate = self
         cell.likeDelegate = self
-        
-        let photo = posts[indexPath.row]
-        
-        cell.photoView.image = UIImage(named: "loadingImage")
+        cell.photoView.image = UIImage(data: decodedData!)
         cell.nameLabel.text =           photo.username
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes!)"
         cell.captionTextView.text =     photo.caption
         
+        
+        
         setCellDate(cell, photo: photo)
         
-        print("For Cell: \(photo.location)")
         if(photo.location != "")
         {
             cell.geoLocationLabel.text = photo.location
@@ -131,19 +159,62 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         {
             cell.geoLocationLabel.hidden = true
         }
-        let priority = DISPATCH_QUEUE_PRIORITY_HIGH
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            let decodedData = NSData(base64EncodedString: photo.photoString!, options: NSDataBase64DecodingOptions())
-            dispatch_async(dispatch_get_main_queue()) {
-                cell.photoView.image = UIImage(data: decodedData!)
-                
-            }
+        //        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        //        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+        //
+        
+        
+//        FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath(photo.key).childByAppendingPath("comments").observeSingleEventOfType(.Value, withBlock: { snapshot in
+//            
+//            if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
+//                for snap in snapshots {
+//                    if let postDictionary = snap.value as? Dictionary <String, AnyObject> {
+//                        print(postDictionary["username"])
+//                        print(postDictionary["commentText"])
+//                        
+//                        if comment1 == nil {
+//                            comment1 = "\(postDictionary["username"]): \(postDictionary["commentText"])"
+//                        } else if comment2 == nil {
+//                            comment2 = "\(postDictionary["username"]): \(postDictionary["commentText"])"
+//                        }
+//                        
+//                        
+//                        if comment2 != nil {
+//                            cell.commentsLabel.text = "Comments \n \(comment1) \n \(comment2) \n ..."
+//                        } else if comment1 != nil {
+//                            cell.commentsLabel.text = "Comments \n \(comment1) \n ..."
+//                        } else {
+//                            cell.commentsLabel.text = "No Comments"
+//                        }
+//                     //   self.feedTableView.reloadData()
+//                        
+//                        
+//                    }
+//                    
+//                    
+//                    
+//                }
+//            }
+//        })
+        
             
-        }
+            
+            //            dispatch_async(dispatch_get_main_queue()) {
+            //                if comment2 != nil {
+            //                    cell.commentsLabel.text = "Comments \n \(comment1) \n \(comment2) \n ..."
+            //                } else if comment1 != nil {
+            //                    cell.commentsLabel.text = "Comments \n \(comment1) \n ..."
+            //                } else {
+            //                    cell.commentsLabel.text = "No Comments"
+            //                }
+            //                self.feedTableView.reloadData()
+            //            }
+            
         
-        
-        
-        
+            
+            
+            
+            
         return cell
     }
     

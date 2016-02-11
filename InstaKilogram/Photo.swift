@@ -22,6 +22,7 @@ class Photo {
     var hhmmss: String?
     var currentDate: String?
     var dateID: String?
+    var comments: [String]?
 
 
 
@@ -83,6 +84,7 @@ class Photo {
         currentDate = dictionary["date"] as? String
         hhmmss = dictionary["hh:mm:ss"] as? String
         dateID = dictionary["dateID"] as? String
+        comments = dictionary["comments"] as? Array
         
         photo = UIImage()
         key  = String()
