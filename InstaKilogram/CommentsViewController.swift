@@ -41,6 +41,6 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
             return 0
         }
         
-        
-        
+    }
+
 }
