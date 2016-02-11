@@ -49,22 +49,23 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
                 
                 
             }
-//            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-//            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-//                for post in self.posts {
-//                    let decodedData = NSData(base64EncodedString: post.photoString!, options: NSDataBase64DecodingOptions())
-//                    post.photo = UIImage(data: decodedData!)
-//                }
-//                
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.feedTableView.reloadData()
-//                }
-//            }
         })
         
     }
     
-    
+    //MARK: Custom Functions
+    func setCellDate(cell: PhotoFeedCell, photo: Photo) {
+      let thisDate = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        let dateString = dateFormatter.stringFromDate(thisDate)
+        
+        if photo.currentDate == dateString {
+            cell.timestampLabel.text = photo.hhmmss
+        } else {
+            cell.timestampLabel.text = photo.currentDate
+        }
+    }
     
     
     //MARK: Button Taps
@@ -80,7 +81,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
 //        performSegueWithIdentifier("commentSegue", sender: self)
 //        
 //    }
-    
+
     
     @IBAction func onForwardButtonTap(sender: AnyObject) {
     }
@@ -106,12 +107,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes)"
         cell.captionTextView.text =     photo.caption
         
-        if photo.dateID == String(NSDate()) {
-        cell.timestampLabel.text = photo.hhmmss
-        } else {
-        cell.timestampLabel.text = photo.currentDate
-        }
-        
+        setCellDate(cell, photo: photo)
         
         print("For Cell: \(photo.location)")
         if(photo.location != "")

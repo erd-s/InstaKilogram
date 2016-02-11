@@ -45,16 +45,14 @@ class Photo {
         let dateString = dateFormatterFullDate.stringFromDate(date)
         
         let dateFormatterHHMMSS = NSDateFormatter()
-        dateFormatterHHMMSS.dateFormat = "Today HH:mm:ss"
+        dateFormatterHHMMSS.dateFormat = "HH:mm:ss"
         let hhmmssString = dateFormatterHHMMSS.stringFromDate(date)
         
         self.hhmmss = hhmmssString
         self.currentDate = dateString
         
         self.dateID = String(NSDate())
-        
-        
-        
+
         userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
         
         let photoDictionary = ["photoString"    : photoString! as String,
