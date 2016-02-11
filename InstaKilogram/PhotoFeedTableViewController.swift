@@ -67,8 +67,6 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     
     
     //MARK: Button Taps
-    @IBAction func onLikeButtonTap(sender: UIButton) {
-    }
     
     func commentButtonTapped(cell: PhotoFeedCell) {
         indexPath = feedTableView.indexPathForCell(cell)
@@ -107,6 +105,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes)"
         cell.captionTextView.text =     photo.caption
 //      cell.commentsLabel.text =     photo.username
+        print("For Cell: \(photo.location)")
         if(photo.location != "")
         {
             cell.geoLocationLabel.text = photo.location
@@ -134,7 +133,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "commentSegue" {
-        var dvc = segue.destinationViewController as! CommentsViewController
+        let dvc = segue.destinationViewController as! CommentsViewController
         dvc.postID = postKey
         }
     }

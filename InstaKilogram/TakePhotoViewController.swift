@@ -21,7 +21,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var captionTextView: UITextView!
-    @IBOutlet weak var locationButton: UIButton!
     
     
     var originalImage:UIImage!
@@ -37,7 +36,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         super.viewDidLoad()
         self.okButton.enabled = false
         self.captionTextView.userInteractionEnabled = false
-        self.locationButton.enabled = false
         
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
@@ -97,14 +95,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         
         let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action: UIAlertAction) -> Void in
             self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
+            self.performSegueWithIdentifier("toTabViewController", sender: self)
         }
         
         locationAlert.addAction(confirmAction)
         locationAlert.addAction(cancelAction)
         
         self.presentViewController(locationAlert, animated: true, completion: nil)
-        
-        performSegueWithIdentifier("toTabViewController", sender: self)
         
     }
     
@@ -124,20 +121,10 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         presentViewController(cameraController, animated: true, completion: nil)
         
         self.okButton.enabled = true
-        self.locationButton.enabled = true
         self.captionTextView.userInteractionEnabled = true
         
         return true
         
-    }
-    
-    
-    @IBAction func onLocationButtonTapped(sender: AnyObject)
-    {
-        // Get user's location
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    
     }
     
     
@@ -163,12 +150,16 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             
             let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location: \(address)", preferredStyle: UIAlertControllerStyle.Alert)
             
-            //let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
                 self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
+                self.performSegueWithIdentifier("toTabViewController", sender: self)
+
             })
             let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) -> Void in
                 self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString: address)
+                //print(self.photo.location)
+                self.performSegueWithIdentifier("toTabViewController", sender: self)
+
             })
             locationAlert.addAction(cancelAction)
             locationAlert.addAction(confirmAction)

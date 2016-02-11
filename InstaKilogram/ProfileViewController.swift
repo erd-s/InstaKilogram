@@ -108,10 +108,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     //MARK: Custom Functions
     func switchForSegment(segmentedControl: UISegmentedControl) {
-        if segmentedControl.selectedSegmentIndex == 0 {
+        if segmentedControl.selectedSegmentIndex == 0
+        {
             tableView.hidden = true
             collectionView.hidden = false
-        } else {
+            
+        }
+        else if segmentedControl.selectedSegmentIndex == 1
+        {
             tableView.hidden = false
             collectionView.hidden = true
         }

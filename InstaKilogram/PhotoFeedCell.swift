@@ -37,6 +37,12 @@ class PhotoFeedCell: UITableViewCell {
         }
     }
     
+    @IBAction func onLikeButtonPressed(sender: UIButton)
+    {
+        
+    }
+    
+    
     
     
     required init?(coder aDecoder: NSCoder) {
