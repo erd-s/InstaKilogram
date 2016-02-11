@@ -20,14 +20,14 @@ class MapViewController: UIViewController, MKMapViewDelegate
     {
         super.viewDidLoad()
         
-
-        
-        
-
-        
-        
-        
+        for snapshot in currentPhotoData
+        {
+            //let annotation = snapshot[""]
+        }
+    
     }
+    
+    
     
     
     
