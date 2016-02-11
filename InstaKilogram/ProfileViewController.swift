@@ -172,4 +172,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: Segue stuff
     @IBAction func unwind(segue: UIStoryboardSegue) {
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var mapVC = segue.destinationViewController as? MapViewController
+        mapVC!.currentPhotoData = self.currentPhotoData
+        
+    }
 }

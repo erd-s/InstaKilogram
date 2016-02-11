@@ -8,20 +8,27 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class MapViewController: UIViewController, MKMapViewDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
+    var currentPhotoData:[FDataSnapshot]!
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
 
-        // Do any additional setup after loading the view.
+        
+        
+
         
         
         
     }
+    
     
     
     
