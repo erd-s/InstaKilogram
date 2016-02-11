@@ -972,7 +972,6 @@
                                 <color key="tintColor" red="0.20291313620000001" green="0.36243193029999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="onSelectedSegmentChanged:" destination="Vn0-YP-Nmr" eventType="valueChanged" id="kNG-Tk-UTR"/>
-                                    <segue destination="URt-Um-Bm2" kind="push" id="Rte-8a-tlt"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CzK-K1-vfI">
@@ -1002,6 +1001,7 @@
                         <outlet property="tableView" destination="QPR-fo-Z61" id="9GA-sj-t3v"/>
                         <outlet property="userImage" destination="yJS-VC-zcN" id="1th-NN-kwt"/>
                         <outlet property="usernameTitleLabel" destination="SnO-as-RYu" id="G7Z-Ax-3MR"/>
+                        <segue destination="URt-Um-Bm2" kind="modal" identifier="mapSegue" id="glW-i2-Lak"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7O9-94-ESa" userLabel="First Responder" sceneMemberID="firstResponder"/>

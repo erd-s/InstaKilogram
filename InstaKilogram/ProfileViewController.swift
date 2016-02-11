@@ -97,7 +97,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     })
     }
 
-    //MARK: Custom Functions
     func switchForSegment(segmentedControl: UISegmentedControl) {
         if segmentedControl.selectedSegmentIndex == 0
         {
@@ -109,6 +108,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         {
             tableView.hidden = false
             collectionView.hidden = true
+        }
+        else if segmentedControl.selectedSegmentIndex == 2 {
+            performSegueWithIdentifier("mapSegue", sender: segmentedControl)
+            
         }
     }
     
@@ -133,6 +136,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.captionTextView?.text = postData.value["caption"] as? String
         cell.geoLocationLabel.text = postData.value?["geolocation"] as? String
         cell.commentsLabel?.text = postData.value?["comments"] as? String
+        
+        if postData.value["dateID"] as? String == String(NSDate()) {
+            cell.timestampLabel.text = postData.value["hh:mm:ss"] as? String
+        } else {
+            cell.timestampLabel.text = postData.value["date"] as? String
+        }
         
         return cell
     }
