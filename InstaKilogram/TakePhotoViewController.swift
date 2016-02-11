@@ -12,27 +12,24 @@ import MobileCoreServices
 import MapKit
 
 
-class TakePhotoViewController: UIViewController, UINavigationControllerDelegate, CLLocationManagerDelegate, UITextViewDelegate
-{
-    //var picker:UIImagePickerController = UIImagePickerController()
+class TakePhotoViewController: UIViewController, UINavigationControllerDelegate, CLLocationManagerDelegate, UITextViewDelegate {
+    //MARK: Properties
     var chosenImage:UIImage?
-    
-    @IBOutlet weak var sourcePicker: UISegmentedControl!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var okButton: UIButton!
-    @IBOutlet weak var captionTextView: UITextView!
-    
-    
     var originalImage:UIImage!
     var editedImage:UIImage!
     var imageToSave:UIImage!
     var locationManager:CLLocationManager!
     var photo:Photo!
     
-
+    //MARK: Outlets
+    @IBOutlet weak var sourcePicker: UISegmentedControl!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var captionTextView: UITextView!
+    @IBOutlet weak var locationButton: UIButton!
     
-    override func viewDidLoad()
-    {
+    //MARK: View Loading
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.okButton.enabled = false
         self.captionTextView.userInteractionEnabled = false
@@ -42,16 +39,13 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-
-       
     }
     
+    //MARK: Keyboard
     func keyboardWillShow(notification: NSNotification) {
-        
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             self.view.frame.origin.y -= keyboardSize.height
         }
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {
@@ -60,6 +54,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         }
     }
     
+    //MARK: Actions
     @IBAction func indexChanged(sender: AnyObject)
     {
         if(self.sourcePicker.selectedSegmentIndex == 0)
@@ -67,7 +62,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             let libraryController = UIImagePickerController()
             libraryController.sourceType = .PhotoLibrary
             libraryController.delegate = self
-            
             presentViewController(libraryController, animated: true, completion: nil)
             self.okButton.enabled = true
             
@@ -80,14 +74,12 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         {
             startCameraFromViewController(self, withDelegate: self)
         }
-        
     }
     
     @IBAction func onOKButtonTapped(sender: AnyObject)
     {
       
         let locationAlert = UIAlertController(title: "Add a Location", message: "Would you like to add a location?", preferredStyle: .Alert)
-        
         let confirmAction = UIAlertAction(title: "Yes", style: .Default) { (action: UIAlertAction) -> Void in
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.startUpdatingLocation()
@@ -97,18 +89,17 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
             self.performSegueWithIdentifier("toTabViewController", sender: self)
         }
-        
         locationAlert.addAction(confirmAction)
         locationAlert.addAction(cancelAction)
-        
         self.presentViewController(locationAlert, animated: true, completion: nil)
         
+        performSegueWithIdentifier("toTabViewController", sender: self)
     }
     
+    //MARK: Camera
     func startCameraFromViewController(viewController:UIViewController, withDelegate delegate:protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool
     {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) == false
-        {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) == false {
             return false
         }
         
@@ -127,22 +118,24 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         
     }
     
-    
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    @IBAction func onLocationButtonTapped(sender: AnyObject)
     {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    
+    //MARK: Location
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
         
-        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000
-        {
+        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
             reverseGeocode(location!)
             locationManager.stopUpdatingLocation()
         }
     }
     
-    
-    func reverseGeocode(location:CLLocation)
-    {
+    func reverseGeocode(location:CLLocation) {
         let geocoder:CLGeocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { (placemarks:[CLPlacemark]?, error:NSError?) -> Void in
             let placemark = placemarks?.first
@@ -169,9 +162,8 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         }
     }
     
-    
-    func textViewDidBeginEditing(textView: UITextView)
-    {
+    //MARK: Text View Delegate Functions
+    func textViewDidBeginEditing(textView: UITextView) {
         if textView.textColor == UIColor.lightGrayColor()
         {
             textView.text = nil
@@ -179,8 +171,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         }
     }
     
-    func textViewDidEndEditing(textView: UITextView)
-    {
+    func textViewDidEndEditing(textView: UITextView) {
         if textView.text.isEmpty
         {
             textView.text = "Placeholder"
@@ -188,41 +179,18 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             self.resignFirstResponder()
         }
     }
-    
-//    func video(videoPath: NSString, didFinishSavingWithError error:NSError?, contextInfo info:AnyObject)
-//    {
-//        var title = "Success"
-//        var message = "Video was saved"
-//        
-//        if let _ = error
-//        {
-//            title = "Error"
-//            message = "Video failed to save"
-//        }
-//        
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
-//        self.presentViewController(alert, animated: true, completion: nil)
-//    }
-    
-    
-    
 }
     
-
-extension TakePhotoViewController : UIImagePickerControllerDelegate
-{
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
-    {
+    //MARK: Image Picker
+extension TakePhotoViewController : UIImagePickerControllerDelegate {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         
         dismissViewControllerAnimated(true, completion: nil)
 
         if CFStringCompare(mediaType, kUTTypeImage, .CompareCaseInsensitive) == CFComparisonResult.CompareEqualTo
         {
-            //editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
             originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-            
         }
         if (editedImage != nil)
         {
@@ -231,8 +199,6 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate
         else
         {
             let size2 = CGSizeMake(512, 512)
-            
-           // let size = CGSizeApplyAffineTransform(originalImage.size, CGAffineTransformMakeScale(0.5, 0.5))
             let hasAlpha = false
             let scale: CGFloat = 0.0
             UIGraphicsBeginImageContextWithOptions(size2, !hasAlpha, scale)
@@ -243,23 +209,8 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate
             
             imageToSave = scaledImage
         }
-        
         UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
-        
         self.imageView.image = imageToSave
-        
-//        if mediaType == kUTTypeMovie
-//        {
-//            let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path
-//            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path!)
-//            {
-//                UISaveVideoAtPathToSavedPhotosAlbum(path!, self, "video:didFinishSavingWithError:contextInfo:", nil)
-//            }
-//        }
-//        else
-//        {
-//            self.chosenImage =
-//        }
     }
 
 }
