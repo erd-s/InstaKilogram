@@ -23,10 +23,6 @@ class Photo {
     var currentDate: String?
     var dateID: String?
     
-    
-    
-    
-    
     init(image: UIImage, captionText: String, locationString:String) {
         
         let imageData: NSData! = UIImageJPEGRepresentation(image, 0.5)
