@@ -12,29 +12,25 @@ import Firebase
 var currentUsername: String?
 
 class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDelegate, CommentButtonTappedDelegate{
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet var feedTableView: UITableView!
-    
-    var indexPath: NSIndexPath?
-    var postKey: String?
     
     //MARK: Properties
     var posts = [Photo]()
-    
     var yOffset: CGFloat = 0
-    
+    var indexPath: NSIndexPath?
+    var postKey: String?
     
     //MARK: Outlets
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var feedTableView: UITableView!
     
     //MARK: View Loading
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//         yOffset = feedTableView.contentOffset.y
+        //         yOffset = feedTableView.contentOffset.y
         let userDefaults = NSUserDefaults.standardUserDefaults()
         currentUsername = userDefaults.valueForKey("currentUser") as? String
         navigationItem.title = "\(currentUsername!)'s InstaKilogram"
-        
         
         FirebaseData.firebaseData.PHOTOS_REF.observeEventType(.Value, withBlock: { snapshot in
             self.posts = []
@@ -48,10 +44,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
                         self.posts.insert(post, atIndex: 0)
                         self.feedTableView.reloadData()
                     }
-                    
                 }
-                
-                
             }
             self.feedTableView.contentOffset.y = self.yOffset
         })
@@ -74,21 +67,18 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
     
     
     //MARK: Button Taps
-    
     func commentButtonTapped(cell: PhotoFeedCell) {
         indexPath = feedTableView.indexPathForCell(cell)
         postKey = posts[indexPath!.row].key
         performSegueWithIdentifier("commentSegue", sender: self)
     }
     
-
     func likeButtonTapped(cell: PhotoFeedCell) {
         yOffset = feedTableView.contentOffset.y
         indexPath = feedTableView.indexPathForCell(cell)
         let selPost = posts[indexPath!.row]
         postKey = posts[indexPath!.row].key
         selPost.photoLikes = selPost.photoLikes! + 1
-        
         FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath(postKey).childByAppendingPath("likes").setValue(selPost.photoLikes)
         feedTableView.reloadData()
         print("like button is tapped")
@@ -123,12 +113,10 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         setCellDate(cell, photo: photo)
         
         print("For Cell: \(photo.location)")
-        if(photo.location != "")
-        {
+        if(photo.location != "") {
             cell.geoLocationLabel.text = photo.location
         }
-        else
-        {
+        else {
             cell.geoLocationLabel.hidden = true
         }
         let priority = DISPATCH_QUEUE_PRIORITY_HIGH
@@ -136,14 +124,8 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
             let decodedData = NSData(base64EncodedString: photo.photoString!, options: NSDataBase64DecodingOptions())
             dispatch_async(dispatch_get_main_queue()) {
                 cell.photoView.image = UIImage(data: decodedData!)
-                
             }
-            
         }
-        
-        
-        
-        
         return cell
     }
     

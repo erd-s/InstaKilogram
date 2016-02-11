@@ -55,10 +55,6 @@ class EditUserViewController: UIViewController, UITextFieldDelegate, UITextViewD
 
     
     //MARK: Actions
-    @IBAction func cancelButtonTapped(sender: UIButton) {
-     
-    }
-    
     @IBAction func doneButtonTapped(sender: UIButton) {
         let currentUserDict =
             ["description": self.descriptionTextView.text,

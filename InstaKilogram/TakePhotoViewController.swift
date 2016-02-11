@@ -66,18 +66,15 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             self.okButton.enabled = true
             
         }
-        else if (self.sourcePicker.selectedSegmentIndex == 1)
-        {
+        else if (self.sourcePicker.selectedSegmentIndex == 1) {
             startCameraFromViewController(self, withDelegate: self)
         }
-        else
-        {
+        else {
             startCameraFromViewController(self, withDelegate: self)
         }
     }
     
-    @IBAction func onOKButtonTapped(sender: AnyObject)
-    {
+    @IBAction func onOKButtonTapped(sender: AnyObject) {
         let locationAlert = UIAlertController(title: "Add a Location", message: "Would you like to add a location?", preferredStyle: .Alert)
         let confirmAction = UIAlertAction(title: "Yes", style: .Default) { (action: UIAlertAction) -> Void in
             self.locationManager.requestWhenInUseAuthorization()
@@ -96,8 +93,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     //MARK: Camera
-    func startCameraFromViewController(viewController:UIViewController, withDelegate delegate:protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool
-    {
+    func startCameraFromViewController(viewController:UIViewController, withDelegate delegate:protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) == false {
             return false
         }
@@ -114,11 +110,9 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         self.captionTextView.userInteractionEnabled = true
         
         return true
-        
     }
     
-    @IBAction func onLocationButtonTapped(sender: AnyObject)
-    {
+    @IBAction func onLocationButtonTapped(sender: AnyObject) {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
@@ -145,12 +139,12 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
                 self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
                 self.performSegueWithIdentifier("toTabViewController", sender: self)
-
+                
             })
             let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) -> Void in
                 self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString: address)
                 self.performSegueWithIdentifier("toTabViewController", sender: self)
-
+                
             })
             locationAlert.addAction(cancelAction)
             locationAlert.addAction(confirmAction)
@@ -162,40 +156,35 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     
     //MARK: Text View Delegate Functions
     func textViewDidBeginEditing(textView: UITextView) {
-        if textView.textColor == UIColor.lightGrayColor()
-        {
+        if textView.textColor == UIColor.lightGrayColor() {
             textView.text = nil
             textView.textColor = UIColor.blackColor()
         }
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        if textView.text.isEmpty
-        {
+        if textView.text.isEmpty {
             textView.text = "Placeholder"
             textView.textColor = UIColor.lightGrayColor()
             self.resignFirstResponder()
         }
     }
 }
-    
-    //MARK: Image Picker
+
+//MARK: Image Picker
 extension TakePhotoViewController : UIImagePickerControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         
         dismissViewControllerAnimated(true, completion: nil)
-
-        if CFStringCompare(mediaType, kUTTypeImage, .CompareCaseInsensitive) == CFComparisonResult.CompareEqualTo
-        {
+        
+        if CFStringCompare(mediaType, kUTTypeImage, .CompareCaseInsensitive) == CFComparisonResult.CompareEqualTo {
             originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         }
-        if (editedImage != nil)
-        {
+        if (editedImage != nil) {
             imageToSave = editedImage
         }
-        else
-        {
+        else {
             let size2 = CGSizeMake(512, 512)
             let hasAlpha = false
             let scale: CGFloat = 0.0
@@ -210,7 +199,6 @@ extension TakePhotoViewController : UIImagePickerControllerDelegate {
         UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
         self.imageView.image = imageToSave
     }
-
 }
 
 

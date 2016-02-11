@@ -155,7 +155,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let currentPhoto = userPhotosArray[indexPath.row]
         cell.photoView.image = currentPhoto
         
-        
         return cell
     }
     

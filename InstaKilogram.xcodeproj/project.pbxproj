@@ -13,7 +13,6 @@
 		1336D1E01C63FE8B0009917D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1DF1C63FE8B0009917D /* Assets.xcassets */; };
 		1336D1E31C63FE8B0009917D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1336D1E11C63FE8B0009917D /* LaunchScreen.storyboard */; };
 		1354CE1F1C690EBA008ECEFA /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1354CE1E1C690EBA008ECEFA /* Photo.swift */; };
-		1354CE211C696E5F008ECEFA /* InstaTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1354CE201C696E5F008ECEFA /* InstaTabBarController.swift */; };
 		1354CE241C6B8782008ECEFA /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1354CE231C6B8782008ECEFA /* CommentsViewController.swift */; };
 		13721D3F1C69008700E273C2 /* AccountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13721D3C1C69008700E273C2 /* AccountCreateViewController.swift */; };
 		13721D401C69008700E273C2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13721D3D1C69008700E273C2 /* Constants.swift */; };
@@ -41,7 +40,6 @@
 		1336D1E21C63FE8B0009917D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1336D1E41C63FE8B0009917D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1354CE1E1C690EBA008ECEFA /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		1354CE201C696E5F008ECEFA /* InstaTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaTabBarController.swift; sourceTree = "<group>"; };
 		1354CE231C6B8782008ECEFA /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		13721D3C1C69008700E273C2 /* AccountCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreateViewController.swift; sourceTree = "<group>"; };
 		13721D3D1C69008700E273C2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -98,13 +96,9 @@
 			children = (
 				1336D1D91C63FE8B0009917D /* Main.storyboard */,
 				DB4A95631C6CE165009B7846 /* MapViewController.swift */,
-				9B365A5C1C6BCCC10042DEE9 /* PhotoCollectionViewCell.swift */,
 				1354CE231C6B8782008ECEFA /* CommentsViewController.swift */,
 				13721D3C1C69008700E273C2 /* AccountCreateViewController.swift */,
-				13721D3D1C69008700E273C2 /* Constants.swift */,
-				13721D3E1C69008700E273C2 /* FirebaseData.swift */,
 				9B544D161C655C32009A8834 /* PhotoFeedTableViewController.swift */,
-				1354CE201C696E5F008ECEFA /* InstaTabBarController.swift */,
 				DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */,
 				9B1235DE1C666E810046C1A3 /* ActivityViewController.swift */,
 				DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */,
@@ -141,6 +135,9 @@
 		9B1235E41C66739B0046C1A3 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				13721D3D1C69008700E273C2 /* Constants.swift */,
+				13721D3E1C69008700E273C2 /* FirebaseData.swift */,
+				9B365A5C1C6BCCC10042DEE9 /* PhotoCollectionViewCell.swift */,
 				9B544D181C655C7A009A8834 /* PhotoFeedCell.swift */,
 				1354CE1E1C690EBA008ECEFA /* Photo.swift */,
 			);
@@ -287,7 +284,6 @@
 				9B365A5D1C6BCCC10042DEE9 /* PhotoCollectionViewCell.swift in Sources */,
 				9B0D2ABA1C67DE9D0028067F /* EditUserViewController.swift in Sources */,
 				DB4A95641C6CE165009B7846 /* MapViewController.swift in Sources */,
-				1354CE211C696E5F008ECEFA /* InstaTabBarController.swift in Sources */,
 				13721D3F1C69008700E273C2 /* AccountCreateViewController.swift in Sources */,
 				1336D1D61C63FE8B0009917D /* AppDelegate.swift in Sources */,
 				9BB18D901C67ABAC00886740 /* LoginViewController.swift in Sources */,
