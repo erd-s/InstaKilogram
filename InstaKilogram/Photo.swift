@@ -38,18 +38,20 @@ class Photo {
         caption = captionText
         location = locationString
         
-//        let date = NSDate()
-        let dateComponents = NSDateComponents()
-        let month = String(dateComponents.month)
-        let year = String(dateComponents.year)
-        let day = String(dateComponents.day)
-        let hours = String(dateComponents.hour)
-        let minutes = String(dateComponents.minute)
-        let seconds = String(dateComponents.second)
-        self.hhmmss = "\(hours):\(minutes):\(seconds)"
-        self.currentDate = "\(month) \(day), \(year)"
+        let date = NSDate()
+        
+        let dateFormatterFullDate = NSDateFormatter()
+        dateFormatterFullDate.dateStyle = NSDateFormatterStyle.LongStyle
+        let dateString = dateFormatterFullDate.stringFromDate(date)
+        
+        let dateFormatterHHMMSS = NSDateFormatter()
+        dateFormatterHHMMSS.dateFormat = "Today HH:mm:ss"
+        let hhmmssString = dateFormatterHHMMSS.stringFromDate(date)
+        
+        self.hhmmss = hhmmssString
+        self.currentDate = dateString
+        
         self.dateID = String(NSDate())
-
         
         
         
