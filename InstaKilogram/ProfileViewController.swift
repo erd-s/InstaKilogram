@@ -168,8 +168,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "mapSegue" {
         let mapVC = segue.destinationViewController as? MapViewController
         mapVC!.currentPhotoData = self.currentPhotoData
+        }
         
     }
 }
