@@ -67,8 +67,6 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     
     
     //MARK: Button Taps
-    @IBAction func onLikeButtonTap(sender: UIButton) {
-    }
     
     func commentButtonTapped(cell: PhotoFeedCell) {
         indexPath = feedTableView.indexPathForCell(cell)
@@ -135,7 +133,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "commentSegue" {
-        var dvc = segue.destinationViewController as! CommentsViewController
+        let dvc = segue.destinationViewController as! CommentsViewController
         dvc.postID = postKey
         }
     }

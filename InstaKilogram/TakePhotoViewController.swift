@@ -21,7 +21,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var captionTextView: UITextView!
-    @IBOutlet weak var locationButton: UIButton!
     
     
     var originalImage:UIImage!
@@ -37,7 +36,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         super.viewDidLoad()
         self.okButton.enabled = false
         self.captionTextView.userInteractionEnabled = false
-        self.locationButton.enabled = false
         
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
@@ -123,7 +121,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         presentViewController(cameraController, animated: true, completion: nil)
         
         self.okButton.enabled = true
-        self.locationButton.enabled = true
         self.captionTextView.userInteractionEnabled = true
         
         return true
