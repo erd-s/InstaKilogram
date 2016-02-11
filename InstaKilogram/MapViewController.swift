@@ -22,7 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         for snapshot in currentPhotoData
         {
-            if(snapshot.value["location"] != nil)
+            if(snapshot.value["longitude"] != nil)
             {
                 let annotation:MKPointAnnotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2DMake(snapshot.value["latitude"] as! Double, snapshot.value["longitude"] as! Double)

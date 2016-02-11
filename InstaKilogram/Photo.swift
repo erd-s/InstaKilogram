@@ -62,6 +62,8 @@ class Photo {
         
         if(locationPlacemark != nil)
         {
+            //location data
+            
             location = "\(locationPlacemark!.subThoroughfare!) \(locationPlacemark!.thoroughfare!) \(locationPlacemark!.locality!)"
             locationCoordinate = locationPlacemark!.location!.coordinate
             
