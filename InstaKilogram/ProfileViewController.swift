@@ -47,12 +47,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: Custom Functions
     func startListeningAndSetCurrentUser () {
         FirebaseData.firebaseData.CURRENT_USER_REF.observeSingleEventOfType(.Value, withBlock: { snapshot in
-//            print(snapshot.value.description)
             self.currentUser = snapshot.value as! Dictionary<String, AnyObject>
             self.usernameTitleLabel.text? = self.currentUser["username"]!.uppercaseString
-            if (self.currentUser["name"] != nil) {
-                self.nameLabel.text = self.currentUser["name"] as? String
-            }
+
+            self.nameLabel.text = self.currentUser["name"] as? String
             if (self.currentUser["description"] != nil) {
                 self.descriptionLabel.text = self.currentUser["description"] as? String
             }
@@ -62,18 +60,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             if self.currentUser["followers"] != nil {
                 self.followersNumberLabel.text = String(self.currentUser["followers"]!.count)
-            } else {
-                self.followersNumberLabel.text = "0"
             }
+            
             if self.currentUser["following"] != nil {
                 self.followingNumberLabel.text = String(self.currentUser["following"]!.count)
-            } else {
-                self.followingNumberLabel.text = "0"
-            }
-            if self.currentUser["photos"]?.count != nil {
-                self.postNumberLabel.text = String(self.currentUser["photos"]!.count)
-            } else {
-                self.postNumberLabel.text = "0"
             }
             self.nameLabel.text = self.currentUser["name"] as? String
             
@@ -99,6 +89,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     let decodedImage = UIImage(data: decodedData!)
                     self.userPhotosArray.insert(decodedImage!, atIndex: 0)
                     self.currentPhotoData.insert(snapshot, atIndex: 0)
+                    self.postNumberLabel.text = String(self.userPhotosArray.count)
                     self.tableView.reloadData()
                     self.collectionView.reloadData()
                 }
@@ -140,14 +131,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let likesString = String(postData.value["likes"] as! Int)
         cell.likeCountLabel?.text = "Likes: \(likesString)"
         cell.captionTextView?.text = postData.value["caption"] as? String
-        
-        if postData.value["geolocation"] != nil {
-        cell.geoLocationLabel.text = postData.value["geolocation"] as? String
-        }
-        
-        if postData.value["comments"]! != nil {
-        cell.commentsLabel?.text = postData.value["comments"] as? String
-        }
+        cell.geoLocationLabel.text = postData.value?["geolocation"] as? String
+        cell.commentsLabel?.text = postData.value?["comments"] as? String
         
         return cell
     }
