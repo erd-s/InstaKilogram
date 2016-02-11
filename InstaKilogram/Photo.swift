@@ -24,7 +24,7 @@ class Photo {
     var hhmmss: String?
     var currentDate: String?
     var dateID: String?
-    var locationCoordinate:CLLocationCoordinate2D?
+    var locationCoordinate: CLLocationCoordinate2D?
 
 
     
@@ -65,8 +65,8 @@ class Photo {
             //location data
             
             location = "\(locationPlacemark!.subThoroughfare!) \(locationPlacemark!.thoroughfare!) \(locationPlacemark!.locality!)"
-            locationCoordinate = locationPlacemark!.location!.coordinate
-            
+            locationCoordinate = CLLocationCoordinate2D(latitude: locationPlacemark!.location!.coordinate.latitude, longitude: locationPlacemark!.location!.coordinate.longitude)
+            print("coordinates are: \(locationCoordinate!)")
             let photoDictionary = ["photoString"    : photoString! as String,
                 "likes"        : 0,
                 "user"         : username!,

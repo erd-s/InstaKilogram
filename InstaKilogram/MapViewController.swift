@@ -22,31 +22,54 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         for snapshot in currentPhotoData
         {
-            if(snapshot.value["longitude"] != nil)
+//            print(snapshot.value)
+            if let longitude = snapshot.value["longitude"] {
+                print(longitude)
+            } else {
+                print("longitude == nil")
+            }
+            if(snapshot.value["longitude"] != nil && snapshot.value["latitude"] != nil && snapshot.value["location"] != nil)
             {
                 let annotation:MKPointAnnotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2DMake(snapshot.value["latitude"] as! Double, snapshot.value["longitude"] as! Double)
+                //print("latitude == \(snapshot.value["latitude"]) || longitude = \(snapshot.value["longitude"])")
+                guard
+                    let lat = snapshot.value["latitude"] as? Double,
+                    let lon = snapshot.value["longitude"] as? Double
+                    else
+                {
+                        return
+                }
+                //print(lat)
+                annotation.coordinate = CLLocationCoordinate2DMake(lat, lon)
                 annotation.title = snapshot.value["caption"] as? String
                 mapView.addAnnotation(annotation)
+                
+                var aggregateLongitude = 0.0
+                var aggregateLatitude = 0.0
+                var averageLatitude = 0.0
+                var averageLongitude = 0.0
+                
+                
+                print(self.mapView.annotations)
+                for annotation in mapView.annotations
+                {
+                    aggregateLatitude = aggregateLatitude + annotation.coordinate.latitude
+                    aggregateLongitude = aggregateLongitude + annotation.coordinate.longitude
+                }
+                
+                averageLatitude = aggregateLatitude/Double(self.mapView.annotations.count)
+                averageLongitude = aggregateLongitude/Double(self.mapView.annotations.count)
+                
+                mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(averageLatitude, averageLongitude), MKCoordinateSpanMake(0.05, 0.05)), animated: true)
+
+            }
+            else
+            {
+                print("No location.")
             }
         }
         
-        var aggregateLongitude = 0.0
-        var aggregateLatitude = 0.0
-        var averageLatitude = 0.0
-        var averageLongitude = 0.0
         
-        for annotation in mapView.annotations
-        {
-            aggregateLatitude = aggregateLatitude + annotation.coordinate.latitude
-            aggregateLongitude = aggregateLongitude + annotation.coordinate.longitude
-        }
-        
-        averageLatitude = aggregateLatitude/Double(self.mapView.annotations.count)
-        averageLongitude = aggregateLongitude/Double(self.mapView.annotations.count)
-        
-        mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(averageLatitude, averageLongitude), MKCoordinateSpanMake(0.05, 0.05)), animated: true)
-    
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
