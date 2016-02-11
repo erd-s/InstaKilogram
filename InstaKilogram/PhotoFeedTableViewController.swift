@@ -42,11 +42,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
                 for snap in snapshots {
                     if let postDictionary = snap.value as? Dictionary <String, AnyObject> {
                         let post = Photo(dictionary: postDictionary)
-<<<<<<< HEAD
-                        //                        post.photo = UIImage(named: "loadingImage")
-=======
                         post.photo = UIImage(named: "loadingImage")
->>>>>>> Finished like functionality
                         post.key = snap.key
                         self.posts.insert(post, atIndex: 0)
                         self.feedTableView.reloadData()
@@ -56,11 +52,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
                 
                 
             }
-<<<<<<< HEAD
-=======
             self.feedTableView.contentOffset.y = self.yOffset
-
->>>>>>> Finished like functionality
         })
         
     }
@@ -141,10 +133,6 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         let priority = DISPATCH_QUEUE_PRIORITY_HIGH
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             let decodedData = NSData(base64EncodedString: photo.photoString!, options: NSDataBase64DecodingOptions())
-<<<<<<< HEAD
-            //            cell.photoView.image = UIImage(data: decodedData!)
-=======
->>>>>>> Finished like functionality
             dispatch_async(dispatch_get_main_queue()) {
                 cell.photoView.image = UIImage(data: decodedData!)
                 
