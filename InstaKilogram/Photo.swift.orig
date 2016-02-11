@@ -22,10 +22,14 @@ class Photo {
     var hhmmss: String?
     var currentDate: String?
     var dateID: String?
+<<<<<<< HEAD
     var comments: [String]?
 
 
 
+    
+=======
+>>>>>>> tweaks
     
     init(image: UIImage, captionText: String, locationString:String) {
         
@@ -63,6 +67,7 @@ class Photo {
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
         
+        
         photosRef.setValue(photoDictionary)
         
     }
@@ -92,4 +97,10 @@ class Photo {
     
     
 }
+
+
+
+
+
+
 

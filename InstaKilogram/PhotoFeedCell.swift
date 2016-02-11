@@ -21,22 +21,25 @@ class PhotoFeedCell: UITableViewCell {
     var likeDelegate: LikeButtonTappedDelegate?
     var delegate: CommentButtonTappedDelegate?
     
+    //MARK: Outlets
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var photoView: UIImageView!
     @IBOutlet var geoLocationLabel: UILabel!
-    
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet var commentsLabel: UILabel!
     @IBOutlet var likeCountLabel: UILabel!
     @IBOutlet weak var captionTextView: UITextView!
-    
     @IBOutlet weak var commentButton: UIButton!
     
+    //MARK: Init
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
+    //MARK: Delegate Functions
     @IBAction func commentButtonPressed(sender: UIButton) {
         if let delegate = self.delegate {
             delegate.commentButtonTapped(self)
-            
         }
     }
     
@@ -45,12 +48,6 @@ class PhotoFeedCell: UITableViewCell {
             likeDelegate.likeButtonTapped(self)
         }
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-    }
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,22 +10,23 @@ import UIKit
 import Firebase
 
 class AccountCreateViewController: UIViewController, UITextFieldDelegate{
-
+    
+    //MARK: Outlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     
+    //MARK: View Loading
     override func viewDidAppear(animated: Bool) {
-        
-        
     }
     
+    //MARK: TextField Delegate Functions
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-         return textField.resignFirstResponder()
+        return textField.resignFirstResponder()
     }
     
-    
+    //MARK: Actions
     @IBAction func createAccount(sender: UIButton) {
         let username = usernameTextField.text
         let email = emailTextField.text
@@ -42,19 +43,10 @@ class AccountCreateViewController: UIViewController, UITextFieldDelegate{
                         FirebaseData.firebaseData.createNewAccount(authData.uid, user: user)
                         
                         self.performSegueWithIdentifier("unwindCreate", sender: self)
-                        
                     })
                 }
-                
-                
             })
-            
-            
         }
-        
-        
-        
-        
     }
     
     @IBAction func backButtonTapped(sender: UIButton) {

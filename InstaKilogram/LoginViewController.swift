@@ -10,24 +10,33 @@ import UIKit
 import Firebase
 
 
-class LoginViewController: UIViewController, UITextFieldDelegate
-{
+class LoginViewController: UIViewController, UITextFieldDelegate {
+    //MARK: Properties
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    //MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let userDefaults = NSUserDefaults.standardUserDefaults()
     
-    
-    
+    //MARK: View Loading
     override func viewDidLoad() {
-        
         super.viewDidLoad()
     }
     
     override func viewDidAppear(animated: Bool) {
-        
     }
     
+    //MARK: Custom Functions
+    func loginErrorAlert(tittle: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let action = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
+        alert.addAction(action)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: Actions
     @IBAction func loginButtonTapped(sender: UIButton) {
         let email = emailTextField.text
         let password = passwordTextField.text
@@ -51,10 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                         }, withCancelBlock: { error in
                             print(error.description)
                     })
-
-                    
                     print(FirebaseData.firebaseData.CURRENT_USER_REF)
-                    
                 }
             })
             
@@ -62,19 +68,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate
             loginErrorAlert("Error", message: "Please enter a username and password.")
         }
     }
-    
-    
-    func loginErrorAlert(tittle: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let action = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
-        alert.addAction(action)
-        presentViewController(alert, animated: true, completion: nil)
-        
+
+    //MARK: Segue
+    @IBAction func unwindCreate(segue: UIStoryboardSegue) {
     }
-    
-    
-    @IBAction func unwindCreate(segue: UIStoryboardSegue) {}
     
     
     

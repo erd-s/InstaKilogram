@@ -11,20 +11,20 @@ import UIKit
 import Firebase
 
 class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    @IBOutlet weak var addCommentTextField: UITextField!
-    
-    @IBOutlet weak var commentTableView: UITableView!
-    
-    
+    //MARK: Properties
     var postID: String?
     var comment = Dictionary<String,String>()
     var comments = [Dictionary<String,String>]()
     
+    //MARK: Outlets
+    @IBOutlet weak var addCommentTextField: UITextField!
+    @IBOutlet weak var commentTableView: UITableView!
+    
+    //MARK: View
     override func viewDidAppear(animated: Bool) {
         print(postID)
         let commentsRef = FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath(postID).childByAppendingPath("comments")
-
+        
         commentsRef.observeEventType(.Value, withBlock: { snapshot in
             self.comments = []
             if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
@@ -40,17 +40,14 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             self.commentTableView.reloadData()
         })
-        
     }
     
+    //MARK: Actions
     @IBAction func addButtonTapped(sender: UIButton) {
         let commentsRef = FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath(postID).childByAppendingPath("comments")
         if addCommentTextField.text?.characters.count > 0 {
             let commentDic = ["commentText": addCommentTextField.text!, "username": currentUsername!]
             commentsRef.childByAutoId().setValue(commentDic)
-           // commentsRef.setValue(commentDic)
-            
-            
         }
     }
     
@@ -58,6 +55,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    //MARK: Table View
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellID")
         
@@ -72,8 +70,6 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
-        
-        
     }
     
 }

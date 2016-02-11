@@ -11,6 +11,7 @@ import Firebase
 
 
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+    
     //MARK: Properties
     var userPhotosArray = [UIImage]()  //this array type may need to change
     var searchResultsArray = [UIImage]()    //and this one too
@@ -51,7 +52,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.collectionView.reloadData()
         for photo in arrayWithData {
             let photoUserString = photo.value!["user"] as! String
-             print("photo user is: \(photoUserString) and query is: \(searchQuery)")
+            print("photo user is: \(photoUserString) and query is: \(searchQuery)")
             if photoUserString.containsString(searchQuery) || searchQuery == "" {
                 let decodedData = NSData(base64EncodedString: (photo.value["photoString"] as? String)!, options: NSDataBase64DecodingOptions())
                 let decodedImage = UIImage(data: decodedData!)
