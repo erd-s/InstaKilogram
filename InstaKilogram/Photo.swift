@@ -35,8 +35,6 @@ class Photo {
         caption = captionText
         location = locationString
         
-        
-        
         userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
         
         let photoDictionary = ["photoString"    : photoString! as String,
