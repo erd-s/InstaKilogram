@@ -24,6 +24,7 @@ class Photo {
     var dateID: String?
 
 
+
     
     
     init(image: UIImage, captionText: String, locationString:String) {
@@ -48,6 +49,7 @@ class Photo {
         self.hhmmss = "\(hours):\(minutes):\(seconds)"
         self.currentDate = "\(month) \(day), \(year)"
         self.dateID = String(NSDate())
+
         
         
         
