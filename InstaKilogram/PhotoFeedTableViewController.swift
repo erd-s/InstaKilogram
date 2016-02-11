@@ -39,7 +39,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
                 for snap in snapshots {
                     if let postDictionary = snap.value as? Dictionary <String, AnyObject> {
                         let post = Photo(dictionary: postDictionary)
-//                        post.photo = UIImage(named: "loadingImage")
+                        //                        post.photo = UIImage(named: "loadingImage")
                         post.key = snap.key
                         self.posts.insert(post, atIndex: 0)
                         self.feedTableView.reloadData()
@@ -55,7 +55,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     
     //MARK: Custom Functions
     func setCellDate(cell: PhotoFeedCell, photo: Photo) {
-      let thisDate = NSDate()
+        let thisDate = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
         let dateString = dateFormatter.stringFromDate(thisDate)
@@ -77,11 +77,11 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     }
     
     
-//    @IBAction func onCommentButtonTapped(sender: UIButton) {
-//        performSegueWithIdentifier("commentSegue", sender: self)
-//        
-//    }
-
+    //    @IBAction func onCommentButtonTapped(sender: UIButton) {
+    //        performSegueWithIdentifier("commentSegue", sender: self)
+    //
+    //    }
+    
     
     @IBAction func onForwardButtonTap(sender: AnyObject) {
     }
@@ -121,24 +121,24 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         let priority = DISPATCH_QUEUE_PRIORITY_HIGH
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             let decodedData = NSData(base64EncodedString: photo.photoString!, options: NSDataBase64DecodingOptions())
-//            cell.photoView.image = UIImage(data: decodedData!)
+            //            cell.photoView.image = UIImage(data: decodedData!)
             dispatch_async(dispatch_get_main_queue()) {
                 cell.photoView.image = UIImage(data: decodedData!)
-
+                
             }
-
+            
         }
-
         
-
-
+        
+        
+        
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "commentSegue" {
-        let dvc = segue.destinationViewController as! CommentsViewController
-        dvc.postID = postKey
+            let dvc = segue.destinationViewController as! CommentsViewController
+            dvc.postID = postKey
         }
     }
     
