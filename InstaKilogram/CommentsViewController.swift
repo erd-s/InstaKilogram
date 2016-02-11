@@ -12,12 +12,13 @@ import Firebase
 
 class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var postID: String?
+    var comments: [Dictionary <String, String>]?
     
     
-
+    
     override func viewDidAppear(animated: Bool) {
-        
-        
+        print(postID)
+        let commentsRef = FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath("postID").childByAppendingPath("comments")
         
         
     }
@@ -25,13 +26,21 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellID")
         
+        let comment = comments![indexPath.row]
+        
+        cell?.textLabel?.text = comment["commentText"]
+        cell?.detailTextLabel?.text = comment["username"]
+        
         return cell!
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    
-
+        if comments?.count != nil {
+            return comments!.count
+        } else {
+            return 0
+        }
+        
+        
+        
 }
