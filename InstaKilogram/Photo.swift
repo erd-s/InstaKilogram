@@ -24,12 +24,13 @@ class Photo {
     var hhmmss: String?
     var currentDate: String?
     var dateID: String?
-
+    var locationCoordinate:CLLocationCoordinate2D?
 
 
     
     
-    init(image: UIImage, captionText: String, locationPlacemark: CLPlacemark) {
+    init(image: UIImage, captionText: String, locationPlacemark: CLPlacemark?)
+    {
         
         let imageData: NSData! = UIImageJPEGRepresentation(image, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions([])
@@ -38,7 +39,16 @@ class Photo {
         username = currentUsername
         photoString = base64String
         caption = captionText
-        //location = locationString
+        if(locationPlacemark != nil)
+        {
+            location = "\(locationPlacemark!.thoroughfare) \(locationPlacemark!.subThoroughfare) \(locationPlacemark!.locality)"
+            locationCoordinate = locationPlacemark!.location?.coordinate
+        }
+        else
+        {
+            location = ""
+            locationCoordinate = nil
+        }
         
         let date = NSDate()
         
@@ -63,8 +73,10 @@ class Photo {
                                  "userID"       : userID!,
                                 "caption"       : caption!,
                                 "location"      : location!,
-                                "hh:mm:ss"     : hhmmss!,
+                                "hh:mm:ss"      : hhmmss!,
                                 "date"          : currentDate!,
+                                "longitude"     : locationCoordinate!.longitude as Double,
+                                "latitude"      : locationCoordinate!.latitude as Double,
                                 "dateID"        : dateID!]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
@@ -85,6 +97,7 @@ class Photo {
         currentDate = dictionary["date"] as? String
         hhmmss = dictionary["hh:mm:ss"] as? String
         dateID = dictionary["dateID"] as? String
+        locationCoordinate = dictionary["locationCoordinate"] as? CLLocationCoordinate2D
         
         photo = UIImage()
         key  = String()

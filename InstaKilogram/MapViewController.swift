@@ -23,7 +23,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
         for snapshot in currentPhotoData
         {
             let annotation:MKPointAnnotation = MKPointAnnotation()
-            annotation.coordinate = snapshot.value["location"]
+            annotation.coordinate = CLLocationCoordinate2DMake(snapshot.value["latitude"] as! Double, snapshot.value["longitude"] as! Double)
+            mapView.addAnnotation(annotation)
         }
     
     }

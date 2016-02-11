@@ -143,7 +143,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location: \(address)", preferredStyle: UIAlertControllerStyle.Alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
-                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationPlacemark: CLPlacemark())
+                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationPlacemark: nil)
                 self.performSegueWithIdentifier("toTabViewController", sender: self)
 
             })
