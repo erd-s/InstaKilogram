@@ -1074,6 +1074,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MGZ-dp-lg2"/>
+                    <connections>
+                        <outlet property="mapView" destination="b0O-UB-t4a" id="wjY-DA-eFP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcK-Wy-4jV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
