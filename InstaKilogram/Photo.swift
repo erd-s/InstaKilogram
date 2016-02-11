@@ -38,14 +38,14 @@ class Photo {
         caption = captionText
         location = locationString
         
-        let date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let month = calendar.components(.Month, fromDate: date)
-        let year = calendar.components(.Year, fromDate: date)
-        let day = calendar.components(.Day, fromDate: date)
-        let hours = calendar.components(.Hour, fromDate: date)
-        let minutes = calendar.components(.Minute, fromDate: date)
-        let seconds = calendar.components(.Second, fromDate: date)
+//        let date = NSDate()
+        let dateComponents = NSDateComponents()
+        let month = String(dateComponents.month)
+        let year = String(dateComponents.year)
+        let day = String(dateComponents.day)
+        let hours = String(dateComponents.hour)
+        let minutes = String(dateComponents.minute)
+        let seconds = String(dateComponents.second)
         self.hhmmss = "\(hours):\(minutes):\(seconds)"
         self.currentDate = "\(month) \(day), \(year)"
         self.dateID = String(NSDate())
