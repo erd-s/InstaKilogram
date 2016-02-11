@@ -149,7 +149,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             })
             let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) -> Void in
                 self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString: address)
-                //print(self.photo.location)
                 self.performSegueWithIdentifier("toTabViewController", sender: self)
 
             })
