@@ -19,7 +19,8 @@ class Photo {
     var caption:String?
     var location:String?
     var key: String?
-    var timestamp: String?
+    var hhmmss: String?
+    var currentDate: String?
 
 
     
@@ -35,6 +36,19 @@ class Photo {
         caption = captionText
         location = locationString
         
+        let date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let month = calendar.components(.Month, fromDate: date)
+        let year = calendar.components(.Year, fromDate: date)
+        let day = calendar.components(.Day, fromDate: date)
+        let hours = calendar.components(.Hour, fromDate: date)
+        let minutes = calendar.components(.Minute, fromDate: date)
+        let seconds = calendar.components(.Second, fromDate: date)
+        self.hhmmss = "\(hours):\(minutes):\(seconds)"
+        self.currentDate = "\(month) \(day), \(year)"
+        
+        
+        
         userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
         
         let photoDictionary = ["photoString"    : photoString! as String,
@@ -43,7 +57,8 @@ class Photo {
                                  "userID"       : userID!,
                                 "caption"       : caption!,
                                 "location"      : location!,
-                                "timestamp"     : timestamp!]
+                                "hh:mm:ss"     : hhmmss!,
+                                "date"          : currentDate!]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
 
