@@ -62,8 +62,8 @@ class Photo {
         
         if(locationPlacemark != nil)
         {
-            location = "\(locationPlacemark!.thoroughfare) \(locationPlacemark!.subThoroughfare) \(locationPlacemark!.locality)"
-            locationCoordinate = locationPlacemark!.location?.coordinate
+            location = "\(locationPlacemark!.subThoroughfare!) \(locationPlacemark!.thoroughfare!) \(locationPlacemark!.locality!)"
+            locationCoordinate = locationPlacemark!.location!.coordinate
             
             let photoDictionary = ["photoString"    : photoString! as String,
                 "likes"        : 0,

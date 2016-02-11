@@ -134,7 +134,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let likesString = String(postData.value["likes"] as! Int)
         cell.likeCountLabel?.text = "Likes: \(likesString)"
         cell.captionTextView?.text = postData.value["caption"] as? String
-        cell.geoLocationLabel.text = postData.value?["geolocation"] as? String
+        cell.geoLocationLabel.text = postData.value!["geolocation"] as? String
         cell.commentsLabel?.text = postData.value?["comments"] as? String
         
         if postData.value["dateID"] as? String == String(NSDate()) {
