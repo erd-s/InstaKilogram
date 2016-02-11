@@ -11,6 +11,12 @@ import UIKit
 import Firebase
 
 class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var addCommentTextField: UITextField!
+    
+    @IBOutlet weak var commentTableView: UITableView!
+    
+    
     var postID: String?
     var comments: [Dictionary <String, String>]?
     
@@ -20,6 +26,14 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
         print(postID)
         let commentsRef = FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath("postID").childByAppendingPath("comments")
         
+        
+    }
+    
+    @IBAction func addButtonTapped(sender: UIButton) {
+        
+    }
+    
+    @IBAction func backButtonTapped(sender: UIBarButtonItem) {
         
     }
     
