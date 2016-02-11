@@ -14,6 +14,7 @@ class AccountCreateViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidAppear(animated: Bool) {
         
@@ -29,20 +30,15 @@ class AccountCreateViewController: UIViewController, UITextFieldDelegate{
         let username = usernameTextField.text
         let email = emailTextField.text
         let password = passwordTextField.text
+        let name = nameTextField.text
         
         if username?.characters.count > 0 && email?.characters.count > 0 && password!.characters.count > 0 {
             FirebaseData.firebaseData.BASE_REF.createUser(email, password: password, withValueCompletionBlock: { error, result in
-                
                 if error != nil {
-                    
                     print(error.description)
-                    
                 } else {
-                    
                     FirebaseData.firebaseData.BASE_REF.authUser(email, password: password, withCompletionBlock: { error, authData in
-                        
-                        let user = ["provider":authData.provider!, "email": email!, "username": username!]
-                        
+                        let user = ["provider":authData.provider!, "email": email!, "username": username!, "name": name!]
                         FirebaseData.firebaseData.createNewAccount(authData.uid, user: user)
                         
                         self.performSegueWithIdentifier("unwindCreate", sender: self)

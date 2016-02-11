@@ -168,7 +168,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var mapVC = segue.destinationViewController as? MapViewController
+        let mapVC = segue.destinationViewController as? MapViewController
         mapVC!.currentPhotoData = self.currentPhotoData
         
     }
