@@ -9,15 +9,16 @@
 import UIKit
 
 protocol CommentButtonTappedDelegate {
-    
-    
     func commentButtonTapped (cell: PhotoFeedCell)
-    
+}
+
+protocol LikeButtonTappedDelegate {
+    func likeButtonTapped (cell: PhotoFeedCell)
 }
 
 class PhotoFeedCell: UITableViewCell {
     
-    
+    var likeDelegate: LikeButtonTappedDelegate?
     var delegate: CommentButtonTappedDelegate?
     
     @IBOutlet var nameLabel: UILabel!
@@ -31,6 +32,7 @@ class PhotoFeedCell: UITableViewCell {
     
     @IBOutlet weak var commentButton: UIButton!
     
+    
     @IBAction func commentButtonPressed(sender: UIButton) {
         if let delegate = self.delegate {
             delegate.commentButtonTapped(self)
@@ -38,13 +40,11 @@ class PhotoFeedCell: UITableViewCell {
         }
     }
     
-    @IBAction func onLikeButtonPressed(sender: UIButton)
-    {
-        
+    @IBAction func onLikeButtonPressed(sender: UIButton){
+        if let likeDelegate = self.likeDelegate {
+            likeDelegate.likeButtonTapped(self)
+        }
     }
-    
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)

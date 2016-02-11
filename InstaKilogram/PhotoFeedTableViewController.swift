@@ -11,7 +11,7 @@ import Firebase
 
 var currentUsername: String?
 
-class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDelegate {
+class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDelegate, CommentButtonTappedDelegate{
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet var feedTableView: UITableView!
     
@@ -21,6 +21,8 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     //MARK: Properties
     var posts = [Photo]()
     
+    var yOffset: CGFloat = 0
+    
     
     //MARK: Outlets
     
@@ -28,6 +30,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//         yOffset = feedTableView.contentOffset.y
         let userDefaults = NSUserDefaults.standardUserDefaults()
         currentUsername = userDefaults.valueForKey("currentUser") as? String
         
@@ -39,7 +42,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
                 for snap in snapshots {
                     if let postDictionary = snap.value as? Dictionary <String, AnyObject> {
                         let post = Photo(dictionary: postDictionary)
-//                        post.photo = UIImage(named: "loadingImage")
+                        post.photo = UIImage(named: "loadingImage")
                         post.key = snap.key
                         self.posts.insert(post, atIndex: 0)
                         self.feedTableView.reloadData()
@@ -49,17 +52,8 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
                 
                 
             }
-//            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-//            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-//                for post in self.posts {
-//                    let decodedData = NSData(base64EncodedString: post.photoString!, options: NSDataBase64DecodingOptions())
-//                    post.photo = UIImage(data: decodedData!)
-//                }
-//                
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.feedTableView.reloadData()
-//                }
-//            }
+            self.feedTableView.contentOffset.y = self.yOffset
+
         })
         
     }
@@ -75,11 +69,17 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         performSegueWithIdentifier("commentSegue", sender: self)
     }
     
-    
-//    @IBAction func onCommentButtonTapped(sender: UIButton) {
-//        performSegueWithIdentifier("commentSegue", sender: self)
-//        
-//    }
+    func likeButtonTapped(cell: PhotoFeedCell) {
+        yOffset = feedTableView.contentOffset.y
+        indexPath = feedTableView.indexPathForCell(cell)
+        let selPost = posts[indexPath!.row]
+        postKey = posts[indexPath!.row].key
+        selPost.photoLikes = selPost.photoLikes! + 1
+        
+        FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath(postKey).childByAppendingPath("likes").setValue(selPost.photoLikes)
+        feedTableView.reloadData()
+        print("like button is tapped")
+    }
     
     
     @IBAction func onForwardButtonTap(sender: AnyObject) {
@@ -98,12 +98,13 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         let cell = tableView.dequeueReusableCellWithIdentifier("pizza", forIndexPath: indexPath) as! PhotoFeedCell
         
         cell.delegate = self
+        cell.likeDelegate = self
         
         let photo = posts[indexPath.row]
         
         cell.photoView.image = UIImage(named: "loadingImage")
         cell.nameLabel.text =           photo.username
-        cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes)"
+        cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes!)"
         cell.captionTextView.text =     photo.caption
         
         if photo.dateID == String(NSDate()) {
@@ -125,7 +126,6 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         let priority = DISPATCH_QUEUE_PRIORITY_HIGH
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             let decodedData = NSData(base64EncodedString: photo.photoString!, options: NSDataBase64DecodingOptions())
-//            cell.photoView.image = UIImage(data: decodedData!)
             dispatch_async(dispatch_get_main_queue()) {
                 cell.photoView.image = UIImage(data: decodedData!)
 
