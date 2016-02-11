@@ -16,7 +16,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     @IBOutlet var feedTableView: UITableView!
     
     var indexPath: NSIndexPath?
-    
+    var postKey: String?
     
     //MARK: Properties
     var posts = [Photo]()
@@ -39,7 +39,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
                 for snap in snapshots {
                     if let postDictionary = snap.value as? Dictionary <String, AnyObject> {
                         let post = Photo(dictionary: postDictionary)
-                        post.photo = UIImage(named: "loadingImage")
+//                        post.photo = UIImage(named: "loadingImage")
                         post.key = snap.key
                         self.posts.insert(post, atIndex: 0)
                         self.feedTableView.reloadData()
@@ -48,17 +48,17 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
                 
                 
             }
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                for post in self.posts {
-                    let decodedData = NSData(base64EncodedString: post.photoString!, options: NSDataBase64DecodingOptions())
-                    post.photo = UIImage(data: decodedData!)
-                }
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.feedTableView.reloadData()
-                }
-            }
+//            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//                for post in self.posts {
+//                    let decodedData = NSData(base64EncodedString: post.photoString!, options: NSDataBase64DecodingOptions())
+//                    post.photo = UIImage(data: decodedData!)
+//                }
+//                
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    self.feedTableView.reloadData()
+//                }
+//            }
         })
         
     }
@@ -72,6 +72,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     
     func commentButtonTapped(cell: PhotoFeedCell) {
         indexPath = feedTableView.indexPathForCell(cell)
+        postKey = posts[indexPath!.row].key
         performSegueWithIdentifier("commentSegue", sender: self)
     }
     
@@ -97,10 +98,12 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> PhotoFeedCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("pizza", forIndexPath: indexPath) as! PhotoFeedCell
         
+        cell.delegate = self
+        
         let photo = posts[indexPath.row]
         
+        cell.photoView.image = UIImage(named: "loadingImage")
         cell.nameLabel.text =           photo.username
-        cell.photoView.image =          photo.photo
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes)"
         cell.captionTextView.text =     photo.caption
 //      cell.commentsLabel.text =     photo.username
@@ -112,12 +115,28 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         {
             cell.geoLocationLabel.hidden = true
         }
+        let priority = DISPATCH_QUEUE_PRIORITY_HIGH
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let decodedData = NSData(base64EncodedString: photo.photoString!, options: NSDataBase64DecodingOptions())
+//            cell.photoView.image = UIImage(data: decodedData!)
+            dispatch_async(dispatch_get_main_queue()) {
+                cell.photoView.image = UIImage(data: decodedData!)
+
+            }
+
+        }
+
+        
+
 
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if segue.identifier == "commentSegue" {
+        var dvc = segue.destinationViewController as! CommentsViewController
+        dvc.postID = postKey
+        }
     }
     
     
