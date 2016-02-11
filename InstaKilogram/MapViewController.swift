@@ -22,11 +22,40 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         for snapshot in currentPhotoData
         {
-            let annotation:MKPointAnnotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2DMake(snapshot.value["latitude"] as! Double, snapshot.value["longitude"] as! Double)
-            mapView.addAnnotation(annotation)
+            if(snapshot.value["location"] != nil)
+            {
+                let annotation:MKPointAnnotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2DMake(snapshot.value["latitude"] as! Double, snapshot.value["longitude"] as! Double)
+                annotation.title = snapshot.value["caption"] as? String
+                mapView.addAnnotation(annotation)
+            }
         }
+        
+        var aggregateLongitude = 0.0
+        var aggregateLatitude = 0.0
+        var averageLatitude = 0.0
+        var averageLongitude = 0.0
+        
+        for annotation in mapView.annotations
+        {
+            aggregateLatitude = aggregateLatitude + annotation.coordinate.latitude
+            aggregateLongitude = aggregateLongitude + annotation.coordinate.longitude
+        }
+        
+        averageLatitude = aggregateLatitude/Double(self.mapView.annotations.count)
+        averageLongitude = aggregateLongitude/Double(self.mapView.annotations.count)
+        
+        mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(averageLatitude, averageLongitude), MKCoordinateSpanMake(0.05, 0.05)), animated: true)
     
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        let pin = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        pin.canShowCallout = true
+        pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+        
+        return pin
     }
     
     

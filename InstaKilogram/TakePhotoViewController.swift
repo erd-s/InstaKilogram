@@ -85,7 +85,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         }
         
         let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action: UIAlertAction) -> Void in
-            self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationPlacemark:CLPlacemark())
+            self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationPlacemark:nil)
             self.performSegueWithIdentifier("toTabViewController", sender: self)
         }
         locationAlert.addAction(confirmAction)

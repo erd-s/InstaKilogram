@@ -31,6 +31,7 @@ class Photo {
     
     init(image: UIImage, captionText: String, locationPlacemark: CLPlacemark?)
     {
+        userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
         
         let imageData: NSData! = UIImageJPEGRepresentation(image, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions([])
@@ -39,16 +40,7 @@ class Photo {
         username = currentUsername
         photoString = base64String
         caption = captionText
-        if(locationPlacemark != nil)
-        {
-            location = "\(locationPlacemark!.thoroughfare) \(locationPlacemark!.subThoroughfare) \(locationPlacemark!.locality)"
-            locationCoordinate = locationPlacemark!.location?.coordinate
-        }
-        else
-        {
-            location = ""
-            locationCoordinate = nil
-        }
+        
         
         let date = NSDate()
         
@@ -64,26 +56,45 @@ class Photo {
         self.currentDate = dateString
         
         self.dateID = String(NSDate())
-
-        userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
         
-        let photoDictionary = ["photoString"    : photoString! as String,
-                                 "likes"        : 0,
-                                 "user"         : username!,
-                                 "userID"       : userID!,
-                                "caption"       : caption!,
-                                "location"      : location!,
-                                "hh:mm:ss"      : hhmmss!,
-                                "date"          : currentDate!,
-                                "longitude"     : locationCoordinate!.longitude as Double,
-                                "latitude"      : locationCoordinate!.latitude as Double,
-                                "dateID"        : dateID!]
         
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
-
         
-        photosRef.setValue(photoDictionary)
-        
+        if(locationPlacemark != nil)
+        {
+            location = "\(locationPlacemark!.thoroughfare) \(locationPlacemark!.subThoroughfare) \(locationPlacemark!.locality)"
+            locationCoordinate = locationPlacemark!.location?.coordinate
+            
+            let photoDictionary = ["photoString"    : photoString! as String,
+                "likes"        : 0,
+                "user"         : username!,
+                "userID"       : userID!,
+                "caption"       : caption!,
+                "location"      : location!,
+                "hh:mm:ss"      : hhmmss!,
+                "date"          : currentDate!,
+                "longitude"     : locationCoordinate!.longitude as Double,
+                "latitude"      : locationCoordinate!.latitude as Double,
+                "dateID"        : dateID!]
+            
+             photosRef.setValue(photoDictionary)
+        }
+        else
+        {
+            let photoDictionary = ["photoString"    : photoString! as String,
+                "likes"        : 0,
+                "user"         : username!,
+                "userID"       : userID!,
+                "caption"       : caption!,
+                "hh:mm:ss"      : hhmmss!,
+                "date"          : currentDate!,
+                "dateID"        : dateID!]
+            
+             photosRef.setValue(photoDictionary)
+            
+            
+        }
+    
     }
     
     init(dictionary: Dictionary<String, AnyObject>) {
