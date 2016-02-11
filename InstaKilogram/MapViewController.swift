@@ -22,7 +22,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         for snapshot in currentPhotoData
         {
-            //let annotation = snapshot[""]
+            let annotation:MKPointAnnotation = MKPointAnnotation()
+            annotation.coordinate = snapshot.value["location"]
         }
     
     }

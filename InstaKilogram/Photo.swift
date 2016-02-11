@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import MapKit
+import CoreLocation
 
 class Photo {
     var photoString: String?
@@ -27,7 +29,7 @@ class Photo {
 
     
     
-    init(image: UIImage, captionText: String, locationString:String) {
+    init(image: UIImage, captionText: String, locationPlacemark: CLPlacemark) {
         
         let imageData: NSData! = UIImageJPEGRepresentation(image, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions([])
@@ -36,7 +38,7 @@ class Photo {
         username = currentUsername
         photoString = base64String
         caption = captionText
-        location = locationString
+        //location = locationString
         
         let date = NSDate()
         
