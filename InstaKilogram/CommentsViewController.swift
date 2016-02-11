@@ -20,12 +20,13 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     var postID: String?
     var comment = Dictionary<String,String>()
     var comments = [Dictionary<String,String>]()
-    let commentsRef = FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath("postID").childByAppendingPath("comments")
     
     override func viewDidAppear(animated: Bool) {
         print(postID)
+        let commentsRef = FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath(postID).childByAppendingPath("comments")
+
         commentsRef.observeEventType(.Value, withBlock: { snapshot in
-            
+            self.comments = []
             if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
                 for snap in snapshots {
                     
@@ -43,8 +44,9 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func addButtonTapped(sender: UIButton) {
+        let commentsRef = FirebaseData.firebaseData.PHOTOS_REF.childByAppendingPath(postID).childByAppendingPath("comments")
         if addCommentTextField.text?.characters.count > 0 {
-            let commentDic = ["commentText": addCommentTextField.text, "username": currentUser]
+            let commentDic = ["commentText": addCommentTextField.text!, "username": currentUsername!]
             commentsRef.childByAutoId().setValue(commentDic)
            // commentsRef.setValue(commentDic)
             

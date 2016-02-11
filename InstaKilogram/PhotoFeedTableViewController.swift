@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-var currentUser: String?
+var currentUsername: String?
 
 class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDelegate {
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,7 +29,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
         super.viewDidLoad()
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        currentUser = userDefaults.valueForKey("currentUser") as? String
+        currentUsername = userDefaults.valueForKey("currentUser") as? String
         
         
         FirebaseData.firebaseData.PHOTOS_REF.observeEventType(.Value, withBlock: { snapshot in
@@ -44,6 +44,7 @@ class PhotoFeedTableViewController: UITableViewController, CommentButtonTappedDe
                         self.posts.insert(post, atIndex: 0)
                         self.feedTableView.reloadData()
                     }
+                    
                 }
                 
                 
