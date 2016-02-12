@@ -503,7 +503,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-Ab-gw6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-Ab-gw6">
                                 <rect key="frame" x="0.0" y="87" width="320" height="481"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -624,13 +624,13 @@
                                 </connections>
                             </segmentedControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcr-4j-CX5">
-                                <rect key="frame" x="16" y="110" width="288" height="286"/>
+                                <rect key="frame" x="16" y="126" width="288" height="286"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="286" id="rZu-XZ-xRg"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7Y-tr-DFw">
-                                <rect key="frame" x="145" y="469" width="30" height="30"/>
+                                <rect key="frame" x="145" y="485" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2eV-FA-zmX"/>
                                     <constraint firstAttribute="width" constant="30" id="QB8-vY-GgS"/>
@@ -664,7 +664,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Add Caption" translatesAutoresizingMaskIntoConstraints="NO" id="wVt-dh-Q9d">
-                                <rect key="frame" x="16" y="404" width="288" height="47"/>
+                                <rect key="frame" x="16" y="420" width="288" height="47"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="OCQ-pL-Mdp"/>
@@ -686,7 +686,7 @@
                             <constraint firstItem="wVt-dh-Q9d" firstAttribute="top" secondItem="wcr-4j-CX5" secondAttribute="bottom" constant="8" id="XwG-3f-k0A"/>
                             <constraint firstItem="COZ-yl-0YM" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leading" constant="16" id="Yoi-jT-gsE"/>
                             <constraint firstAttribute="trailing" secondItem="wcr-4j-CX5" secondAttribute="trailing" constant="16" id="cdc-gv-N7P"/>
-                            <constraint firstItem="wcr-4j-CX5" firstAttribute="top" secondItem="COZ-yl-0YM" secondAttribute="bottom" constant="8" id="kVf-Qj-kcY"/>
+                            <constraint firstItem="wcr-4j-CX5" firstAttribute="top" secondItem="COZ-yl-0YM" secondAttribute="bottom" constant="24" id="kVf-Qj-kcY"/>
                             <constraint firstAttribute="trailing" secondItem="wVt-dh-Q9d" secondAttribute="trailing" constant="16" id="kfL-Ql-jXy"/>
                             <constraint firstItem="wcr-4j-CX5" firstAttribute="leading" secondItem="9Nu-8f-eDR" secondAttribute="leading" constant="16" id="rQU-e8-2An"/>
                             <constraint firstItem="pld-SC-X16" firstAttribute="top" secondItem="9Nu-8f-eDR" secondAttribute="top" id="twd-56-Cpb"/>
@@ -1018,7 +1018,7 @@
                                     <constraint firstAttribute="height" constant="34" id="unw-pC-cwf"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V3D-ng-dxl">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V3D-ng-dxl">
                                 <rect key="frame" x="0.0" y="288" width="320" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="FbB-6B-OsE">
