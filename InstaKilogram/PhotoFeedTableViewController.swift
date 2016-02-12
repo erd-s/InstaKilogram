@@ -173,7 +173,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         cell.likeDelegate = self
         cell.photoView.image = UIImage(data: decodedData!)
         cell.nameLabel.text =           photo.username
-        cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes!)"
+        cell.likeCountLabel.text =      "Likes: \(photo.photoLikes!)"
         cell.captionTextView.text =     photo.caption
         
         setCellDate(cell, photo: photo)
