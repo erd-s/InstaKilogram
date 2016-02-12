@@ -25,7 +25,7 @@ class Photo {
     var currentDate: String?
     var dateID: String?
     var locationCoordinate: CLLocationCoordinate2D?
-
+    var comments: [String]?
 
     
     
@@ -111,6 +111,8 @@ class Photo {
         hhmmss = dictionary["hh:mm:ss"] as? String
         dateID = dictionary["dateID"] as? String
         locationCoordinate = dictionary["locationCoordinate"] as? CLLocationCoordinate2D
+        comments = dictionary["comments"] as? Array
+
         
         photo = UIImage()
         key  = String()

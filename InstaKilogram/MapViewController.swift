@@ -79,13 +79,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
         pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         
         return pin
-    }
-    
-    
-    
 
-    
-    
+    }
     
 
 }
