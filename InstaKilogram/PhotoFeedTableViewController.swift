@@ -161,9 +161,9 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
     
         if photo.comments != nil {
             if photo.comments!.count > 1 {
-                cell.commentsLabel.text = "\(photo.comments![0]) \n \(photo.comments![1]) \n ..."
+                cell.commentsLabel.text = "\(photo.comments![0]) \n\(photo.comments![1]) \n [...]"
             } else if photo.comments?.count == 1 {
-                cell.commentsLabel.text = "\(photo.comments![0]) \n ..."
+                cell.commentsLabel.text = "\(photo.comments![0]) \n [...]"
             }
         } else {
             cell.commentsLabel.text = "No Comments"
