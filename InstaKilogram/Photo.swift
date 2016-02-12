@@ -55,19 +55,9 @@ class Photo {
         self.currentDate = dateString
         
         userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
-        
-        let photoDictionary = ["photoString"    : photoString! as String,
-                               "likes"          : 0,
-                               "user"           : username!,
-                               "userID"         : userID!,
-                               "caption"        : caption!,
-                               "location"       : location!,
-                               "hh:mm:ss"       : hhmmss!,
-                               "date"           : currentDate!]
-        
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
         
-        photosRef.setValue(photoDictionary)
+
         self.dateID = String(NSDate())
         
         

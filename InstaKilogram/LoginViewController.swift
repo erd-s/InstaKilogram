@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Twitter
 
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
@@ -20,8 +21,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: View Loading
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+//        let logInButton = TWTRLogInButton(logInCompletion: { session, error in
+//            if (session != nil) {
+//                println("signed in as \(session.userName)");
+//            } else {
+//                println("error: \(error.localizedDescription)");
+//            }
+//        })
+//        logInButton.center = self.view.center
+//        self.view.addSubview(logInButton)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -68,6 +80,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             loginErrorAlert("Error", message: "Please enter a username and password.")
         }
     }
+    
+    func twitterLogin()
+    {
+        let ref = Firebase(url: "https://instakilogram.firebaseio.com")
+        let twitterAuthHelper = TwitterAuthHelper(firebaseRef: ref, apiKey:"LMCHua3RZ9MOBDtSyP0ibvU2L")
+        twitterAuthHelper.selectTwitterAccountWithCallback { error, accounts in
+            if error != nil {
+                // Error retrieving Twitter accounts
+            } else if accounts.count > 1 {
+                // Select an account. Here we pick the first one for simplicity
+                let account = accounts[0] as? ACAccount
+                twitterAuthHelper.authenticateAccount(account, withCallback: { error, authData in
+                    if error != nil {
+                        // Error authenticating account
+                    } else {
+                        // User logged in!
+                    }
+                })
+            }
+        }
+    }
+    
 
     //MARK: Segue
     @IBAction func unwindCreate(segue: UIStoryboardSegue) {
