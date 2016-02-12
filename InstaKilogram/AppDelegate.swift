@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Twitter
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
