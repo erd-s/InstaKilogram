@@ -142,7 +142,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uiq-WM-gX4">
-                                            <rect key="frame" x="8" y="8" width="43" height="21"/>
+                                            <rect key="frame" x="8" y="8" width="42.5" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="ZQj-ya-E58"/>
                                             </constraints>
@@ -212,9 +212,9 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdW-SI-Bl9">
-                                            <rect key="frame" x="8" y="475" width="304" height="21"/>
+                                            <rect key="frame" x="8" y="475" width="304" height="65"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="20.5" id="Eeh-Nn-mtL"/>
+                                                <constraint firstAttribute="height" constant="65" id="Eeh-Nn-mtL"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -824,16 +824,10 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i12-wu-jZP">
                                                     <rect key="frame" x="23" y="375" width="30" height="30"/>
                                                     <state key="normal" title="❤️"/>
-                                                    <connections>
-                                                        <action selector="onLikeButtonTap:" destination="XsX-JQ-7rq" eventType="touchUpInside" id="hh9-9t-nYk"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pls-jh-Vk0">
                                                     <rect key="frame" x="57" y="375" width="30" height="30"/>
                                                     <state key="normal" title="💭"/>
-                                                    <connections>
-                                                        <action selector="onCommentButtonTapped:" destination="XsX-JQ-7rq" eventType="touchUpInside" id="fPv-60-aeH"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHu-x4-TGa">
                                                     <rect key="frame" x="95" y="375" width="30" height="30"/>

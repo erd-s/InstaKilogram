@@ -42,27 +42,61 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
                         let post = Photo(dictionary: postDictionary)
                         post.photo = UIImage(named: "loadingImage")
                         post.key = snap.key
-                        //print(postDictionary["comments"])
-                       // let commentDic = postDictionary.value["comments"] as! Dictionary
+                        
+                        if postDictionary["comments"] != nil {
+                            post.comments = [String]()
+                            let commentDic = postDictionary["comments"] as! NSDictionary
+                            var commentDicArray = commentDic.allKeys
+                            if commentDicArray.count > 1 {
+                                let username2 = (commentDic["\(commentDicArray[1])"]!["username"]!)
+                                let commentText2 = (commentDic["\(commentDicArray[1])"]!["commentText"]!)
+                                let username1 = (commentDic["\(commentDicArray[0])"]!["username"]!)
+                                let commentText1 = (commentDic["\(commentDicArray[0])"]!["commentText"]!)
+                                self.comment2 = "\(username2!): \(commentText2!)"
+                                self.comment1 = "\(username1!): \(commentText1!)"
+                                
+//                                print(self.comment1!)
+//                                print(self.comment2!)
+                                post.comments?.append(self.comment1!)
+                                post.comments?.append(self.comment2!)
+                                print(self.comment1)
+                                print(self.comment2)
+                                print(post.comments)
+                            } else if commentDicArray.count == 1 {
+                                let username1 = (commentDic["\(commentDicArray[0])"]!["username"]!)
+                                let commentText1 = (commentDic["\(commentDicArray[0])"]!["commentText"]!)
+                                self.comment1 = "\(username1!): \(commentText1!)"
+                                post.comments?.append(self.comment1!)
+                                print(post.comments)
+
+
+                            
+                            }
+                            print("------")
+                        }
+                                               let commentDictionary = postDictionary["comments"] as? [Dictionary <String, Dictionary<String,String>>]
                         
                         
-                        //         post.comments = postDictionary["comments"] as! Array
-                        // print(post.comments)
+                       // print(commentDictionary)
+                        if commentDictionary?[1] != nil {
+                            self.comment1 = "\(commentDictionary![0]["username"]): \(commentDictionary![0]["commentText"])"
+                            self.comment2 = "\(commentDictionary![1]["username"]): \(commentDictionary![0]["commentText"])"
+                            post.comments?.append(self.comment1!)
+                            post.comments?.append(self.comment2!)
+                            
+                            
+                        } else if commentDictionary?[0] != nil {
+                            self.comment1 = "\(commentDictionary![0]["username"]): \(commentDictionary![0]["commentText"])"
+                            post.comments?.append(self.comment1!)
+                            
+                        }
                         
-                        let commentDictionary = postDictionary["comments"] as! [Dictionary <String, String>]
-                        self.comment1 = "\(commentDictionary[0]["username"]): \(commentDictionary[0]["commentText"])"
-                        self.comment2 = "\(commentDictionary[1]["username"]): \(commentDictionary[0]["commentText"])"
-                        
-                        post.comments?.append(self.comment1!)
-                        post.comments?.append(self.comment2!)
                         
                         self.posts.insert(post, atIndex: 0)
                         
                         
                         self.feedTableView.reloadData()
                     }
-                    let commentDic = snap
-                    let commentDictionary = commentDic.value["comments"] as! [Dictionary <String, String>]
                 }
             }
             self.feedTableView.contentOffset.y = self.yOffset
@@ -91,7 +125,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         postKey = posts[indexPath!.row].key
         performSegueWithIdentifier("commentSegue", sender: self)
     }
-
+    
     func likeButtonTapped(cell: PhotoFeedCell) {
         yOffset = feedTableView.contentOffset.y
         indexPath = feedTableView.indexPathForCell(cell)
@@ -121,9 +155,19 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         let cell = tableView.dequeueReusableCellWithIdentifier("pizza", forIndexPath: indexPath) as! PhotoFeedCell
         let photo = posts[indexPath.row]
         let decodedData = NSData(base64EncodedString: photo.photoString!, options: NSDataBase64DecodingOptions())
-
+        
         
         cell.commentsLabel.numberOfLines = 0
+    
+        if photo.comments != nil {
+            if photo.comments!.count > 1 {
+                cell.commentsLabel.text = "Comments \n \(photo.comments![0]) \n \(photo.comments![1]) \n ..."
+            } else if photo.comments?.count == 1 {
+                cell.commentsLabel.text = "Comments \n \(photo.comments![0]) \n ..."
+            }
+        } else {
+            cell.commentsLabel.text = "No Comments"
+        }
         
         cell.delegate = self
         cell.likeDelegate = self
@@ -131,6 +175,15 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         cell.nameLabel.text =           photo.username
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes!)"
         cell.captionTextView.text =     photo.caption
+        
+        if photo.comments?.count != nil {
+            if photo.comments!.count > 1 {
+                cell.commentsLabel.text = "Comments \n \(photo.comments![0]) \n \(photo.comments![1]) \n ..."
+            } else if photo.comments!.count == 1 {
+                cell.commentsLabel.text = "Comments \n \(photo.comments![0]) \n ..."
+            }
+        }
+        
         
         setCellDate(cell, photo: photo)
         
@@ -141,6 +194,7 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         else {
             cell.geoLocationLabel.hidden = true
         }
+        
         return cell
     }
     
