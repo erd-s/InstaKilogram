@@ -26,11 +26,11 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     //MARK: ViewLoading
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionViewFlowLayout.itemSize = CGSize.init(width: collectionView.frame.width/3, height: collectionView.frame.width/3)
     }
     override func viewWillAppear(animated: Bool) {
         grabPhotos()
         searchBar.autocapitalizationType = UITextAutocapitalizationType.None
+        collectionViewFlowLayout.itemSize = CGSize.init(width: collectionView.frame.width/3, height: collectionView.frame.width/3)
     }
     
     func grabPhotos(){

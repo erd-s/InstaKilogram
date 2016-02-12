@@ -40,7 +40,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(animated: Bool) {
         startListeningAndSetCurrentUser()
         getPhotos()
-        
         collectionViewFlowLayout.itemSize = CGSize.init(width: collectionView.frame.width/3, height: collectionView.frame.width/3)
     }
     
