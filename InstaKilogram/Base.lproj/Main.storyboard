@@ -730,20 +730,26 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ume-s9-wu1" userLabel="followers stack">
                                 <rect key="frame" x="185" y="90" width="48" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tql-Ux-ZNr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tql-Ux-ZNr">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Xt7-1y-ZaB"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CzK-K1-vfI">
-                                        <rect key="frame" x="0.0" y="21" width="48" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CzK-K1-vfI">
+                                        <rect key="frame" x="0.0" y="21" width="48" height="13"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.59837205500000001" green="0.59837205500000001" blue="0.59837205500000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tql-Ux-ZNr" secondAttribute="trailing" id="1BK-ih-15G"/>
+                                    <constraint firstItem="tql-Ux-ZNr" firstAttribute="top" secondItem="Ume-s9-wu1" secondAttribute="top" id="UE7-gh-yvh"/>
+                                    <constraint firstItem="tql-Ux-ZNr" firstAttribute="leading" secondItem="Ume-s9-wu1" secondAttribute="leading" id="p6t-ud-YaM"/>
                                     <constraint firstAttribute="height" constant="34" id="qs8-PR-4xV"/>
                                 </constraints>
                             </stackView>
@@ -751,7 +757,7 @@
                                 <rect key="frame" x="121" y="90" width="48" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="48" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-p0-caT">
-                                        <rect key="frame" x="19" y="0.0" width="11" height="21"/>
+                                        <rect key="frame" x="18" y="0.0" width="11" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="11" id="T6u-42-Op6"/>
                                             <constraint firstAttribute="height" constant="21" id="ro7-oQ-p5T"/>
@@ -1022,7 +1028,7 @@
                                     <segment title="feed"/>
                                     <segment title="map"/>
                                 </segments>
-                                <color key="tintColor" red="0.20291313620000001" green="0.36243193029999998" blue="1" alpha="0.73110593970000004" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.20291313620000001" green="0.36243193029999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="onSelectedSegmentChanged:" destination="Vn0-YP-Nmr" eventType="valueChanged" id="kNG-Tk-UTR"/>
                                 </connections>
@@ -1030,21 +1036,27 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3cG-IO-zsF" userLabel="following stack">
                                 <rect key="frame" x="249" y="90" width="48" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWu-Cx-hu3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWu-Cx-hu3">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="ZRt-qp-XGM"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyl-sN-v9a">
-                                        <rect key="frame" x="0.0" y="21" width="48" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyl-sN-v9a">
+                                        <rect key="frame" x="0.0" y="21" width="48" height="13"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.59837205500000001" green="0.59837205500000001" blue="0.59837205500000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wWu-Cx-hu3" secondAttribute="trailing" id="1Tw-DL-1ue"/>
+                                    <constraint firstItem="wWu-Cx-hu3" firstAttribute="top" secondItem="3cG-IO-zsF" secondAttribute="top" id="E2j-3C-MYU"/>
                                     <constraint firstAttribute="width" constant="48" id="kwn-qL-s7m"/>
+                                    <constraint firstItem="wWu-Cx-hu3" firstAttribute="leading" secondItem="3cG-IO-zsF" secondAttribute="leading" id="qdg-vP-A9W"/>
                                     <constraint firstAttribute="height" constant="34" id="unw-pC-cwf"/>
                                 </constraints>
                             </stackView>
@@ -1119,17 +1131,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b0O-UB-t4a">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="54" width="320" height="514"/>
                             </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzY-ig-ZgF">
-                                <rect key="frame" x="-4" y="0.0" width="328" height="44"/>
+                                <rect key="frame" x="-4" y="0.0" width="328" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="TWE-wd-UZr"/>
+                                    <constraint firstAttribute="height" constant="54" id="TWE-wd-UZr"/>
                                 </constraints>
                                 <color key="barTintColor" red="0.20291313620000001" green="0.36243193029999998" blue="1" alpha="0.73110593970000004" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="jse-Ua-TY9">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="HKW-FF-zxP">
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="HKW-FF-zxP">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <segue destination="7AA-bq-ydP" kind="unwind" unwindAction="unwind:" id="X6y-qb-Xq3"/>
@@ -1539,14 +1551,15 @@
             </objects>
             <point key="canvasLocation" x="858" y="-1447"/>
         </scene>
-        <!--Insta Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="Gxu-je-CrW">
             <objects>
-                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" id="HPK-UW-OQG" customClass="InstaTabBarController" customModule="InstaKilogram" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" id="HPK-UW-OQG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="qmy-m2-YOL">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.20291313620000001" green="0.36243193029999998" blue="1" alpha="0.73110593970000004" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="GZ1-ux-yKf" kind="relationship" relationship="viewControllers" id="u4W-n6-Yih"/>
@@ -1566,9 +1579,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GZ1-ux-yKf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="home" selectedImage="home" id="mX2-rJ-wVt"/>
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YH3-dN-A9h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.20291313620000001" green="0.36243193029999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

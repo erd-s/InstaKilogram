@@ -19,6 +19,13 @@ class AccountCreateViewController: UIViewController, UITextFieldDelegate{
     
     //MARK: View Loading
     override func viewDidAppear(animated: Bool) {
+        let noCapitalization = UITextAutocapitalizationType.None
+        
+        usernameTextField.autocapitalizationType = noCapitalization
+        passwordTextField.autocapitalizationType = noCapitalization
+        emailTextField.autocapitalizationType = noCapitalization
+        
+        
     }
     
     //MARK: TextField Delegate Functions
