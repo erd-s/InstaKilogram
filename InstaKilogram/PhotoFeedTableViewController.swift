@@ -161,9 +161,9 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
     
         if photo.comments != nil {
             if photo.comments!.count > 1 {
-                cell.commentsLabel.text = "Comments \n \(photo.comments![0]) \n \(photo.comments![1]) \n ..."
+                cell.commentsLabel.text = "\(photo.comments![0]) \n \(photo.comments![1]) \n ..."
             } else if photo.comments?.count == 1 {
-                cell.commentsLabel.text = "Comments \n \(photo.comments![0]) \n ..."
+                cell.commentsLabel.text = "\(photo.comments![0]) \n ..."
             }
         } else {
             cell.commentsLabel.text = "No Comments"
@@ -175,15 +175,6 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         cell.nameLabel.text =           photo.username
         cell.likeCountLabel.text =      "Photo Likes: \(photo.photoLikes!)"
         cell.captionTextView.text =     photo.caption
-        
-        if photo.comments?.count != nil {
-            if photo.comments!.count > 1 {
-                cell.commentsLabel.text = "Comments \n \(photo.comments![0]) \n \(photo.comments![1]) \n ..."
-            } else if photo.comments!.count == 1 {
-                cell.commentsLabel.text = "Comments \n \(photo.comments![0]) \n ..."
-            }
-        }
-        
         
         setCellDate(cell, photo: photo)
         
