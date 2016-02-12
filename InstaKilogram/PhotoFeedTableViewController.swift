@@ -141,7 +141,6 @@ class PhotoFeedTableViewController: UITableViewController, LikeButtonTappedDeleg
         else {
             cell.geoLocationLabel.hidden = true
         }
-        }
         return cell
     }
     
