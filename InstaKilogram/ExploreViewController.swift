@@ -67,11 +67,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         getResults(searchText)
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    
     //MARK: CollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredPhotoArray.count
