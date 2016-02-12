@@ -82,7 +82,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
         }
         
         let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action: UIAlertAction) -> Void in
-            self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
+            self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationPlacemark:nil)
             self.performSegueWithIdentifier("toTabViewController", sender: self)
         }
         locationAlert.addAction(confirmAction)
@@ -137,12 +137,12 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate,
             let locationAlert = UIAlertController(title: "Set Current Location", message: "Add location: \(address)", preferredStyle: UIAlertControllerStyle.Alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
-                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString:"")
+                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationPlacemark: nil)
                 self.performSegueWithIdentifier("toTabViewController", sender: self)
                 
             })
             let confirmAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) -> Void in
-                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationString: address)
+                self.photo = Photo(image: self.imageToSave, captionText: self.captionTextView.text, locationPlacemark: placemark!)
                 self.performSegueWithIdentifier("toTabViewController", sender: self)
                 
             })

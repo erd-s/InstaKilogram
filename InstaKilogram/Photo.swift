@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import MapKit
+import CoreLocation
 
 class Photo {
     var photoString: String?
@@ -23,11 +25,13 @@ class Photo {
     var currentDate: String?
     var dateID: String?
     var comments: [String]?
-
-
+    var locationCoordinate: CLLocationCoordinate2D?
 
     
-    init(image: UIImage, captionText: String, locationString:String) {
+    
+    init(image: UIImage, captionText: String, locationPlacemark: CLPlacemark?)
+    {
+        userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
         
         let imageData: NSData! = UIImageJPEGRepresentation(image, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions([])
@@ -35,7 +39,7 @@ class Photo {
         username = currentUsername
         photoString = base64String
         caption = captionText
-        location = locationString
+        
         
         let date = NSDate()
         
@@ -64,7 +68,47 @@ class Photo {
         let photosRef = FirebaseData.firebaseData.PHOTOS_REF.childByAutoId()
         
         photosRef.setValue(photoDictionary)
+        self.dateID = String(NSDate())
         
+        
+        
+        if(locationPlacemark != nil)
+        {
+            //location data
+            
+            location = "\(locationPlacemark!.subThoroughfare!) \(locationPlacemark!.thoroughfare!) \(locationPlacemark!.locality!)"
+            locationCoordinate = CLLocationCoordinate2D(latitude: locationPlacemark!.location!.coordinate.latitude, longitude: locationPlacemark!.location!.coordinate.longitude)
+            print("coordinates are: \(locationCoordinate!)")
+            let photoDictionary = ["photoString"    : photoString! as String,
+                "likes"        : 0,
+                "user"         : username!,
+                "userID"       : userID!,
+                "caption"       : caption!,
+                "location"      : location!,
+                "hh:mm:ss"      : hhmmss!,
+                "date"          : currentDate!,
+                "longitude"     : locationCoordinate!.longitude as Double,
+                "latitude"      : locationCoordinate!.latitude as Double,
+                "dateID"        : dateID!]
+            
+             photosRef.setValue(photoDictionary)
+        }
+        else
+        {
+            let photoDictionary = ["photoString"    : photoString! as String,
+                "likes"        : 0,
+                "user"         : username!,
+                "userID"       : userID!,
+                "caption"       : caption!,
+                "hh:mm:ss"      : hhmmss!,
+                "date"          : currentDate!,
+                "dateID"        : dateID!]
+            
+             photosRef.setValue(photoDictionary)
+            
+            
+        }
+    
     }
     
     init(dictionary: Dictionary<String, AnyObject>) {
@@ -78,6 +122,7 @@ class Photo {
         currentDate = dictionary["date"] as? String
         hhmmss = dictionary["hh:mm:ss"] as? String
         dateID = dictionary["dateID"] as? String
+        locationCoordinate = dictionary["locationCoordinate"] as? CLLocationCoordinate2D
         comments = dictionary["comments"] as? Array
         
         photo = UIImage()

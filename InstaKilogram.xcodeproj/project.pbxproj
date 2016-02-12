@@ -27,6 +27,7 @@
 		9BB18D901C67ABAC00886740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB18D8F1C67ABAC00886740 /* LoginViewController.swift */; };
 		DB20BE181C6ADFCF00237E30 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20BE171C6ADFCF00237E30 /* MapKit.framework */; };
 		DB4A95641C6CE165009B7846 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A95631C6CE165009B7846 /* MapViewController.swift */; };
+		DB4A95661C6CF5B8009B7846 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4A95651C6CF5B8009B7846 /* CoreLocation.framework */; };
 		DB8B95731C640CFA00A39C53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */; };
 		DB8B959C1C66A1FA00A39C53 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		AC684F3B12346A0996363A59 /* Pods-InstaKilogram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaKilogram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstaKilogram/Pods-InstaKilogram.debug.xcconfig"; sourceTree = "<group>"; };
 		DB20BE171C6ADFCF00237E30 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DB4A95631C6CE165009B7846 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		DB4A95651C6CF5B8009B7846 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DB8B95721C640CFA00A39C53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		DB8B959B1C66A1FA00A39C53 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB4A95661C6CF5B8009B7846 /* CoreLocation.framework in Frameworks */,
 				DB20BE181C6ADFCF00237E30 /* MapKit.framework in Frameworks */,
 				153CC37F1AE9CE3EBF11A5F8 /* Pods_InstaKilogram.framework in Frameworks */,
 			);
@@ -147,6 +150,7 @@
 		9C7EAFAE1A021F87EF39A5FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB4A95651C6CF5B8009B7846 /* CoreLocation.framework */,
 				DB20BE171C6ADFCF00237E30 /* MapKit.framework */,
 				6A6D29CB40F86DA43BE55614 /* Pods_InstaKilogram.framework */,
 			);
